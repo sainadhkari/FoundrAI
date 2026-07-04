@@ -1,0 +1,149 @@
+Connect the FoundrAI frontend to the working FastAPI backend.
+
+IMPORTANT:
+Do not redesign UI.
+Do not modify styling.
+Only replace fake logic with real backend integration.
+
+Current status:
+
+* Analyze page exists at: artifacts/foundrai/src/pages/Analyze.tsx
+* Dashboard page exists at: artifacts/foundrai/src/pages/Dashboard.tsx
+* Navigation uses React Router
+* Backend endpoint is working at:
+  POST /fastapi/analyze
+
+Backend response format:
+{
+"market_score": 7.5,
+"competition_score": 6.0,
+"financial_score": 7.0,
+"risk_score": 8.0,
+"verdict": "Proceed"
+}
+
+================================================
+
+STEP 1: Update Analyze.tsx
+
+Current problem:
+handleSubmit uses fake setTimeout.
+
+Current code:
+const handleSubmit = () => {
+setIsSubmitting(true);
+setTimeout(() => {
+setIsSubmitting(false);
+setIsSuccess(true);
+setTimeout(() => {
+navigate("/dashboard");
+}, 1200);
+}, 2500);
+};
+
+Replace this with real API integration.
+
+Requirements:
+
+1. Send POST request to:
+   "/fastapi/analyze"
+
+2. Send formData as JSON body.
+
+Expected payload:
+{
+startup_name,
+startup_idea,
+industry,
+budget,
+timeline
+}
+
+3. Show loading state while request is running.
+
+4. On success:
+
+* Store API response
+* Navigate to dashboard
+
+================================================
+
+STEP 2: Pass API Response to Dashboard
+
+Need a simple way to transfer API results.
+
+Recommended approach:
+Use localStorage.
+
+Store response:
+localStorage.setItem("foundrai_results", JSON.stringify(data))
+
+Then navigate:
+navigate("/dashboard")
+
+================================================
+
+STEP 3: Update Dashboard.tsx
+
+Current problem:
+Dashboard uses hardcoded scores and verdict.
+
+Replace all hardcoded values with backend response.
+
+Read from localStorage:
+const results = JSON.parse(localStorage.getItem("foundrai_results"))
+
+Use:
+
+* results.market_score
+* results.competition_score
+* results.financial_score
+* results.risk_score
+* results.verdict
+
+Replace hardcoded scores array.
+
+================================================
+
+STEP 4: Verdict Rendering
+
+Current verdict is hardcoded.
+
+Replace with:
+results.verdict.toUpperCase()
+
+Examples:
+PROCEED
+PIVOT
+REJECT
+
+================================================
+
+STEP 5: Error Handling
+
+If API fails:
+
+* Stop loading
+* Show error message
+
+Example:
+"Analysis failed. Please try again."
+
+================================================
+
+STEP 6: Important Constraints
+
+* Keep existing UI unchanged
+* Keep all styles unchanged
+* Keep animations unchanged
+* Only replace fake logic with real API integration
+
+Goal:
+FoundrAI frontend should now be fully connected to the CrewAI backend.
+
+User flow:
+Landing Page
+→ Analyze Page
+→ Submit startup
+→ Backend CrewAI runs
+→ Dashboard shows live AI results

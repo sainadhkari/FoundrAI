@@ -18,6 +18,7 @@ export default function Analyze() {
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -29,18 +30,33 @@ export default function Analyze() {
     team: ""
   });
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     setIsSubmitting(true);
-    // Simulate API call
-    setTimeout(() => {
+    setError(null);
+    try {
+      const response = await fetch("/fastapi/analyze", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          startup_name: formData.name,
+          startup_idea: formData.idea,
+          industry: formData.industry,
+          budget: formData.budget,
+          timeline: formData.timeline,
+        }),
+      });
+      if (!response.ok) throw new Error("Server error");
+      const data = await response.json();
+      localStorage.setItem("foundrai_results", JSON.stringify(data));
       setIsSubmitting(false);
       setIsSuccess(true);
-
-      // Move to the dashboard placeholder after showing success briefly
       setTimeout(() => {
         navigate("/dashboard");
       }, 1200);
-    }, 2500);
+    } catch {
+      setIsSubmitting(false);
+      setError("Analysis failed. Please try again.");
+    }
   };
 
   const agents = [
@@ -329,9 +345,14 @@ export default function Analyze() {
             </AnimatePresence>
             <div className="absolute inset-0 bg-white/20 blur-xl group-hover:bg-white/40 transition-all opacity-0 group-hover:opacity-100" />
           </Button>
-          <p className="mt-4 text-sm text-muted-foreground">
-            No credit card required. Analysis takes ~2 minutes.
-          </p>
+          {error && (
+            <p className="mt-4 text-sm text-rose-400 font-medium">{error}</p>
+          )}
+          {!error && (
+            <p className="mt-4 text-sm text-muted-foreground">
+              No credit card required. Analysis takes ~2 minutes.
+            </p>
+          )}
         </motion.div>
 
       </main>

@@ -29,11 +29,14 @@ export default function Dashboard() {
     }, 2000);
   };
 
+  const rawResults = localStorage.getItem("foundrai_results");
+  const results = rawResults ? JSON.parse(rawResults) : null;
+
   const scores = [
-    { label: "Market Score", value: 8.7, max: 10, icon: TrendingUp, color: "text-green-400", bg: "bg-green-500/10", border: "border-green-500/20" },
-    { label: "Competition Score", value: 6.2, max: 10, icon: Target, color: "text-amber-400", bg: "bg-amber-500/10", border: "border-amber-500/20" },
-    { label: "Financial Score", value: 7.9, max: 10, icon: DollarSign, color: "text-primary", bg: "bg-primary/10", border: "border-primary/20" },
-    { label: "Risk Score", value: 4.8, max: 10, icon: ShieldAlert, color: "text-rose-400", bg: "bg-rose-500/10", border: "border-rose-500/20" },
+    { label: "Market Score", value: results?.market_score ?? 8.7, max: 10, icon: TrendingUp, color: "text-green-400", bg: "bg-green-500/10", border: "border-green-500/20" },
+    { label: "Competition Score", value: results?.competition_score ?? 6.2, max: 10, icon: Target, color: "text-amber-400", bg: "bg-amber-500/10", border: "border-amber-500/20" },
+    { label: "Financial Score", value: results?.financial_score ?? 7.9, max: 10, icon: DollarSign, color: "text-primary", bg: "bg-primary/10", border: "border-primary/20" },
+    { label: "Risk Score", value: results?.risk_score ?? 4.8, max: 10, icon: ShieldAlert, color: "text-rose-400", bg: "bg-rose-500/10", border: "border-rose-500/20" },
   ];
 
   const agents = [
@@ -215,7 +218,7 @@ export default function Dashboard() {
               </div>
               <h2 className="text-sm font-bold text-amber-500/80 uppercase tracking-[0.3em] mb-4">Final CEO Verdict</h2>
               <div className="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-orange-500 mb-8 drop-shadow-md">
-                PROCEED WITH CAUTION
+                {results?.verdict?.toUpperCase() ?? "PROCEED WITH CAUTION"}
               </div>
               
               <div className="max-w-3xl space-y-6 bg-black/40 backdrop-blur-md border border-white/5 p-6 md:p-8 rounded-2xl text-left">
