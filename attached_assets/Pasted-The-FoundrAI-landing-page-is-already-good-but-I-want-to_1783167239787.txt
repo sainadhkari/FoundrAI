@@ -1,0 +1,190 @@
+The FoundrAI landing page is already good, but I want to polish it into a world-class premium AI product landing page suitable for winning a hackathon.
+
+IMPORTANT:
+Do NOT redesign the entire page.
+Keep the existing layout and structure.
+Only improve the current design, spacing, positioning, animations, and visual quality.
+
+Brand name everywhere:
+FoundrAI
+
+Goal:
+Make the UI feel like a premium combination of OpenAI, Stripe, Linear, and Vercel.
+
+---
+
+1. NAVBAR FIX (Highest Priority)
+
+Current issue:
+Navbar is appearing in the middle/lower sections instead of staying at the top.
+
+Fix requirements:
+
+* Navbar must stay fixed at the top of the page
+* Full width
+* Always visible during scroll
+* Proper z-index above all sections
+
+Navbar styling:
+
+* Glassmorphism background
+* Backdrop blur
+* Semi-transparent dark background
+* Subtle bottom border
+
+Required CSS:
+
+* position: fixed
+* top: 0
+* left: 0
+* width: 100%
+* z-index: 9999
+
+Navbar should feel premium and balanced.
+
+---
+
+2. HERO SECTION IMPROVEMENTS
+
+Keep current hero layout but improve visuals.
+
+Replace top badge:
+Current:
+FOUNDRAI V2.0 ONLINE
+
+Replace with:
+● 10 AI AGENTS ACTIVE
+
+Badge style:
+
+* Small pill badge
+* Cyan glowing dot
+* Dark glass background
+* Premium subtle glow
+
+Improve hero subtitle:
+Replace with:
+FoundrAI deploys 10 specialized AI agents to pressure-test startup ideas before you risk capital, time, or execution.
+
+Improve visual effects:
+Add:
+
+* Stronger blue and purple radial glow
+* Subtle animated particles
+* Moving gradient blobs
+* Better glow around hero section
+
+Dashboard mockup:
+Add floating animation:
+
+* smooth subtle up/down motion
+
+---
+
+3. FEATURE CARD IMPROVEMENTS
+
+Current cards are good but need stronger premium feel.
+
+Improve:
+
+* Stronger glassmorphism
+* Better shadows
+* Subtle neon borders
+* Premium hover effects
+
+Hover behavior:
+
+* translateY(-8px)
+* scale(1.02)
+* stronger glow
+* smooth transition
+
+Animation duration:
+300ms
+
+Cards should feel alive and interactive.
+
+---
+
+4. AGENT SECTION IMPROVEMENTS
+
+Current issue:
+Agent cards are too small and cramped.
+
+Fix layout:
+Desktop:
+4 cards per row
+
+Tablet:
+2 cards per row
+
+Mobile:
+1 card per row
+
+Card improvements:
+
+* Increase card width
+* Increase card padding
+* Improve readability
+* Better spacing
+* Add hover glow effect
+* Improve text contrast
+
+Make this section easier to read and more premium.
+
+---
+
+5. CTA SECTION IMPROVEMENTS
+
+Keep existing CTA section but improve visual impact.
+
+Change heading:
+Ready to pressure-test your startup?
+
+Change subtitle:
+Get strategic clarity before you commit time, capital, and execution.
+
+Button text:
+Launch FoundrAI
+
+Add:
+
+* Stronger blue-purple glow
+* Dramatic gradient background
+* Better spacing
+* Button glow pulse animation
+
+CTA should feel visually powerful and exciting.
+
+---
+
+6. GLOBAL ANIMATIONS
+
+Add smooth premium animations using Framer Motion.
+
+Need:
+
+* Fade-in section reveals on scroll
+* Card hover lift effects
+* Dashboard floating animation
+* Button hover glow
+* CTA pulse effect
+
+Animations should feel smooth, premium, and modern.
+
+---
+
+7. FINAL GOAL
+
+The landing page should feel like a million-dollar AI startup product.
+
+Judges should immediately think:
+“Wow, this looks premium and impressive.”
+
+Focus on:
+
+* Premium visuals
+* Strong spacing
+* Better readability
+* Smooth animations
+* World-class polish

@@ -32,7 +32,7 @@ export default function Agents() {
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {agents.map((agent, i) => (
             <motion.div
               key={i}
@@ -40,13 +40,13 @@ export default function Agents() {
               whileInView={{ opacity: 1, scale: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.05, duration: 0.4 }}
-              whileHover={{ scale: 1.05, y: -5 }}
-              className="p-6 rounded-2xl bg-white/[0.02] border border-white/5 backdrop-blur-md shadow-lg hover:bg-white/[0.05] hover:border-primary/40 hover:shadow-[0_0_30px_rgba(0,255,255,0.15)] transition-all group cursor-default relative overflow-hidden"
+              whileHover={{ scale: 1.02, y: -8 }}
+              className="p-8 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-xl shadow-lg hover:bg-white/[0.06] hover:border-primary/50 hover:shadow-[0_0_40px_rgba(0,255,255,0.25)] transition-all duration-300 group cursor-default relative overflow-hidden"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-              <agent.icon className="w-10 h-10 text-muted-foreground group-hover:text-primary transition-colors mb-5" />
-              <h4 className="font-semibold text-white text-base mb-2">{agent.name}</h4>
-              <p className="text-sm text-muted-foreground/80 leading-relaxed">{agent.desc}</p>
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              <agent.icon className="w-12 h-12 text-white/70 group-hover:text-primary transition-colors mb-6" />
+              <h4 className="font-bold text-white text-lg mb-3 tracking-tight">{agent.name}</h4>
+              <p className="text-base text-muted-foreground group-hover:text-white/90 transition-colors leading-relaxed">{agent.desc}</p>
             </motion.div>
           ))}
         </div>

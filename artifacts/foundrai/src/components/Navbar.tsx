@@ -8,7 +8,7 @@ export default function Navbar() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed top-0 left-0 right-0 z-50 px-6 py-4 flex items-center justify-between border-b border-white/5 bg-background/50 backdrop-blur-xl"
+      className="fixed top-0 left-0 w-full z-[9999] px-6 py-4 flex items-center justify-between border-b border-white/10 bg-background/60 backdrop-blur-2xl shadow-sm"
     >
       <div className="flex items-center gap-8">
         <Link href="/" className="flex items-center gap-2">

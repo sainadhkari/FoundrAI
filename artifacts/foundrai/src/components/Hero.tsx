@@ -6,40 +6,40 @@ export default function Hero() {
   return (
     <section className="relative min-h-[100dvh] flex items-center pt-28 pb-20 overflow-hidden bg-[#050508]">
       {/* Animated Grid Background */}
-      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)] animate-[grid-drift_20s_linear_infinite]" />
+      <div className="absolute inset-0 z-0 opacity-30 pointer-events-none">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f3e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f3e_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_80%,transparent_110%)] animate-[grid-drift_20s_linear_infinite]" />
       </div>
 
       {/* Background Blobs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         <motion.div 
-          animate={{ x: [0, 50, -50, 0], y: [0, -50, 50, 0] }}
+          animate={{ x: [0, 60, -60, 0], y: [0, -60, 60, 0] }}
           transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px] mix-blend-screen" 
+          className="absolute top-1/4 left-1/4 w-[800px] h-[800px] bg-primary/30 rounded-full blur-[160px] mix-blend-screen" 
         />
         <motion.div 
-          animate={{ x: [0, -60, 60, 0], y: [0, 60, -60, 0] }}
+          animate={{ x: [0, -80, 80, 0], y: [0, 80, -80, 0] }}
           transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-1/4 right-1/4 w-[700px] h-[700px] bg-secondary/20 rounded-full blur-[140px] mix-blend-screen" 
+          className="absolute bottom-1/4 right-1/4 w-[900px] h-[900px] bg-secondary/30 rounded-full blur-[180px] mix-blend-screen" 
         />
       </div>
 
       {/* Floating Particles */}
       <div className="absolute inset-0 pointer-events-none z-0">
-        {Array.from({ length: 30 }).map((_, i) => (
+        {Array.from({ length: 40 }).map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-white/30 rounded-full"
+            className="absolute w-1.5 h-1.5 bg-white/40 rounded-full"
             initial={{ 
               x: Math.random() * window.innerWidth, 
               y: Math.random() * window.innerHeight 
             }}
             animate={{ 
-              y: [null, Math.random() * -500 - 100],
+              y: [null, Math.random() * -600 - 200],
               opacity: [0, 1, 0]
             }}
             transition={{ 
-              duration: Math.random() * 10 + 10,
+              duration: Math.random() * 10 + 15,
               repeat: Infinity,
               ease: "linear",
               delay: Math.random() * 10
@@ -55,9 +55,12 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="flex flex-col gap-8"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md w-fit shadow-[0_0_15px_rgba(255,255,255,0.05)]">
-            <span className="w-2 h-2 rounded-full bg-primary animate-[pulse_2s_ease-in-out_infinite]" />
-            <span className="text-xs font-semibold text-white/90 tracking-wider uppercase">FoundrAI v2.0 Online</span>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/40 border border-white/10 backdrop-blur-md w-fit shadow-[0_0_20px_rgba(0,255,255,0.2)]">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+            </span>
+            <span className="text-xs font-semibold text-white/90 tracking-wider uppercase">10 AI Agents Active</span>
           </div>
           
           <h1 className="text-6xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight text-white leading-[1.05]">
@@ -67,7 +70,7 @@ export default function Hero() {
           </h1>
           
           <p className="text-xl sm:text-2xl text-muted-foreground leading-relaxed max-w-xl font-light">
-            10 AI agents analyze your startup idea before you risk capital, time, or execution.
+            FoundrAI deploys 10 specialized AI agents to pressure-test startup ideas before you risk capital, time, or execution.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center gap-5 pt-4">
@@ -88,9 +91,9 @@ export default function Hero() {
           className="relative perspective-1000 w-full"
         >
           <motion.div 
-            animate={{ y: [-10, 10, -10] }}
+            animate={{ y: [-15, 15, -15] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            className="relative rounded-3xl bg-[#0a0a0f]/80 border border-white/10 p-8 backdrop-blur-3xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8),0_0_40px_rgba(0,255,255,0.1)] overflow-hidden"
+            className="relative rounded-3xl bg-[#0a0a0f]/80 border border-white/10 p-8 backdrop-blur-3xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8),0_0_50px_rgba(0,255,255,0.15)] overflow-hidden"
           >
             {/* Top Bar */}
             <div className="flex items-center justify-between mb-8 pb-6 border-b border-white/5">

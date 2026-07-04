@@ -68,8 +68,8 @@ export default function Features() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
-              whileHover={{ scale: 1.03, y: -5 }}
-              className="p-8 rounded-3xl bg-white/[0.02] border border-white/5 backdrop-blur-sm hover:bg-white/[0.04] hover:border-primary/30 hover:shadow-[0_20px_40px_-15px_rgba(0,255,255,0.15)] transition-all group relative overflow-hidden"
+              whileHover={{ scale: 1.02, y: -8 }}
+              className="p-8 rounded-3xl bg-white/[0.03] border border-white/10 backdrop-blur-xl shadow-lg hover:bg-white/[0.06] hover:border-primary/50 hover:shadow-[0_0_40px_rgba(0,255,255,0.25)] transition-all duration-300 group relative overflow-hidden"
             >
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 border border-primary/10 group-hover:border-primary/30 shadow-[0_0_15px_rgba(0,255,255,0)] group-hover:shadow-[0_0_20px_rgba(0,255,255,0.2)]">
