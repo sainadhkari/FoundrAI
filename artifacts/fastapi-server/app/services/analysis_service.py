@@ -1,9 +1,10 @@
 """
 Startup analysis service.
 
-Phase 2: Runs the CrewAI Market Agent and Competitor Agent sequentially,
-printing both outputs to terminal/logs. API response returns static mock
-scores while real scoring is wired in Phase 3+.
+Phase 3: Runs Market, Competitor, and Finance CrewAI agents sequentially.
+The Finance Agent uses real tool calling (Financial Calculator) to compute
+burn rate and feasibility. All outputs are printed to terminal/logs.
+API response returns static mock scores while real scoring is wired in Phase 4+.
 """
 
 from app.models.analyze import StartupAnalysisRequest, StartupAnalysisResponse
@@ -12,13 +13,14 @@ from app.crew.crew_setup import run_foundrai_crew
 
 def analyze_startup(request: StartupAnalysisRequest) -> StartupAnalysisResponse:
     """
-    Run CrewAI market + competitor analysis on a startup submission.
+    Run CrewAI market + competitor + finance analysis on a startup submission.
 
-    Phase 2:
-      - Market Intelligence Analyst evaluates market demand and opportunity.
-      - Competitor Intelligence Analyst evaluates competitive landscape.
-      - Both outputs are printed to terminal/logs.
-      - Returns static mock scores (real scoring wired in Phase 3+).
+    Phase 3:
+      - Market Intelligence Analyst    → market demand & opportunity.
+      - Competitor Intelligence Analyst → competitive landscape.
+      - Financial Risk Analyst          → burn rate via tool calling + financial risk.
+      - All outputs printed to terminal/logs.
+      - Returns static mock scores (real scoring wired in Phase 4+).
     """
     crew_outputs = run_foundrai_crew(
         startup_name=request.startup_name,
@@ -35,6 +37,10 @@ def analyze_startup(request: StartupAnalysisRequest) -> StartupAnalysisResponse:
     print("\n========== CrewAI Competitor Agent Output ==========")
     print(crew_outputs["competitor"])
     print("=====================================================\n")
+
+    print("\n========== CrewAI Finance Agent Output ==========")
+    print(crew_outputs["finance"])
+    print("==================================================\n")
 
     return StartupAnalysisResponse(
         market_score=8.7,

@@ -1,4 +1,5 @@
 from crewai import Agent
+from app.crew.tools import financial_calculator
 
 
 def create_market_agent() -> Agent:
@@ -22,6 +23,20 @@ def create_competitor_agent() -> Agent:
             "Expert competitor analyst specializing in startup ecosystems, market positioning, "
             "pricing analysis, and competitive differentiation."
         ),
+        verbose=True,
+        allow_delegation=False,
+    )
+
+
+def create_finance_agent() -> Agent:
+    return Agent(
+        role="Financial Risk Analyst",
+        goal="Analyze financial viability, burn rate, and financial risk of startup ideas.",
+        backstory=(
+            "Expert startup financial analyst specializing in runway planning, burn rate analysis, "
+            "startup budgeting, and financial risk evaluation."
+        ),
+        tools=[financial_calculator],
         verbose=True,
         allow_delegation=False,
     )
