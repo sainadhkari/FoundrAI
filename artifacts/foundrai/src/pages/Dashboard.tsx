@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { 
@@ -31,6 +31,12 @@ export default function Dashboard() {
 
   const rawResults = localStorage.getItem("foundrai_results");
   const results = rawResults ? JSON.parse(rawResults) : null;
+
+  useEffect(() => {
+    if (!results) {
+      navigate("/analyze");
+    }
+  }, []);
 
   const scores = [
     { label: "Market Score", value: results?.market_score ?? 8.7, max: 10, icon: TrendingUp, color: "text-green-400", bg: "bg-green-500/10", border: "border-green-500/20" },
@@ -225,14 +231,14 @@ export default function Dashboard() {
                 <div>
                   <h4 className="text-xs font-semibold text-white/50 uppercase tracking-widest mb-2">Reasoning</h4>
                   <p className="text-lg text-white/90 leading-relaxed">
-                    Strong market opportunity with healthy growth potential, but moderate competition and execution complexity.
+                    {results?.executive_summary ?? "Strong market opportunity with healthy growth potential, but moderate competition and execution complexity."}
                   </p>
                 </div>
                 <div className="h-px w-full bg-white/5" />
                 <div>
                   <h4 className="text-xs font-semibold text-white/50 uppercase tracking-widest mb-2">Recommendation</h4>
                   <p className="text-lg text-amber-100/90 leading-relaxed font-medium">
-                    Start with MVP targeting Tier-1 colleges and focus on niche differentiation.
+                    {results?.recommendation ?? "Start with MVP targeting your core segment and focus on niche differentiation."}
                   </p>
                 </div>
               </div>

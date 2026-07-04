@@ -1,0 +1,112 @@
+Update the FoundrAI frontend to integrate directly with the deployed CrewAI automation instead of using the fake timeout flow.
+
+Project context:
+
+* Frontend is React + TypeScript in Replit
+* Analyze page path: artifacts/foundrai/src/pages/Analyze.tsx
+* Dashboard page path: artifacts/foundrai/src/pages/Dashboard.tsx
+* CrewAI deployment URL:
+  https://foundrai-v1-20176eef-a04a-4d7f-9816-203e5ce-5c27ac9a.crewai.com
+
+CrewAI endpoints:
+
+* POST /kickoff
+* GET /status/{kickoff_id}
+
+Inputs required by CrewAI:
+
+* startup_name
+* startup_idea
+* industry
+* target_customers
+* budget
+* timeline
+* team_size
+
+TASK 1 — Update Analyze.tsx
+
+Replace the existing fake handleSubmit logic that uses setTimeout.
+
+Current behavior:
+
+* Clicking “Analyze with FoundrAI” waits 2.5 seconds
+* Then navigates to /dashboard
+* No API call happens
+
+New behavior:
+
+1. On submit, call POST /kickoff on CrewAI deployment.
+
+2. Send JSON payload mapped from formData:
+   {
+   startup_name: formData.name,
+   startup_idea: formData.idea,
+   industry: formData.industry,
+   target_customers: formData.customers,
+   budget: formData.budget,
+   timeline: formData.timeline,
+   team_size: formData.team
+   }
+
+3. Parse kickoff response:
+   {
+   "kickoff_id": "..."
+   }
+
+4. Poll:
+   GET /status/{kickoff_id}
+   every 5 seconds.
+
+5. When status becomes SUCCESS / completed:
+
+* store final result in localStorage using key:
+  foundrai_results
+
+6. Then navigate to:
+   /dashboard
+
+7. Add proper error handling.
+   If API fails:
+
+* stop loading state
+* show console error
+
+TASK 2 — Update Dashboard.tsx
+
+Current state:
+Dashboard uses hardcoded values:
+
+* Market Score = 8.7
+* Competition Score = 6.2
+* Financial Score = 7.9
+* Risk Score = 4.8
+* Verdict = PROCEED WITH CAUTION
+
+Replace all hardcoded values.
+
+New behavior:
+
+1. Read localStorage item:
+   foundrai_results
+
+2. Parse JSON result.
+
+3. Populate dashboard dynamically from CrewAI result:
+
+* market_score
+* competition_score
+* financial_score
+* risk_score
+* verdict
+* recommendation
+* executive_summary
+
+4. If no localStorage result exists:
+   redirect to /analyze
+
+IMPORTANT:
+Do not change UI styling.
+Do not redesign anything.
+Only replace logic and data flow.
+
+Keep all existing styling and components unchanged.

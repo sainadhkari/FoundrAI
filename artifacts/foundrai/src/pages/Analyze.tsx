@@ -30,32 +30,41 @@ export default function Analyze() {
     team: ""
   });
 
+  const CREW_BASE = "https://foundrai-v1-20176eef-a04a-4d7f-9816-203e5ce-5c27ac9a.crewai.com";
+
   const handleSubmit = async () => {
     setIsSubmitting(true);
     setError(null);
     try {
-      const startRes = await fetch("/fastapi/analyze", {
+      const kickoffRes = await fetch(`${CREW_BASE}/kickoff`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           startup_name: formData.name,
           startup_idea: formData.idea,
           industry: formData.industry,
+          target_customers: formData.customers,
           budget: formData.budget,
           timeline: formData.timeline,
+          team_size: formData.team,
         }),
       });
-      if (!startRes.ok) throw new Error("Failed to start analysis");
-      const { job_id } = await startRes.json();
+      if (!kickoffRes.ok) throw new Error("Failed to start analysis");
+      const { kickoff_id } = await kickoffRes.json();
 
       const intervalId = setInterval(async () => {
         try {
-          const pollRes = await fetch(`/fastapi/status/${job_id}`);
+          const pollRes = await fetch(`${CREW_BASE}/status/${kickoff_id}`);
           if (!pollRes.ok) throw new Error("Polling failed");
           const pollData = await pollRes.json();
-          if (pollData.status === "completed") {
+          const done =
+            pollData.status === "SUCCESS" ||
+            pollData.status === "success" ||
+            pollData.status === "completed";
+          if (done) {
             clearInterval(intervalId);
-            localStorage.setItem("foundrai_results", JSON.stringify(pollData.result));
+            const result = pollData.result ?? pollData;
+            localStorage.setItem("foundrai_results", JSON.stringify(result));
             setIsSubmitting(false);
             setIsSuccess(true);
             setTimeout(() => {
@@ -67,8 +76,9 @@ export default function Analyze() {
           setIsSubmitting(false);
           setError("Analysis failed. Please try again.");
         }
-      }, 3000);
-    } catch {
+      }, 5000);
+    } catch (err) {
+      console.error("FoundrAI kickoff error:", err);
       setIsSubmitting(false);
       setError("Analysis failed. Please try again.");
     }
