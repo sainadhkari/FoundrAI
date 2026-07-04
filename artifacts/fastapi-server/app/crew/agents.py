@@ -12,3 +12,16 @@ def create_market_agent() -> Agent:
         verbose=True,
         allow_delegation=False,
     )
+
+
+def create_competitor_agent() -> Agent:
+    return Agent(
+        role="Competitor Intelligence Analyst",
+        goal="Analyze competition for startup ideas and identify major competitors.",
+        backstory=(
+            "Expert competitor analyst specializing in startup ecosystems, market positioning, "
+            "pricing analysis, and competitive differentiation."
+        ),
+        verbose=True,
+        allow_delegation=False,
+    )

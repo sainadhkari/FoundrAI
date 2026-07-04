@@ -1,16 +1,18 @@
 from crewai import Crew, Process
-from app.crew.agents import create_market_agent
-from app.crew.tasks import create_market_task
+from app.crew.agents import create_market_agent, create_competitor_agent
+from app.crew.tasks import create_market_task, create_competitor_task
 
 
-def run_market_crew(
+def run_foundrai_crew(
     startup_name: str,
     startup_idea: str,
     industry: str,
     budget: str,
     timeline: str,
-) -> str:
+) -> dict:
     market_agent = create_market_agent()
+    competitor_agent = create_competitor_agent()
+
     market_task = create_market_task(
         agent=market_agent,
         startup_name=startup_name,
@@ -19,13 +21,29 @@ def run_market_crew(
         budget=budget,
         timeline=timeline,
     )
+    competitor_task = create_competitor_task(
+        agent=competitor_agent,
+        startup_name=startup_name,
+        startup_idea=startup_idea,
+        industry=industry,
+        budget=budget,
+        timeline=timeline,
+    )
 
     crew = Crew(
-        agents=[market_agent],
-        tasks=[market_task],
+        agents=[market_agent, competitor_agent],
+        tasks=[market_task, competitor_task],
         process=Process.sequential,
         verbose=True,
     )
 
     result = crew.kickoff()
-    return str(result)
+
+    task_outputs = result.tasks_output if hasattr(result, "tasks_output") else []
+    market_output = str(task_outputs[0]) if len(task_outputs) > 0 else str(result)
+    competitor_output = str(task_outputs[1]) if len(task_outputs) > 1 else ""
+
+    return {
+        "market": market_output,
+        "competitor": competitor_output,
+    }
