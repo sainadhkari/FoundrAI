@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ArrowLeft, ArrowRight, BrainCircuit, Activity, BarChart3, LineChart, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/select";
 
 export default function Analyze() {
+  const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
@@ -34,20 +35,11 @@ export default function Analyze() {
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSuccess(true);
-      
-      // Reset after showing success briefly
+
+      // Move to the dashboard placeholder after showing success briefly
       setTimeout(() => {
-        setIsSuccess(false);
-        setFormData({
-          name: "",
-          idea: "",
-          industry: "",
-          customers: "",
-          budget: "",
-          timeline: "",
-          team: ""
-        });
-      }, 3000);
+        navigate("/dashboard");
+      }, 1200);
     }, 2500);
   };
 
