@@ -1,0 +1,154 @@
+Build the FoundrAI Results Dashboard Page.
+
+IMPORTANT:
+Do not modify landing page or analyze page.
+Create a new dashboard page.
+
+Purpose:
+This page displays AI analysis results after user submits startup details.
+
+Design Style:
+Use same premium design system:
+
+* Dark futuristic theme
+* Glassmorphism
+* Blue/purple glow
+* Premium AI dashboard feel
+
+Goal:
+This page should be visually stunning and become the most impressive page in the entire app.
+
+Layout:
+Premium dashboard layout with multiple sections.
+
+---
+
+1. PAGE HEADER
+
+Title:
+Startup Analysis Results
+
+Subtitle:
+FoundrAI’s AI boardroom completed full analysis of your startup.
+
+Top right:
+Status badge:
+Analysis Complete
+
+---
+
+2. SUMMARY SCORE CARDS
+
+Display 4 premium score cards.
+
+Cards:
+
+* Market Score → 8.7/10
+* Competition Score → 6.2/10
+* Financial Score → 7.9/10
+* Risk Score → 4.8/10
+
+Card style:
+
+* Glassmorphism
+* Glow borders
+* Hover animation
+
+---
+
+3. AGENT ANALYSIS SECTION
+
+Title:
+AI Agent Insights
+
+Show analysis cards for agents.
+
+Cards:
+
+Market Agent:
+Strong market demand in AI-powered EdTech.
+
+Competitor Agent:
+Moderate competition with room for niche positioning.
+
+Finance Agent:
+Profitable business model possible within 12–18 months.
+
+Risk Agent:
+Execution complexity medium due to market competition.
+
+CEO Agent:
+Strong opportunity with strategic execution required.
+
+Cards:
+
+* Premium
+* Glass style
+* Hover glow
+
+---
+
+4. VISUAL ANALYSIS SECTION
+
+Show premium charts and progress bars.
+
+Metrics:
+
+* Market Opportunity
+* Competition Level
+* Growth Potential
+* Execution Difficulty
+
+Use:
+
+* Progress bars
+* Charts
+* Premium visualization cards
+
+---
+
+5. FINAL VERDICT SECTION
+
+This is the most important section.
+
+Large glowing card.
+
+Title:
+FINAL CEO VERDICT
+
+Verdict:
+PROCEED WITH CAUTION
+
+Reason:
+Strong market opportunity with healthy growth potential, but moderate competition and execution complexity.
+
+Recommendation:
+Start with MVP targeting Tier-1 colleges and focus on niche differentiation.
+
+Use:
+
+* Strong glow
+* Premium styling
+* High visual impact
+
+---
+
+6. CTA BUTTONS
+
+Buttons:
+
+* Analyze Another Startup
+* Download Report
+
+---
+
+Animations:
+
+* Smooth fade in
+* Hover effects
+* Card glow
+* Progress bar animations
+
+Goal:
+This dashboard should feel like a premium AI mission control center.
+Hackathon judges should be highly impressed.
