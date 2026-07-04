@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Play, ArrowRight, Activity, ShieldAlert, TrendingUp, Cpu, PieChart, Users } from "lucide-react";
 
 export default function Hero() {
+  const navigate = useNavigate();
+
   return (
     <section className="relative min-h-[100dvh] flex items-center pt-28 pb-20 overflow-hidden bg-[#050508]">
       {/* Animated Grid Background */}
@@ -74,7 +77,11 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center gap-5 pt-4">
-            <Button size="lg" className="w-full sm:w-auto h-16 px-10 text-lg bg-white text-black hover:bg-gray-100 shadow-[0_0_40px_rgba(255,255,255,0.3)] transition-all hover:scale-105 rounded-full font-bold relative group overflow-hidden">
+            <Button
+              onClick={() => navigate("/analyze")}
+              size="lg"
+              className="w-full sm:w-auto h-16 px-10 text-lg bg-white text-black hover:bg-gray-100 shadow-[0_0_40px_rgba(255,255,255,0.3)] transition-all hover:scale-105 rounded-full font-bold relative group overflow-hidden"
+            >
               <span className="relative z-10 flex items-center">Analyze Startup <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" /></span>
               <div className="absolute inset-0 bg-white/50 blur-xl group-hover:bg-white/80 transition-all opacity-0 group-hover:opacity-100" />
             </Button>
