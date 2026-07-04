@@ -30,3 +30,22 @@ NODE_ENV = "production"
 
 [services.production.health.startup]
 path = "/api/healthz"
+
+[[services]]
+localPort = 8082
+name = "FastAPI Server"
+paths = ["/fastapi"]
+
+[services.development]
+run = "cd /home/runner/workspace/artifacts/fastapi-server && python -m uvicorn main:app --host 0.0.0.0 --port $PORT --reload"
+
+[services.production]
+
+[services.production.run]
+args = ["python", "-m", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8082", "--app-dir", "artifacts/fastapi-server"]
+
+[services.production.run.env]
+PORT = "8082"
+
+[services.production.health.startup]
+path = "/fastapi/healthz"

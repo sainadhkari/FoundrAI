@@ -1,0 +1,1 @@
+- [Python service in pnpm monorepo](python-service-in-monorepo.md) — no Python/FastAPI artifact type exists; add it as an extra `[[services]]` block on an existing api artifact's artifact.toml instead.
