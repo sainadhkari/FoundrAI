@@ -1,0 +1,144 @@
+Build the FoundrAI Startup Analysis Input Page.
+
+IMPORTANT:
+Do not touch landing page.
+Create a new page for startup analysis input.
+
+Purpose:
+This page collects startup information from users before sending data to backend AI agents for analysis.
+
+Design Style:
+Keep same premium design system as landing page:
+
+* Dark futuristic theme
+* Glassmorphism
+* Blue/purple glow
+* Premium AI startup aesthetic
+
+Layout:
+Two-column responsive layout.
+
+LEFT SIDE:
+Startup analysis form.
+
+RIGHT SIDE:
+Live AI preview panel.
+
+---
+
+PAGE HEADER
+
+Title:
+Analyze Your Startup
+
+Subtitle:
+Provide your startup details. FoundrAI’s 10 AI agents will analyze market opportunity, competitors, financial risk, growth potential, and execution complexity.
+
+---
+
+LEFT SIDE — FORM
+
+Fields:
+
+1. Startup Name
+   Input field
+
+2. Startup Idea
+   Large textarea
+
+3. Industry
+   Dropdown options:
+
+* EdTech
+* HealthTech
+* FinTech
+* AI SaaS
+* E-commerce
+* Other
+
+4. Target Customers
+   Input field
+
+5. Budget
+   Dropdown:
+
+* < ₹1L
+* ₹1–5L
+* ₹5–20L
+* ₹20L+
+
+6. Timeline
+   Dropdown:
+
+* 1 Month
+* 3 Months
+* 6 Months
+* 1 Year
+
+7. Team Size
+   Dropdown:
+
+* Solo
+* 2–5
+* 5–20
+* 20+
+
+All inputs:
+
+* Premium glass style
+* Rounded corners
+* Blue focus glow
+
+---
+
+RIGHT SIDE — AI PREVIEW PANEL
+
+Show glassmorphism dashboard.
+
+Title:
+AI Boardroom Status
+
+Display:
+
+* CEO Agent → Waiting
+* Market Agent → Ready
+* Competitor Agent → Ready
+* Finance Agent → Ready
+* Risk Agent → Ready
+
+Add:
+
+* Animated status indicators
+* Small glowing chart
+* Agent activity animations
+
+---
+
+BOTTOM BUTTON
+
+Large CTA button:
+Analyze with FoundrAI
+
+Style:
+
+* Large glowing button
+* Blue/purple gradient
+* Premium hover animation
+
+On click:
+Show loading state:
+“Initializing War Room…”
+
+---
+
+ANIMATIONS
+
+Add:
+
+* Fade in
+* Hover animations
+* Input focus glow
+* Loading animation
+
+Goal:
+This page should feel premium and futuristic.
