@@ -1,0 +1,170 @@
+We are building the backend for FoundrAI.
+
+PROJECT OVERVIEW:
+FoundrAI is an AI Executive War Room for startup founders.
+
+Users submit startup ideas and multiple AI agents analyze:
+
+* market opportunity
+* competition
+* financial risk
+* growth potential
+* execution difficulty
+
+Final verdict:
+
+* Proceed
+* Pivot
+* Reject
+
+CURRENT BACKEND STATUS:
+A FastAPI backend already exists with:
+
+* main.py
+* app/routes/analyze.py
+* app/models/analyze.py
+* app/services/analysis_service.py
+
+The current analyze endpoint returns mock data.
+
+Current flow:
+Frontend → POST /analyze → analyze_startup() → mock response
+
+TASK:
+Upgrade the backend to integrate CrewAI and OpenAI.
+
+IMPORTANT:
+Do not rewrite existing backend structure.
+Keep current FastAPI architecture.
+Only extend it to support CrewAI.
+
+================================================
+
+STEP 1: Install dependencies
+
+Install required packages:
+
+* crewai
+* openai
+* langchain
+* python-dotenv
+
+================================================
+
+STEP 2: Environment setup
+
+Create a .env file.
+
+Add:
+OPENAI_API_KEY=your_openai_key_here
+
+Backend should load OpenAI key from environment variables.
+
+================================================
+
+STEP 3: Create CrewAI folder structure
+
+Inside app folder create:
+
+app/
+├── crew/
+│    ├── agents.py
+│    ├── tasks.py
+│    └── crew_setup.py
+
+================================================
+
+STEP 4: Create first CrewAI agent
+
+Create Market Agent.
+
+Role:
+Market Intelligence Analyst
+
+Goal:
+Analyze market demand and market opportunity for startup ideas.
+
+Backstory:
+Expert market analyst specializing in startup markets, demand forecasting, industry trends, and opportunity analysis.
+
+Requirements:
+
+* verbose=True
+* allow_delegation=False
+
+================================================
+
+STEP 5: Create Market Task
+
+Task should analyze startup based on request fields:
+
+Input:
+
+* startup_name
+* startup_idea
+* industry
+* budget
+* timeline
+
+Task output:
+
+1. Market score out of 10
+2. Short reasoning about market opportunity
+
+================================================
+
+STEP 6: Create Crew Setup
+
+Create Crew using:
+
+* Market Agent
+* Market Task
+
+Run crew with kickoff()
+
+================================================
+
+STEP 7: Integrate with analysis service
+
+Update:
+app/services/analysis_service.py
+
+Current:
+Returns static mock scores.
+
+New behavior:
+
+1. Run CrewAI market analysis
+2. Print CrewAI output in terminal/logs
+3. Keep API response same for now
+
+Return:
+
+{
+"market_score": 8.7,
+"competition_score": 6.2,
+"financial_score": 7.9,
+"risk_score": 4.8,
+"verdict": "Proceed with Caution"
+}
+
+IMPORTANT:
+Even though response remains mock for now, CrewAI must actually run.
+
+================================================
+
+STEP 8: Goal
+
+Goal is to successfully run first CrewAI agent inside existing FastAPI backend.
+
+This is Phase 1.
+
+Later phases:
+
+* Add Competitor Agent
+* Add Finance Agent
+* Add CEO Agent
+
+Only implement Phase 1 now.
+
+Keep code clean, modular, and production-ready.
