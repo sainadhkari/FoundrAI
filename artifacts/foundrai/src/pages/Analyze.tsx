@@ -31,6 +31,10 @@ export default function Analyze() {
   });
 
   const CREW_BASE = "https://foundrai-v1-20176eef-a04a-4d7f-9816-203e5ce-5c27ac9a.crewai.com";
+  const CREW_HEADERS = {
+    "Content-Type": "application/json",
+    "Authorization": "Bearer 26d3cda973f2",
+  };
 
   const handleSubmit = async () => {
     setIsSubmitting(true);
@@ -38,15 +42,17 @@ export default function Analyze() {
     try {
       const kickoffRes = await fetch(`${CREW_BASE}/kickoff`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: CREW_HEADERS,
         body: JSON.stringify({
-          startup_name: formData.name,
-          startup_idea: formData.idea,
-          industry: formData.industry,
-          target_customers: formData.customers,
-          budget: formData.budget,
-          timeline: formData.timeline,
-          team_size: formData.team,
+          inputs: {
+            startup_name: formData.name,
+            startup_idea: formData.idea,
+            industry: formData.industry,
+            target_customers: formData.customers,
+            budget: formData.budget,
+            timeline: formData.timeline,
+            team_size: formData.team,
+          },
         }),
       });
       if (!kickoffRes.ok) throw new Error("Failed to start analysis");
@@ -54,16 +60,21 @@ export default function Analyze() {
 
       const intervalId = setInterval(async () => {
         try {
-          const pollRes = await fetch(`${CREW_BASE}/status/${kickoff_id}`);
+          const pollRes = await fetch(`${CREW_BASE}/status/${kickoff_id}`, {
+            headers: CREW_HEADERS,
+          });
           if (!pollRes.ok) throw new Error("Polling failed");
           const pollData = await pollRes.json();
           const done =
+            pollData.state === "SUCCESS" ||
+            pollData.state === "COMPLETE" ||
             pollData.status === "SUCCESS" ||
             pollData.status === "success" ||
             pollData.status === "completed";
           if (done) {
             clearInterval(intervalId);
-            const result = pollData.result ?? pollData;
+            const raw = pollData.result ?? pollData.result_json ?? pollData;
+            const result = typeof raw === "string" ? JSON.parse(raw) : raw;
             localStorage.setItem("foundrai_results", JSON.stringify(result));
             setIsSubmitting(false);
             setIsSuccess(true);
