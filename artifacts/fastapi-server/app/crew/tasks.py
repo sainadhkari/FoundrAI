@@ -1,5 +1,5 @@
-from crewai import Task
-from crewai import Agent
+from typing import List
+from crewai import Task, Agent
 
 
 def create_market_task(agent: Agent, startup_name: str, startup_idea: str, industry: str, budget: str, timeline: str) -> Task:
@@ -52,6 +52,41 @@ After running the tool, provide:
         expected_output=(
             "A financial score out of 10, the monthly burn rate calculated by the tool, "
             "a financial risk level, and a recommendation for the founder."
+        ),
+    )
+
+
+def create_ceo_task(agent: Agent, startup_name: str, context_tasks: List[Task]) -> Task:
+    description = f"""
+You are the Chief Executive AI for FoundrAI's executive war room.
+
+You have received analysis reports from three specialized agents for the startup: {startup_name}
+
+Review the context provided by:
+1. Market Intelligence Analyst — market opportunity and score
+2. Competitor Intelligence Analyst — competitive landscape and score
+3. Financial Risk Analyst — burn rate, financial score, and risk level
+
+Based on ALL three reports, deliver your final executive decision:
+
+1. Final Verdict: Choose ONE of — Proceed / Pivot / Reject
+2. Confidence Score: out of 10
+3. Strategic Reasoning: 2-3 sentences synthesizing all three reports
+4. Final Recommendation: concrete next steps for the founder
+
+Format your response EXACTLY as:
+VERDICT: [Proceed/Pivot/Reject]
+CONFIDENCE: [X]/10
+REASONING: [your reasoning]
+RECOMMENDATION: [your recommendation]
+"""
+    return Task(
+        description=description,
+        agent=agent,
+        context=context_tasks,
+        expected_output=(
+            "A final verdict (Proceed/Pivot/Reject), confidence score out of 10, "
+            "strategic reasoning, and a concrete recommendation for the founder."
         ),
     )
 

@@ -1,0 +1,111 @@
+Phase 3 is working successfully.
+
+FoundrAI backend currently has 3 working CrewAI agents:
+
+* Market Intelligence Analyst
+* Competitor Intelligence Analyst
+* Financial Risk Analyst (uses actual tool calling)
+
+Now implement Phase 4.
+
+TASK:
+Add CEO Agent as the final decision-making agent.
+
+IMPORTANT:
+Keep existing architecture unchanged.
+Do not modify working agents.
+Only extend system.
+
+================================================
+
+Create Agent 4:
+Chief Executive AI
+
+Role:
+Chief Executive AI
+
+Goal:
+Review outputs from all other agents and make the final strategic decision.
+
+Backstory:
+Elite CEO and startup strategist with deep expertise in startup execution, product-market fit, fundraising, scaling, and strategic decision-making.
+
+Agent config:
+
+* verbose=True
+* allow_delegation=False
+
+================================================
+
+Create CEO Task
+
+CEO Agent must read:
+
+* Market Agent output
+* Competitor Agent output
+* Finance Agent output
+
+CEO Task should evaluate:
+
+1. Market opportunity
+2. Competition intensity
+3. Financial viability
+4. Execution complexity
+
+Return:
+
+1. Final Verdict (Proceed / Pivot / Reject)
+2. Confidence Score out of 10
+3. Strategic reasoning
+4. Final recommendation
+
+================================================
+
+Update Crew Setup
+
+Add CEO Agent and CEO Task.
+
+Crew should now run:
+
+1. Market Agent
+2. Competitor Agent
+3. Finance Agent
+4. CEO Agent
+
+CEO Agent must run last after all agents complete.
+
+================================================
+
+Update analysis_service.py
+
+Run all 4 agents.
+
+Print CEO Agent output in logs.
+
+IMPORTANT:
+Update API response to return real values based on agent outputs if possible.
+
+Response structure:
+{
+"market_score": 8.7,
+"competition_score": 6.2,
+"financial_score": 7.9,
+"risk_score": 4.8,
+"verdict": "Proceed with Caution"
+}
+
+At minimum:
+Use CEO verdict as real verdict.
+
+================================================
+
+Goal:
+FoundrAI should now have 4 real CrewAI agents:
+
+* Market Agent
+* Competitor Agent
+* Finance Agent
+* CEO Agent
+
+This completes core backend architecture for hackathon.
+Keep code modular and production-ready.

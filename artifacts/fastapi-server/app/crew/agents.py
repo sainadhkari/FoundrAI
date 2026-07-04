@@ -40,3 +40,16 @@ def create_finance_agent() -> Agent:
         verbose=True,
         allow_delegation=False,
     )
+
+
+def create_ceo_agent() -> Agent:
+    return Agent(
+        role="Chief Executive AI",
+        goal="Review outputs from all other agents and make the final strategic decision.",
+        backstory=(
+            "Elite CEO and startup strategist with deep expertise in startup execution, "
+            "product-market fit, fundraising, scaling, and strategic decision-making."
+        ),
+        verbose=True,
+        allow_delegation=False,
+    )

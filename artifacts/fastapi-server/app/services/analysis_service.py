@@ -1,26 +1,52 @@
 """
 Startup analysis service.
 
-Phase 3: Runs Market, Competitor, and Finance CrewAI agents sequentially.
-The Finance Agent uses real tool calling (Financial Calculator) to compute
-burn rate and feasibility. All outputs are printed to terminal/logs.
-API response returns static mock scores while real scoring is wired in Phase 4+.
+Phase 4: Runs all 4 CrewAI agents sequentially.
+  - Market Intelligence Analyst    → market demand & opportunity
+  - Competitor Intelligence Analyst → competitive landscape
+  - Financial Risk Analyst          → burn rate via tool calling + financial risk
+  - Chief Executive AI              → synthesizes all reports, delivers final verdict
+
+The CEO verdict is used as the real API verdict. Scores are parsed from agent
+outputs where possible; defaults are used as fallback.
 """
 
+import re
 from app.models.analyze import StartupAnalysisRequest, StartupAnalysisResponse
 from app.crew.crew_setup import run_foundrai_crew
 
 
+def _parse_score(text: str, pattern: str, default: float) -> float:
+    """Extract a numeric score from agent output text."""
+    match = re.search(pattern, text, re.IGNORECASE)
+    if match:
+        try:
+            return float(match.group(1))
+        except (ValueError, IndexError):
+            pass
+    return default
+
+
+def _parse_verdict(ceo_output: str) -> str:
+    """Extract the CEO's VERDICT line from structured output."""
+    match = re.search(r"VERDICT\s*:\s*(Proceed|Pivot|Reject)", ceo_output, re.IGNORECASE)
+    if match:
+        return match.group(1).capitalize()
+    for keyword in ("Proceed", "Pivot", "Reject"):
+        if keyword.lower() in ceo_output.lower():
+            return keyword
+    return "Proceed with Caution"
+
+
 def analyze_startup(request: StartupAnalysisRequest) -> StartupAnalysisResponse:
     """
-    Run CrewAI market + competitor + finance analysis on a startup submission.
+    Run all 4 CrewAI agents and return real CEO verdict + parsed scores.
 
-    Phase 3:
-      - Market Intelligence Analyst    → market demand & opportunity.
-      - Competitor Intelligence Analyst → competitive landscape.
-      - Financial Risk Analyst          → burn rate via tool calling + financial risk.
-      - All outputs printed to terminal/logs.
-      - Returns static mock scores (real scoring wired in Phase 4+).
+    Phase 4:
+      - Market Intelligence Analyst    → market_score
+      - Competitor Intelligence Analyst → competition_score
+      - Financial Risk Analyst          → financial_score (tool calling)
+      - Chief Executive AI              → verdict + confidence as risk_score
     """
     crew_outputs = run_foundrai_crew(
         startup_name=request.startup_name,
@@ -42,10 +68,37 @@ def analyze_startup(request: StartupAnalysisRequest) -> StartupAnalysisResponse:
     print(crew_outputs["finance"])
     print("==================================================\n")
 
+    print("\n========== CrewAI CEO Agent Output ==========")
+    print(crew_outputs["ceo"])
+    print("==============================================\n")
+
+    market_score = _parse_score(
+        crew_outputs["market"],
+        r"[Mm]arket\s+[Ss]core\s*[:\-]?\s*(\d+(?:\.\d+)?)\s*/\s*10",
+        default=7.5,
+    )
+    competition_score = _parse_score(
+        crew_outputs["competitor"],
+        r"[Cc]ompetition\s+[Ss]core\s*[:\-]?\s*(\d+(?:\.\d+)?)\s*/\s*10",
+        default=6.0,
+    )
+    financial_score = _parse_score(
+        crew_outputs["finance"],
+        r"[Ff]inancial\s+[Ss]core\s*[:\-]?\s*(\d+(?:\.\d+)?)\s*/\s*10",
+        default=7.0,
+    )
+    confidence_score = _parse_score(
+        crew_outputs["ceo"],
+        r"CONFIDENCE\s*:\s*(\d+(?:\.\d+)?)\s*/\s*10",
+        default=7.0,
+    )
+
+    verdict = _parse_verdict(crew_outputs["ceo"])
+
     return StartupAnalysisResponse(
-        market_score=8.7,
-        competition_score=6.2,
-        financial_score=7.9,
-        risk_score=4.8,
-        verdict="Proceed with Caution",
+        market_score=market_score,
+        competition_score=competition_score,
+        financial_score=financial_score,
+        risk_score=confidence_score,
+        verdict=verdict,
     )
