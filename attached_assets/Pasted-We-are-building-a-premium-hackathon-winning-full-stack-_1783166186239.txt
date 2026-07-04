@@ -1,0 +1,265 @@
+We are building a premium hackathon-winning full-stack AI application called FoundrAI.
+
+PROJECT OVERVIEW:
+FoundrAI is an AI Executive War Room for founders and startup teams.
+
+Users submit startup ideas, and 10 AI agents analyze the business idea from multiple perspectives:
+
+* Market Opportunity
+* Competitor Analysis
+* Financial Risk
+* Customer Psychology
+* Product Strategy
+* Growth Potential
+* Investment Potential
+* Execution Complexity
+* Business Risks
+
+Final verdict:
+
+* Proceed
+* Pivot
+* Reject
+
+TECH STACK:
+
+* React + Vite
+* Tailwind CSS
+* Framer Motion
+* shadcn/ui
+
+TASK:
+Build ONLY the landing page frontend.
+Do not build backend.
+Do not build dashboard yet.
+
+DESIGN STYLE:
+The UI must look premium, futuristic, and world-class.
+It should feel like a combination of:
+
+* OpenAI
+* Stripe
+* Linear
+* Vercel
+
+Theme:
+
+* Dark futuristic AI theme
+* Premium glassmorphism cards
+* Blue and purple glowing effects
+* Smooth animations
+* High-end SaaS dashboard feel
+
+COLORS:
+Background:
+
+* Black / dark navy gradient
+
+Accent colors:
+
+* Electric blue
+* Purple
+* Cyan glow
+
+Text:
+
+* White headings
+* Light gray descriptions
+
+LAYOUT REQUIREMENTS:
+
+1. NAVBAR (Fixed Top)
+   Height:
+   80px
+
+Navbar content:
+Left:
+
+* Modern AI logo icon
+* Text: FoundrAI
+
+Center:
+Menu links:
+
+* Features
+* Agents
+* Dashboard
+
+Right:
+Two buttons:
+
+* Login (outline glass button)
+* Analyze Startup (primary glowing button)
+
+Navbar style:
+
+* Transparent glassmorphism
+* Blur effect
+* Sticky top
+* Subtle border bottom
+
+---
+
+2. HERO SECTION (Full Screen)
+   Height:
+   100vh
+
+Layout:
+Two columns
+
+LEFT SIDE:
+Small label:
+AI Strategy Platform for Founders
+
+Main heading:
+FoundrAI
+
+Large bold text:
+Your AI Executive War Room
+
+Subheading:
+10 AI agents analyze your startup idea before you invest time or money.
+
+Description:
+Get instant market intelligence, competitor analysis, financial risk scoring, and strategic recommendations.
+
+Buttons:
+Primary:
+Analyze Startup
+
+Secondary:
+Watch Demo
+
+Buttons style:
+
+* Large rounded buttons
+* Primary glowing blue
+* Secondary glass outline
+
+RIGHT SIDE:
+Show futuristic dashboard mockup.
+
+Dashboard preview should contain:
+
+* Market Score Card
+* Competition Score Card
+* Risk Score Card
+* Final Verdict Card
+
+Example scores:
+Market Score: 8.5
+Competition Score: 6.1
+Risk Score: 4.8
+
+Final verdict:
+PROCEED WITH CAUTION
+
+Style:
+
+* Glass cards
+* Neon glow borders
+* Premium charts
+
+Background:
+Add subtle animated glowing gradient blobs.
+
+---
+
+3. FEATURES SECTION
+   Section title:
+   Why Founders Need FoundrAI
+
+4 feature cards in grid.
+
+Cards:
+
+1. Market Intelligence
+2. Competitor Analysis
+3. Financial Risk Detection
+4. Growth Strategy
+
+Card style:
+
+* Glassmorphism
+* Hover animations
+* Premium icons
+* Glow effect
+
+---
+
+4. AGENTS SECTION
+   Title:
+   Meet Your AI Boardroom
+
+Subtitle:
+10 specialized AI agents working together.
+
+Display 10 cards in grid.
+
+Agents:
+
+* CEO Agent
+* Market Agent
+* Competitor Agent
+* Product Agent
+* Finance Agent
+* Growth Agent
+* Customer Agent
+* Risk Agent
+* Investor Agent
+* Execution Agent
+
+Each card:
+
+* Agent icon
+* Agent name
+* One line description
+
+Card hover:
+Glow + slight scale animation
+
+---
+
+5. CTA SECTION
+   Large centered section.
+
+Text:
+Ready to Validate Your Startup Idea?
+
+Button:
+Launch FoundrAI
+
+Background:
+Strong glowing gradient
+
+---
+
+6. FOOTER
+   Premium minimal footer.
+
+Left:
+FoundrAI logo
+
+Right:
+Links
+
+* Privacy
+* Terms
+* Contact
+
+ANIMATIONS:
+Use Framer Motion.
+
+Need:
+
+* Fade in sections
+* Card hover animations
+* Smooth button hover effects
+
+IMPORTANT:
+Code must be clean and modular.
+Use reusable components.
+Responsive for desktop and mobile.
+
+Goal:
+Hackathon judges should say WOW in the first 5 seconds.
