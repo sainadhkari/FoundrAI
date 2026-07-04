@@ -36,14 +36,16 @@ const features = [
 
 export default function Features() {
   return (
-    <section id="features" className="py-24 relative">
-      <div className="container px-6 mx-auto">
-        <div className="max-w-2xl mx-auto text-center mb-16">
+    <section id="features" className="py-32 relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,255,255,0.03)_0%,transparent_70%)] pointer-events-none" />
+      
+      <div className="container px-6 mx-auto relative z-10">
+        <div className="max-w-3xl mx-auto text-center mb-20">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-4"
+            className="text-4xl sm:text-5xl font-bold tracking-tight text-white mb-6"
           >
             Don't build in an echo chamber.
           </motion.h2>
@@ -52,27 +54,29 @@ export default function Features() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-muted-foreground text-lg"
+            className="text-muted-foreground text-xl leading-relaxed"
           >
-            A board of 10 specialized AI directors operating in milliseconds, saving you months of wasted effort.
+            FoundrAI is your AI boardroom of 10 specialized agents that pressure-test startup ideas before execution.
           </motion.p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="p-6 rounded-2xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] transition-colors group"
+              transition={{ delay: i * 0.1, duration: 0.5 }}
+              whileHover={{ scale: 1.03, y: -5 }}
+              className="p-8 rounded-3xl bg-white/[0.02] border border-white/5 backdrop-blur-sm hover:bg-white/[0.04] hover:border-primary/30 hover:shadow-[0_20px_40px_-15px_rgba(0,255,255,0.15)] transition-all group relative overflow-hidden"
             >
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <feature.icon className="w-6 h-6 text-primary" />
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 border border-primary/10 group-hover:border-primary/30 shadow-[0_0_15px_rgba(0,255,255,0)] group-hover:shadow-[0_0_20px_rgba(0,255,255,0.2)]">
+                <feature.icon className="w-7 h-7 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold text-white mb-3">{feature.title}</h3>
-              <p className="text-muted-foreground leading-relaxed">
+              <h3 className="text-2xl font-bold text-white mb-4 tracking-tight">{feature.title}</h3>
+              <p className="text-muted-foreground text-base leading-relaxed group-hover:text-white/80 transition-colors">
                 {feature.description}
               </p>
             </motion.div>
