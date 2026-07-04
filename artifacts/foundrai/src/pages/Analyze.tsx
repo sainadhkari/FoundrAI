@@ -34,7 +34,7 @@ export default function Analyze() {
     setIsSubmitting(true);
     setError(null);
     try {
-      const response = await fetch("/fastapi/analyze", {
+      const startRes = await fetch("/fastapi/analyze", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -45,14 +45,29 @@ export default function Analyze() {
           timeline: formData.timeline,
         }),
       });
-      if (!response.ok) throw new Error("Server error");
-      const data = await response.json();
-      localStorage.setItem("foundrai_results", JSON.stringify(data));
-      setIsSubmitting(false);
-      setIsSuccess(true);
-      setTimeout(() => {
-        navigate("/dashboard");
-      }, 1200);
+      if (!startRes.ok) throw new Error("Failed to start analysis");
+      const { job_id } = await startRes.json();
+
+      const intervalId = setInterval(async () => {
+        try {
+          const pollRes = await fetch(`/fastapi/status/${job_id}`);
+          if (!pollRes.ok) throw new Error("Polling failed");
+          const pollData = await pollRes.json();
+          if (pollData.status === "completed") {
+            clearInterval(intervalId);
+            localStorage.setItem("foundrai_results", JSON.stringify(pollData.result));
+            setIsSubmitting(false);
+            setIsSuccess(true);
+            setTimeout(() => {
+              navigate("/dashboard");
+            }, 1200);
+          }
+        } catch {
+          clearInterval(intervalId);
+          setIsSubmitting(false);
+          setError("Analysis failed. Please try again.");
+        }
+      }, 3000);
     } catch {
       setIsSubmitting(false);
       setError("Analysis failed. Please try again.");

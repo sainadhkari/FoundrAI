@@ -1,0 +1,129 @@
+Implement the async job + polling fix for FoundrAI.
+
+IMPORTANT:
+Do not redesign UI.
+Do not modify styling.
+Only fix backend/frontend request flow to avoid Replit proxy timeout.
+
+Problem:
+CrewAI analysis takes 90–120 seconds.
+Replit proxy times out long HTTP requests after ~30–60 seconds.
+
+Current flow:
+Frontend waits on one long POST /fastapi/analyze request.
+
+This causes browser timeout before CrewAI finishes.
+
+================================================
+
+GOAL:
+Convert analysis flow to async jobs + polling.
+
+New flow:
+
+1. POST /fastapi/analyze
+   → immediately returns job_id
+2. CrewAI runs in background
+3. Frontend polls status endpoint every 3 seconds
+4. When complete, frontend navigates to dashboard
+
+================================================
+
+BACKEND CHANGES
+
+1. Update POST /fastapi/analyze
+
+Current:
+Runs full CrewAI synchronously.
+
+New:
+
+* Generate unique job_id
+* Store job status in memory dictionary
+* Immediately return:
+  {
+  "job_id": "...",
+  "status": "running"
+  }
+
+Then run CrewAI in background thread.
+
+================================================
+
+2. Add job store
+
+Example:
+jobs = {
+job_id: {
+"status": "running",
+"result": null
+}
+}
+
+When complete:
+jobs[job_id] = {
+"status": "completed",
+"result": analysis_result
+}
+
+================================================
+
+3. Add new endpoint
+
+GET /fastapi/status/{job_id}
+
+Response while running:
+{
+"status": "running"
+}
+
+Response when complete:
+{
+"status": "completed",
+"result": {
+"market_score": ...,
+"competition_score": ...,
+"financial_score": ...,
+"risk_score": ...,
+"verdict": ...
+}
+}
+
+================================================
+
+FRONTEND CHANGES
+
+Update Analyze.tsx.
+
+Current:
+Waits for long fetch("/fastapi/analyze")
+
+New:
+
+1. POST /fastapi/analyze
+2. Get job_id
+3. Start polling every 3 seconds:
+   GET /fastapi/status/{job_id}
+
+While status=running:
+show loading UI
+
+When status=completed:
+
+* store result in localStorage
+* navigate("/dashboard")
+
+================================================
+
+ERROR HANDLING
+
+If polling fails:
+Show:
+"Analysis failed. Please try again."
+
+================================================
+
+IMPORTANT:
+Keep all existing UI and styles unchanged.
+
+Only fix request handling and polling logic.
