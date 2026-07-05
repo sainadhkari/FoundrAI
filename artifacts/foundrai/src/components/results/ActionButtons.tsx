@@ -1,4 +1,4 @@
-import { BrainCircuit, Download, Activity, LayoutDashboard } from "lucide-react";
+import { BrainCircuit, Download, Activity, ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 
@@ -9,6 +9,10 @@ interface ActionButtonsProps {
 
 export default function ActionButtons({ isDownloading, onDownload }: ActionButtonsProps) {
   const navigate = useNavigate();
+
+  const handleBackToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-8">
@@ -43,13 +47,13 @@ export default function ActionButtons({ isDownloading, onDownload }: ActionButto
       </Button>
 
       <Button
-        onClick={() => navigate("/dashboard")}
+        onClick={handleBackToTop}
         size="lg"
         variant="outline"
         className="w-full sm:w-auto h-14 px-8 text-base border-white/10 hover:bg-white/10 bg-black/20 backdrop-blur-md rounded-full text-white transition-all hover:scale-105 hover:shadow-[0_0_25px_rgba(255,255,255,0.12)]"
       >
-        <LayoutDashboard className="w-5 h-5 mr-2" />
-        Back to Dashboard
+        <ArrowUp className="w-5 h-5 mr-2" />
+        Back to Top
       </Button>
     </div>
   );
