@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { 
-  ArrowLeft, 
   Download, 
   CheckCircle2, 
   TrendingUp, 
@@ -16,6 +15,7 @@ import {
   AlertTriangle, 
   Briefcase 
 } from "lucide-react";
+import UserAvatar from "@/components/UserAvatar";
 import { Button } from "@/components/ui/button";
 
 export default function Dashboard() {
@@ -94,9 +94,12 @@ export default function Dashboard() {
             <span className="font-semibold text-lg tracking-tight">FoundrAI</span>
           </Link>
         </div>
-        <Link to="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-white transition-colors">
-          <ArrowLeft className="w-4 h-4" /> Back to Home
-        </Link>
+        <div className="flex items-center gap-4">
+          <Link to="/analyze" className="hidden sm:inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-white transition-colors">
+            New Analysis
+          </Link>
+          <UserAvatar />
+        </div>
       </header>
 
       <main className="relative z-10 container max-w-6xl mx-auto px-6 py-12">

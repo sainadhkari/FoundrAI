@@ -1,0 +1,226 @@
+I want to improve FoundrAI UI/UX significantly. We will redesign page by page.
+
+FIRST TASK:
+Build a premium Authentication Page for FoundrAI.
+
+IMPORTANT:
+Do NOT break existing functionality.
+Keep all current routes and pages working.
+Only add a new authentication page and integrate it into flow.
+
+====================================================
+PROJECT CONTEXT
+FoundrAI is an AI Executive Boardroom for startup founders.
+
+Current flow:
+Landing Page → Analyze Page → Dashboard
+
+New flow should be:
+Landing Page → Authentication Page → Analyze Page → Live Analysis → Dashboard
+
+For now, only build:
+Landing Page → Authentication Page → Analyze Page
+
+====================================================
+ROUTING CHANGES
+
+Create a new route:
+
+/auth
+
+Update CTA buttons on Landing Page:
+- Analyze Startup
+- Launch FoundrAI
+- Get Started
+
+All should navigate to:
+/auth
+
+After successful authentication:
+Navigate to:
+/analyze
+
+====================================================
+AUTH PAGE DESIGN GOAL
+
+The page must look premium, futuristic, and consistent with FoundrAI branding.
+
+Theme:
+- Dark background
+- Blue/Purple gradients
+- Glassmorphism cards
+- AI futuristic look
+- Premium SaaS feel
+- Similar style to existing landing page
+
+Design inspiration:
+OpenAI + Stripe + Vercel + futuristic AI dashboard
+
+====================================================
+PAGE LAYOUT
+
+Split screen layout.
+
+LEFT SIDE:
+Branding + product messaging
+
+RIGHT SIDE:
+Authentication card
+
+====================================================
+LEFT SIDE CONTENT
+
+Small badge:
+AI EXECUTIVE BOARDROOM
+
+Main heading:
+Welcome to FoundrAI
+
+Subheading:
+Your AI Boardroom for Startup Decisions
+
+Description:
+Validate startup ideas with 10 specialized AI agents before risking time, capital, or execution.
+
+Feature bullets with icons:
+
+✓ Market Opportunity Analysis
+✓ Competitor Intelligence
+✓ Financial Risk Modeling
+✓ Growth Strategy
+✓ CEO-Level Strategic Verdict
+
+Bottom section:
+Small metrics cards
+
+1000+ Startup Analyses
+92% Founder Satisfaction
+10 AI Agents
+
+====================================================
+RIGHT SIDE CONTENT
+
+Glassmorphism authentication card.
+
+Card title:
+Get Started
+
+Subtitle:
+Create your account or sign in to continue.
+
+Buttons:
+
+1) Continue with Google
+2) Continue with GitHub
+
+Divider:
+OR
+
+Input Fields:
+Name
+Email
+Password
+
+Buttons:
+Create Account
+Sign In
+
+Small text:
+By continuing, you agree to FoundrAI Terms and Privacy Policy.
+
+====================================================
+AUTH FUNCTIONALITY
+
+For now use simple frontend auth with localStorage.
+No backend auth yet.
+
+When user signs in or signs up:
+Store in localStorage:
+
+foundrai_user = {
+  name,
+  email,
+  isAuthenticated: true,
+  loginTime: timestamp
+}
+
+After login:
+redirect to /analyze
+
+====================================================
+ROUTE PROTECTION
+
+Protect /analyze and /dashboard.
+
+If user is NOT authenticated:
+redirect to /auth
+
+Logic:
+Check localStorage foundrai_user
+
+If missing:
+navigate("/auth")
+
+====================================================
+HEADER UPDATE
+
+On authenticated pages:
+Show user avatar top-right.
+
+Display:
+First letter of user name
+
+Dropdown menu:
+Profile
+Logout
+
+Logout:
+Remove foundrai_user from localStorage
+Redirect to landing page
+
+====================================================
+ANIMATIONS
+
+Add smooth animations:
+- Fade in
+- Slide up
+- Hover effects
+- Button glow
+- Card hover shadow
+
+All transitions should feel premium.
+
+====================================================
+TECH REQUIREMENTS
+
+Use existing stack:
+- React
+- TypeScript
+- Tailwind
+- Existing UI components
+
+Maintain responsive design.
+
+Mobile friendly.
+
+====================================================
+IMPORTANT
+
+Do NOT touch:
+- CrewAI integration
+- Analyze submission logic
+- Dashboard score rendering
+
+Only:
+- Add /auth page
+- Add auth flow
+- Add route protection
+
+====================================================
+DELIVERABLE
+
+After implementation provide:
+1. Files created
+2. Files modified
+3. Route changes made
+4. Authentication flow summary

@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 export default function CTA() {
+  const navigate = useNavigate();
   return (
     <section className="py-40 relative flex items-center justify-center overflow-hidden border-t border-white/10 bg-[#050508]">
       {/* Intense Background Glow */}
@@ -47,7 +49,11 @@ export default function CTA() {
           <div className="relative group inline-block">
             {/* Pulsing Backglow */}
             <div className="absolute -inset-3 bg-gradient-to-r from-primary to-secondary rounded-full blur-xl opacity-60 group-hover:opacity-100 transition-opacity duration-500 animate-[pulse_3s_ease-in-out_infinite]" />
-            <Button size="lg" className="relative h-20 px-16 text-xl bg-white text-black hover:bg-gray-100 shadow-[0_0_60px_rgba(255,255,255,0.6)] transition-all hover:scale-105 rounded-full font-bold uppercase tracking-wider border-[3px] border-transparent bg-clip-padding">
+            <Button
+              onClick={() => navigate("/auth")}
+              size="lg"
+              className="relative h-20 px-16 text-xl bg-white text-black hover:bg-gray-100 shadow-[0_0_60px_rgba(255,255,255,0.6)] transition-all hover:scale-105 rounded-full font-bold uppercase tracking-wider border-[3px] border-transparent bg-clip-padding"
+            >
               Launch FoundrAI
             </Button>
           </div>

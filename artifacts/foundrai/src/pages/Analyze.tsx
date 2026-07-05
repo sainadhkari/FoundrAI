@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
-import { ArrowLeft, ArrowRight, BrainCircuit, Activity, BarChart3, LineChart, ChevronRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, BrainCircuit, Activity, BarChart3, LineChart } from "lucide-react";
+import UserAvatar from "@/components/UserAvatar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -122,9 +123,12 @@ export default function Analyze() {
             <span className="font-semibold text-lg tracking-tight">FoundrAI</span>
           </Link>
         </div>
-        <Link to="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-white transition-colors">
-          <ArrowLeft className="w-4 h-4" /> Back to Home
-        </Link>
+        <div className="flex items-center gap-4">
+          <Link to="/" className="hidden sm:inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-white transition-colors">
+            <ArrowLeft className="w-4 h-4" /> Home
+          </Link>
+          <UserAvatar />
+        </div>
       </header>
 
       <main className="relative z-10 container max-w-6xl mx-auto px-6 py-12 lg:py-20">

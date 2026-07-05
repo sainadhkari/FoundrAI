@@ -26,11 +26,15 @@ export default function Navbar() {
         </nav>
       </div>
       <div className="flex items-center gap-4">
-        <Button variant="ghost" className="hidden sm:inline-flex text-muted-foreground hover:text-white hover:bg-white/5">
+        <Button
+          variant="ghost"
+          onClick={() => navigate("/auth")}
+          className="hidden sm:inline-flex text-muted-foreground hover:text-white hover:bg-white/5"
+        >
           Login
         </Button>
         <Button
-          onClick={() => navigate("/analyze")}
+          onClick={() => navigate("/auth")}
           className="bg-white text-black hover:bg-white/90 shadow-[0_0_20px_rgba(255,255,255,0.2)] font-semibold"
         >
           Analyze Startup
