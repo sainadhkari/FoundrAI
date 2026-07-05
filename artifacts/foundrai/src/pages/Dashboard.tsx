@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import UserAvatar from "@/components/UserAvatar";
 import { exportLongElementToPdf } from "@/lib/exportReport";
+import { useToast } from "@/hooks/use-toast";
 import HeroHeader from "@/components/results/HeroHeader";
 import ExecutiveSnapshot from "@/components/results/ExecutiveSnapshot";
 import ExecutiveScoreCards from "@/components/results/ExecutiveScoreCards";
@@ -31,6 +32,7 @@ import {
 
 export default function Dashboard() {
   const navigate = useNavigate();
+  const { toast } = useToast();
   const [isDownloading, setIsDownloading] = useState(false);
   const reportRef = useRef<HTMLDivElement>(null);
 
@@ -40,8 +42,17 @@ export default function Dashboard() {
     try {
       const safeName = (startupName || "FoundrAI-Startup").replace(/[^a-z0-9]+/gi, "-");
       await exportLongElementToPdf(reportRef.current, `${safeName}-FoundrAI-Report.pdf`);
+      toast({
+        title: "Investor memo downloaded",
+        description: `${safeName}-FoundrAI-Report.pdf has been saved.`,
+      });
     } catch (err) {
       console.error("Failed to export PDF report", err);
+      toast({
+        title: "Download failed",
+        description: "Something went wrong while generating the PDF. Please try again.",
+        variant: "destructive",
+      });
     } finally {
       setIsDownloading(false);
     }
