@@ -1,0 +1,180 @@
+We are continuing an existing full-stack AI project called FoundrAI.
+
+IMPORTANT:
+This project is already built.
+Do NOT rebuild anything from scratch.
+First inspect the imported Git project and understand architecture.
+
+Your first task is setup + verification.
+
+====================================================
+PROJECT NAME
+FoundrAI
+
+====================================================
+PROJECT OVERVIEW
+
+FoundrAI is an AI Executive Decision Platform for startup founders.
+
+Workflow:
+1. Landing Page
+2. Authentication Page
+3. Analyze Page
+4. CrewAI Analysis
+5. Dashboard with Verdict
+
+Users submit startup details.
+CrewAI runs multiple AI agents.
+Final result shows:
+- market score
+- competition score
+- financial score
+- risk score
+- growth score
+- verdict
+- recommendation
+- executive summary
+
+====================================================
+TECH STACK
+
+Frontend:
+- React
+- TypeScript
+- Tailwind
+- Vite
+
+Backend:
+- FastAPI (if present)
+
+AI Backend:
+- CrewAI deployment
+
+====================================================
+FIRST TASK — INSPECT PROJECT
+
+Please inspect the imported Git repository and identify:
+
+1. Frontend folder
+2. Backend folder
+3. Main React entry files
+4. Pages
+5. API integration files
+6. Environment variables needed
+
+Provide full project structure first.
+
+====================================================
+KNOWN PAGES
+
+We already have:
+
+- Landing page
+- Auth page
+- Analyze page
+- Dashboard page
+
+Likely files:
+- Landing.tsx
+- Auth.tsx
+- Analyze.tsx
+- Dashboard.tsx
+
+Please verify.
+
+====================================================
+CREWAI DETAILS
+
+CrewAI API Base URL:
+https://foundrai-v1-20176eef-a04a-4d7f-9816-203e5ce-5c27ac9a.crewai.com
+
+Bearer Token:
+26d3cda973f2
+
+====================================================
+CREWAI REQUEST FORMAT
+
+Kickoff endpoint:
+POST /kickoff
+
+Payload format:
+{
+  "inputs": {
+    "startup_name": "",
+    "startup_idea": "",
+    "industry": "",
+    "target_customers": "",
+    "budget": "",
+    "timeline": "",
+    "team_size": ""
+  }
+}
+
+====================================================
+STATUS ENDPOINT
+
+GET /status/{kickoff_id}
+
+Headers:
+Authorization: Bearer 26d3cda973f2
+
+====================================================
+KNOWN CREWAI RESPONSE FORMAT
+
+Kickoff:
+{
+  "kickoff_id": "uuid"
+}
+
+Status:
+{
+  "state": "SUCCESS",
+  "result": "JSON string"
+}
+
+IMPORTANT:
+- completion field = state
+- success value = SUCCESS
+- result is JSON string and must be JSON.parse()
+
+====================================================
+CURRENT WORKING FLOW
+
+Analyze.tsx:
+- submits startup form
+- calls CrewAI kickoff
+- polls status every 5 sec
+- waits for SUCCESS
+- parses result JSON
+- stores in localStorage as:
+foundrai_results
+- redirects to dashboard
+
+Dashboard:
+reads foundrai_results from localStorage
+
+====================================================
+SECOND TASK — RUN PROJECT
+
+Please:
+1. Install dependencies
+2. Start frontend
+3. Start backend if needed
+4. Fix any missing env/config
+5. Verify app runs successfully
+
+====================================================
+THIRD TASK — REPORT STATUS
+
+Tell me:
+- Is frontend running?
+- Is backend running?
+- Are there any missing dependencies?
+- Any build errors?
+- Any environment variables needed?
+
+Do NOT modify UI yet.
+Do NOT change code yet.
+
+First fully inspect and run project.
+Then wait for my next instructions.
