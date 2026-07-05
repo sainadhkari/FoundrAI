@@ -1,0 +1,163 @@
+We are continuing an existing hackathon project called FoundrAI from another Replit account.
+
+IMPORTANT:
+This project is already built and partially improved.
+Do NOT rebuild anything from scratch.
+
+You are continuing from previous progress.
+
+====================================================
+PROJECT NAME
+FoundrAI
+
+====================================================
+PROJECT PURPOSE
+
+FoundrAI is an AI Executive Decision Platform for startup founders.
+
+Flow:
+Landing Page
+→ Auth Page
+→ Analyze Page
+→ CrewAI AI Analysis
+→ Dashboard Verdict
+
+Users submit startup details.
+CrewAI runs multiple AI agents.
+Final result returns startup analysis scores and verdict.
+
+====================================================
+TECH STACK
+
+Frontend:
+- React
+- TypeScript
+- Tailwind
+- Vite
+
+Backend:
+- FastAPI (if present)
+
+AI Backend:
+- CrewAI deployment
+
+====================================================
+CURRENT PROJECT STATUS
+
+COMPLETED:
+✅ Landing page built
+✅ Authentication page built and improved
+✅ CrewAI integration working
+✅ Analyze page connected to CrewAI
+✅ Dashboard connected to results
+✅ Auth route protection enabled
+
+CrewAI flow works:
+- kickoff
+- status polling
+- result parsing
+- localStorage storage
+- dashboard redirect
+
+====================================================
+CREWAI DETAILS
+
+Base URL:
+https://foundrai-v1-20176eef-a04a-4d7f-9816-203e5ce-5c27ac9a.crewai.com
+
+Bearer Token:
+26d3cda973f2
+
+====================================================
+KICKOFF API
+
+POST /kickoff
+
+Headers:
+Authorization: Bearer 26d3cda973f2
+Content-Type: application/json
+
+Payload:
+{
+  "inputs": {
+    "startup_name": "",
+    "startup_idea": "",
+    "industry": "",
+    "target_customers": "",
+    "budget": "",
+    "timeline": "",
+    "team_size": ""
+  }
+}
+
+====================================================
+STATUS API
+
+GET /status/{kickoff_id}
+
+Headers:
+Authorization: Bearer 26d3cda973f2
+
+Response:
+{
+  "state": "SUCCESS",
+  "result": "JSON string"
+}
+
+IMPORTANT:
+- completion field is state
+- success value is SUCCESS
+- result is JSON string and must be JSON.parse()
+
+====================================================
+CURRENT ANALYZE FLOW
+
+Analyze.tsx:
+1. submit form
+2. POST kickoff
+3. receive kickoff_id
+4. poll status every 5 sec
+5. wait until state = SUCCESS
+6. parse result JSON
+7. save in localStorage:
+foundrai_results
+8. navigate to dashboard
+
+Dashboard.tsx:
+reads foundrai_results from localStorage
+
+====================================================
+CURRENT PAGES
+
+Landing page
+Auth page
+Analyze page
+Dashboard page
+
+Likely files:
+Landing.tsx
+Auth.tsx
+Analyze.tsx
+Dashboard.tsx
+
+====================================================
+IMPORTANT CONTEXT
+
+Authentication page has already been redesigned and improved.
+DO NOT touch auth page unless asked.
+
+We are now working on:
+Analyze Page redesign (Prompt 2)
+
+====================================================
+YOUR TASK NOW
+
+1. Inspect imported project structure
+2. Confirm frontend runs
+3. Confirm CrewAI integration still works
+4. Understand current Analyze page implementation
+5. Wait for next UI redesign instructions
+
+Do NOT change code yet.
+First inspect everything and report status.
+Then wait for my next prompt.
