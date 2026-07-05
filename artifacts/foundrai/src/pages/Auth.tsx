@@ -289,29 +289,30 @@ export default function Auth() {
       <SuccessOverlay phase={successPhase} />
       <Toast message={toast} />
 
-      <div className="min-h-[100dvh] w-full bg-[#050508] text-foreground overflow-x-hidden relative flex flex-col lg:flex-row">
-
-        {/* ── Animated Background ── */}
+      {/* ── Animated Background (fixed — outside layout flow) ── */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
         <motion.div
           animate={{ x: [0, 60, -40, 0], y: [0, -80, 60, 0] }}
           transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[-20%] left-[-10%] w-[750px] h-[750px] bg-primary/10 rounded-full blur-[160px] mix-blend-screen pointer-events-none"
+          className="absolute top-[-20%] left-[-10%] w-[750px] h-[750px] bg-primary/10 rounded-full blur-[160px] mix-blend-screen"
         />
         <motion.div
           animate={{ x: [0, -50, 70, 0], y: [0, 60, -50, 0] }}
           transition={{ duration: 26, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-[-20%] right-[-10%] w-[750px] h-[750px] bg-secondary/10 rounded-full blur-[160px] mix-blend-screen pointer-events-none"
+          className="absolute bottom-[-20%] right-[-10%] w-[750px] h-[750px] bg-secondary/10 rounded-full blur-[160px] mix-blend-screen"
         />
         <motion.div
           animate={{ scale: [1, 1.2, 0.9, 1], opacity: [0.05, 0.12, 0.05] }}
           transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/2 left-1/4 w-[400px] h-[400px] bg-blue-600/15 rounded-full blur-[100px] pointer-events-none"
+          className="absolute top-1/2 left-1/4 w-[400px] h-[400px] bg-blue-600/15 rounded-full blur-[100px]"
         />
-
         {/* Grid */}
-        <div className="absolute inset-0 z-0 opacity-[0.07] pointer-events-none">
+        <div className="absolute inset-0 opacity-[0.07]">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f3e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f3e_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_60%,transparent_110%)]" />
         </div>
+      </div>
+
+      <div className="min-h-[100dvh] w-full bg-[#050508] text-foreground relative flex flex-col lg:flex-row">
 
         {/* ════════════ LEFT PANEL ════════════ */}
         <motion.div
@@ -408,7 +409,7 @@ export default function Auth() {
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col items-center justify-start lg:justify-center w-full lg:w-1/2 xl:w-[45%] relative z-10 px-6 sm:px-10 py-14 lg:overflow-y-auto"
+          className="flex flex-col items-center justify-start lg:justify-center w-full lg:w-1/2 xl:w-[45%] relative z-10 px-6 sm:px-10 py-14"
         >
           {/* Mobile logo */}
           <div className="flex lg:hidden items-center gap-2 mb-10">
