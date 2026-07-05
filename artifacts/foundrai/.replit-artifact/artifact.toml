@@ -1,31 +1,32 @@
 kind = "web"
-previewPath = "/"
-title = "FoundrAI"
-version = "1.0.0"
-id = "artifacts/foundrai"
-router = "path"
+  previewPath = "/"
+  title = "FoundrAI"
+  version = "1.0.0"
+  id = "artifacts/foundrai"
+  router = "path"
 
-[[integratedSkills]]
-name = "react-vite"
-version = "1.0.0"
+  [[integratedSkills]]
+  name = "react-vite"
+  version = "1.0.0"
 
-[[services]]
-name = "web"
-paths = [ "/" ]
-localPort = 25887
+  [[services]]
+  name = "web"
+  paths = [ "/" ]
+  localPort = 5000
 
-[services.development]
-run = "pnpm --filter @workspace/foundrai run dev"
+  [services.development]
+  run = "pnpm --filter @workspace/foundrai run dev"
 
-[services.production]
-build = [ "pnpm", "--filter", "@workspace/foundrai", "run", "build" ]
-publicDir = "artifacts/foundrai/dist/public"
-serve = "static"
+  [services.production]
+  build = [ "pnpm", "--filter", "@workspace/foundrai", "run", "build" ]
+  publicDir = "artifacts/foundrai/dist/public"
+  serve = "static"
 
-[[services.production.rewrites]]
-from = "/*"
-to = "/index.html"
+  [[services.production.rewrites]]
+  from = "/*"
+  to = "/index.html"
 
-[services.env]
-PORT = "25887"
-BASE_PATH = "/"
+  [services.env]
+  PORT = "5000"
+  BASE_PATH = "/"
+  
