@@ -2,56 +2,60 @@ import { Router, type IRouter } from "express";
 
 const router: IRouter = Router();
 
-function getCrewConfig() {
-  const baseUrl = process.env.CREWAI_BASE_URL;
-  const token = process.env.CREWAI_BEARER_TOKEN;
-  if (!baseUrl || !token) {
-    throw new Error("CrewAI is not configured (missing CREWAI_BASE_URL or CREWAI_BEARER_TOKEN)");
-  }
-  return {
-    baseUrl: baseUrl.replace(/\/$/, ""),
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  };
+// The AI analysis pipeline runs locally in the FastAPI service (OpenAI-backed
+// CrewAI agents), not the external hosted CrewAI deployment — that hosted
+// deployment hit its monthly execution quota. This proxy keeps the same
+// `/kickoff` + `/status/:id` contract the frontend already speaks, so
+// Analyze.tsx needs no changes; it just forwards to the internal service.
+function getFastApiBaseUrl(): string {
+  const port = process.env.FASTAPI_PORT ?? "8000";
+  return `http://127.0.0.1:${port}/fastapi`;
 }
 
 router.post("/kickoff", async (req, res) => {
   try {
-    const { baseUrl, headers } = getCrewConfig();
-    const crewRes = await fetch(`${baseUrl}/kickoff`, {
+    const baseUrl = getFastApiBaseUrl();
+    const inputs = req.body?.inputs ?? {};
+    const analyzeRes = await fetch(`${baseUrl}/analyze`, {
       method: "POST",
-      headers,
-      body: JSON.stringify({ inputs: req.body?.inputs ?? {} }),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        startup_name: inputs.startup_name ?? "",
+        startup_idea: inputs.startup_idea ?? "",
+        industry: inputs.industry ?? "",
+        budget: inputs.budget ?? "",
+        timeline: inputs.timeline ?? "",
+      }),
     });
-    const data = await crewRes.json().catch(() => ({}));
-    if (!crewRes.ok) {
-      res.status(crewRes.status).json({ error: "CrewAI kickoff failed", details: data });
+    const data = await analyzeRes.json().catch(() => ({}));
+    if (!analyzeRes.ok) {
+      res.status(analyzeRes.status).json({ error: "Analysis kickoff failed", details: data });
       return;
     }
-    res.json(data);
+    res.json({ kickoff_id: data.job_id, status: data.status });
   } catch (err) {
-    req.log?.error({ err }, "CrewAI kickoff error");
-    res.status(502).json({ error: err instanceof Error ? err.message : "CrewAI kickoff failed" });
+    req.log?.error({ err }, "Analysis kickoff error");
+    res.status(502).json({ error: err instanceof Error ? err.message : "Analysis kickoff failed" });
   }
 });
 
 router.get("/status/:kickoffId", async (req, res) => {
   try {
-    const { baseUrl, headers } = getCrewConfig();
-    const crewRes = await fetch(`${baseUrl}/status/${encodeURIComponent(req.params.kickoffId)}`, {
-      headers,
-    });
-    const data = await crewRes.json().catch(() => ({}));
-    if (!crewRes.ok) {
-      res.status(crewRes.status).json({ error: "CrewAI status check failed", details: data });
+    const baseUrl = getFastApiBaseUrl();
+    const statusRes = await fetch(`${baseUrl}/status/${encodeURIComponent(req.params.kickoffId)}`);
+    const data = await statusRes.json().catch(() => ({}));
+    if (!statusRes.ok) {
+      res.status(statusRes.status).json({ error: "Analysis status check failed", details: data });
       return;
     }
-    res.json(data);
+    if (data.status === "completed") {
+      res.json({ state: "SUCCESS", status: "completed", result: data.result });
+      return;
+    }
+    res.json({ state: "RUNNING", status: data.status ?? "running" });
   } catch (err) {
-    req.log?.error({ err }, "CrewAI status error");
-    res.status(502).json({ error: err instanceof Error ? err.message : "CrewAI status check failed" });
+    req.log?.error({ err }, "Analysis status error");
+    res.status(502).json({ error: err instanceof Error ? err.message : "Analysis status check failed" });
   }
 });
 

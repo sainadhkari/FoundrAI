@@ -15,3 +15,5 @@ class StartupAnalysisResponse(BaseModel):
     financial_score: float
     risk_score: float
     verdict: str
+    executive_summary: str
+    recommendation: str

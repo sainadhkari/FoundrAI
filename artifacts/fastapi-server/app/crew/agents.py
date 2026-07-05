@@ -1,5 +1,10 @@
-from crewai import Agent
+from crewai import Agent, LLM
 from app.crew.tools import financial_calculator
+
+# All agents share a single OpenAI-backed LLM. crewai/litellm read OPENAI_API_KEY
+# from the environment automatically; the model is pinned explicitly so behavior
+# is predictable rather than relying on crewai's default.
+_llm = LLM(model="gpt-4o-mini")
 
 
 def create_market_agent() -> Agent:
@@ -10,6 +15,7 @@ def create_market_agent() -> Agent:
             "Expert market analyst specializing in startup markets, demand forecasting, "
             "industry trends, and opportunity analysis."
         ),
+        llm=_llm,
         verbose=True,
         allow_delegation=False,
     )
@@ -23,6 +29,7 @@ def create_competitor_agent() -> Agent:
             "Expert competitor analyst specializing in startup ecosystems, market positioning, "
             "pricing analysis, and competitive differentiation."
         ),
+        llm=_llm,
         verbose=True,
         allow_delegation=False,
     )
@@ -37,6 +44,7 @@ def create_finance_agent() -> Agent:
             "startup budgeting, and financial risk evaluation."
         ),
         tools=[financial_calculator],
+        llm=_llm,
         verbose=True,
         allow_delegation=False,
     )
@@ -50,6 +58,7 @@ def create_ceo_agent() -> Agent:
             "Elite CEO and startup strategist with deep expertise in startup execution, "
             "product-market fit, fundraising, scaling, and strategic decision-making."
         ),
+        llm=_llm,
         verbose=True,
         allow_delegation=False,
     )

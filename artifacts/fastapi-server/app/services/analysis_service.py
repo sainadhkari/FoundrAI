@@ -38,6 +38,23 @@ def _parse_verdict(ceo_output: str) -> str:
     return "Proceed with Caution"
 
 
+def _parse_section(text: str, label: str, default: str) -> str:
+    """Extract a labeled section (e.g. REASONING:, RECOMMENDATION:) from CEO output.
+
+    Stops at the next ALL-CAPS label line or end of text.
+    """
+    match = re.search(
+        rf"{label}\s*:\s*(.+?)(?=\n[A-Z][A-Z ]+:|\Z)",
+        text,
+        re.IGNORECASE | re.DOTALL,
+    )
+    if match:
+        cleaned = match.group(1).strip()
+        if cleaned:
+            return cleaned
+    return default
+
+
 def analyze_startup(request: StartupAnalysisRequest) -> StartupAnalysisResponse:
     """
     Run all 4 CrewAI agents and return real CEO verdict + parsed scores.
@@ -94,6 +111,16 @@ def analyze_startup(request: StartupAnalysisRequest) -> StartupAnalysisResponse:
     )
 
     verdict = _parse_verdict(crew_outputs["ceo"])
+    executive_summary = _parse_section(
+        crew_outputs["ceo"],
+        "REASONING",
+        default=crew_outputs["ceo"][:500] or "Analysis completed.",
+    )
+    recommendation = _parse_section(
+        crew_outputs["ceo"],
+        "RECOMMENDATION",
+        default="Continue validating with real customers before scaling spend.",
+    )
 
     return StartupAnalysisResponse(
         market_score=market_score,
@@ -101,4 +128,6 @@ def analyze_startup(request: StartupAnalysisRequest) -> StartupAnalysisResponse:
         financial_score=financial_score,
         risk_score=confidence_score,
         verdict=verdict,
+        executive_summary=executive_summary,
+        recommendation=recommendation,
     )
