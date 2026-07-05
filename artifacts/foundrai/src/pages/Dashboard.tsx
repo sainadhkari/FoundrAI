@@ -1,7 +1,8 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import UserAvatar from "@/components/UserAvatar";
+import { exportLongElementToPdf } from "@/lib/exportReport";
 import HeroHeader from "@/components/results/HeroHeader";
 import ExecutiveScoreCards from "@/components/results/ExecutiveScoreCards";
 import ScoreBreakdown from "@/components/results/ScoreBreakdown";
@@ -27,12 +28,19 @@ import {
 export default function Dashboard() {
   const navigate = useNavigate();
   const [isDownloading, setIsDownloading] = useState(false);
+  const reportRef = useRef<HTMLDivElement>(null);
 
-  const handleDownload = () => {
+  const handleDownload = async () => {
+    if (!reportRef.current || isDownloading) return;
     setIsDownloading(true);
-    setTimeout(() => {
+    try {
+      const safeName = (startupName || "FoundrAI-Startup").replace(/[^a-z0-9]+/gi, "-");
+      await exportLongElementToPdf(reportRef.current, `${safeName}-FoundrAI-Report.pdf`);
+    } catch (err) {
+      console.error("Failed to export PDF report", err);
+    } finally {
       setIsDownloading(false);
-    }, 2000);
+    }
   };
 
   const results: StartupResults | null = useMemo(() => {
