@@ -217,27 +217,28 @@ Multi-agent architecture enables domain-specialist reasoning, producing more acc
 # 📷 Screenshots
 
 ## Landing Page
-![Landing Page](ss/landing-page.png)
+![Landing Page](SS/landing-page.png)
 
 ---
 
 ## Authentication Page
-![Authentication Page](ss/auth-page.png)
+![Authentication Page](SS/auth-page.png)
 
 ---
 
 ## Startup Analysis Page
-![Analyze Page](ss/analyze-page.png)
+![Analyze Page](SS/analyze-page.png)
 
 ---
 
 ## Dashboard Overview
-![Dashboard Overview](ss/dashboard-overview.png)
+![Dashboard Overview](SS/dashboard-overview.png)
 
 ---
 
 ## Dashboard Analysis
-![Dashboard Analysis](ss/dashboard-analysis.png)
+![Dashboard Analysis](SS/dashboard-analysis.png)
+
 
 ---
 
