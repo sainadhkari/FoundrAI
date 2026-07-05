@@ -17,6 +17,9 @@ import {
   DollarSign,
   BarChart3,
   Sparkles,
+  Cpu,
+  Activity,
+  Zap,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -312,7 +315,7 @@ export default function Auth() {
         </div>
       </div>
 
-      <div className="min-h-[100dvh] w-full bg-[#050508] text-foreground relative flex flex-col lg:flex-row">
+      <div className="min-h-screen w-full bg-[#050508] text-foreground relative flex flex-col lg:flex-row overflow-x-hidden overflow-y-auto">
 
         {/* ════════════ LEFT PANEL ════════════ */}
         <motion.div
@@ -322,11 +325,17 @@ export default function Auth() {
           className="hidden lg:flex flex-col justify-between w-1/2 xl:w-[55%] relative z-10 px-16 xl:px-24 py-14"
         >
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2.5 group w-fit">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-primary to-secondary flex items-center justify-center font-bold text-white shadow-[0_0_20px_rgba(0,255,255,0.4)] transition-transform group-hover:scale-110">
-              F
+          <Link to="/" className="flex items-center gap-3 group w-fit">
+            <div className="relative w-10 h-10 shrink-0">
+              <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-primary to-secondary opacity-20 blur-[6px] group-hover:opacity-40 transition-opacity" />
+              <div className="relative w-10 h-10 rounded-xl bg-gradient-to-tr from-[#0a1628] to-[#0d1f3c] border border-primary/40 flex items-center justify-center shadow-[0_0_24px_rgba(0,255,255,0.35)] group-hover:shadow-[0_0_36px_rgba(0,255,255,0.55)] transition-shadow">
+                <Cpu className="w-5 h-5 text-primary" strokeWidth={1.5} />
+              </div>
             </div>
-            <span className="font-bold text-xl tracking-tight text-white group-hover:text-primary transition-colors">FoundrAI</span>
+            <div className="flex flex-col leading-none">
+              <span className="font-black text-[1.1rem] tracking-tight text-white group-hover:text-primary transition-colors">FoundrAI</span>
+              <span className="text-[9px] text-primary/50 font-bold tracking-[0.2em] uppercase">AI Boardroom</span>
+            </div>
           </Link>
 
           {/* Center content */}
@@ -361,7 +370,7 @@ export default function Auth() {
             </motion.div>
 
             {/* Feature list */}
-            <ul className="space-y-3.5">
+            <ul className="space-y-3">
               {features.map(({ label, Icon }, i) => (
                 <motion.li
                   key={label}
@@ -379,6 +388,77 @@ export default function Auth() {
                 </motion.li>
               ))}
             </ul>
+
+            {/* ── Live AI Boardroom Visualization ── */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.85, duration: 0.6 }}
+              className="relative bg-white/[0.022] border border-white/8 rounded-2xl p-4 overflow-hidden"
+            >
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+
+              {/* Header */}
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-2">
+                  <Activity className="w-3.5 h-3.5 text-primary" />
+                  <span className="text-[10px] font-bold text-white/40 tracking-[0.18em] uppercase">Live AI Boardroom</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                    <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                  </span>
+                  <span className="text-[9px] text-emerald-400 font-bold tracking-wider">10 AGENTS ACTIVE</span>
+                </div>
+              </div>
+
+              {/* Agent nodes */}
+              <div className="grid grid-cols-5 gap-2 mb-3">
+                {[
+                  { label: "Market",  color: "text-cyan-400",   border: "border-cyan-500/30",   bg: "bg-cyan-500/10",   delay: 0.9  },
+                  { label: "Compete", color: "text-violet-400", border: "border-violet-500/30", bg: "bg-violet-500/10", delay: 1.0  },
+                  { label: "Finance", color: "text-emerald-400",border: "border-emerald-500/30",bg: "bg-emerald-500/10",delay: 1.1  },
+                  { label: "Growth",  color: "text-amber-400",  border: "border-amber-500/30",  bg: "bg-amber-500/10",  delay: 1.2  },
+                  { label: "CEO",     color: "text-rose-400",   border: "border-rose-500/30",   bg: "bg-rose-500/10",   delay: 1.3  },
+                ].map(({ label, color, border, bg, delay }) => (
+                  <motion.div
+                    key={label}
+                    initial={{ opacity: 0, scale: 0.7 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay, duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                    className={`flex flex-col items-center gap-1.5 p-2 rounded-xl border ${border} ${bg}`}
+                  >
+                    <div className={`w-5 h-5 rounded-lg ${bg} border ${border} flex items-center justify-center`}>
+                      <Zap className={`w-2.5 h-2.5 ${color}`} />
+                    </div>
+                    <span className={`text-[8px] font-bold ${color} tracking-wide`}>{label}</span>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Animated analysis bars */}
+              <div className="space-y-1.5">
+                {[
+                  { label: "Market Score",  pct: 87, color: "from-cyan-500/80 to-cyan-400/40",    delay: 1.4 },
+                  { label: "Risk Index",    pct: 62, color: "from-amber-500/80 to-amber-400/40",   delay: 1.5 },
+                  { label: "Growth Signal", pct: 94, color: "from-emerald-500/80 to-emerald-400/40", delay: 1.6 },
+                ].map(({ label, pct, color, delay }) => (
+                  <div key={label} className="flex items-center gap-2">
+                    <span className="text-[9px] text-white/30 w-20 shrink-0 font-medium">{label}</span>
+                    <div className="flex-1 h-1 bg-white/5 rounded-full overflow-hidden">
+                      <motion.div
+                        className={`h-full bg-gradient-to-r ${color} rounded-full`}
+                        initial={{ width: "0%" }}
+                        animate={{ width: `${pct}%` }}
+                        transition={{ delay, duration: 0.8, ease: "easeOut" }}
+                      />
+                    </div>
+                    <span className="text-[9px] text-white/25 w-6 text-right font-mono">{pct}%</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
           </div>
 
           {/* Metric cards */}
@@ -412,11 +492,17 @@ export default function Auth() {
           className="flex flex-col items-center justify-start lg:justify-center w-full lg:w-1/2 xl:w-[45%] relative z-10 px-6 sm:px-10 py-14"
         >
           {/* Mobile logo */}
-          <div className="flex lg:hidden items-center gap-2 mb-10">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-primary to-secondary flex items-center justify-center font-bold text-white shadow-[0_0_15px_rgba(0,255,255,0.4)]">
-              F
+          <div className="flex lg:hidden items-center gap-3 mb-10">
+            <div className="relative w-9 h-9 shrink-0">
+              <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-primary to-secondary opacity-20 blur-[6px]" />
+              <div className="relative w-9 h-9 rounded-xl bg-gradient-to-tr from-[#0a1628] to-[#0d1f3c] border border-primary/40 flex items-center justify-center shadow-[0_0_20px_rgba(0,255,255,0.3)]">
+                <Cpu className="w-4.5 h-4.5 text-primary" strokeWidth={1.5} />
+              </div>
             </div>
-            <span className="font-bold text-lg tracking-tight text-white">FoundrAI</span>
+            <div className="flex flex-col leading-none">
+              <span className="font-black text-lg tracking-tight text-white">FoundrAI</span>
+              <span className="text-[9px] text-primary/50 font-bold tracking-[0.2em] uppercase">AI Boardroom</span>
+            </div>
           </div>
 
           <div className="w-full max-w-[430px] space-y-5">
@@ -430,7 +516,7 @@ export default function Auth() {
               {/* Gradient border glow */}
               <div className="absolute -inset-[1px] rounded-[26px] bg-gradient-to-br from-primary/30 via-blue-500/15 to-secondary/20 opacity-60 blur-[0.5px]" />
 
-              <div className="relative bg-[#080b12]/90 border border-white/8 rounded-3xl p-8 sm:p-9 backdrop-blur-3xl shadow-[0_40px_100px_-20px_rgba(0,0,0,0.95),0_0_80px_rgba(0,255,255,0.05)]">
+              <div className="relative bg-[#080b12]/90 border border-white/8 rounded-3xl p-6 sm:p-7 backdrop-blur-3xl shadow-[0_40px_100px_-20px_rgba(0,0,0,0.95),0_0_80px_rgba(0,255,255,0.05)]">
                 {/* Top shimmer line */}
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
 
@@ -570,7 +656,7 @@ export default function Auth() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.55, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="relative bg-white/[0.018] border border-white/7 rounded-3xl p-6 backdrop-blur-xl"
+              className="relative bg-white/[0.018] border border-white/7 rounded-3xl p-5 backdrop-blur-xl"
             >
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
 
