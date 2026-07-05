@@ -1,0 +1,142 @@
+I want to replace the simple auth page with real demo authentication and access control.
+
+====================================================
+GOAL
+Build an invite-only authentication system for FoundrAI.
+
+Only approved demo credentials can login.
+Unauthorized emails must be rejected.
+
+This should feel like a premium beta product with exclusive access.
+
+====================================================
+AUTH PAGE TITLE
+
+FoundrAI Beta Access
+
+Subtitle:
+Exclusive access for approved founders, investors, and partners.
+
+====================================================
+ALLOWED DEMO CREDENTIALS
+
+1) Founder Account
+Email: founder@foundrai.ai
+Password: FoundrAI@2026
+Role: Founder
+
+2) Investor Account
+Email: investor@foundrai.ai
+Password: VC@FoundrAI2026
+Role: Investor
+
+3) Admin Account
+Email: admin@foundrai.ai
+Password: Admin@FoundrAI2026
+Role: Admin
+
+====================================================
+LOGIN RULES
+
+If email + password matches:
+- Login success
+- Save session in localStorage:
+foundrai_user = {
+  name,
+  email,
+  role,
+  isAuthenticated: true,
+  loginTime: timestamp
+}
+
+Then redirect to:
+/analyze
+
+====================================================
+FAILED LOGIN
+
+If credentials do not match:
+Show premium error alert:
+
+Access Restricted
+FoundrAI is currently invite-only.
+Please use approved demo credentials.
+
+====================================================
+AUTH PAGE UI
+
+Keep premium futuristic FoundrAI styling.
+
+Dark theme.
+Blue/purple gradients.
+Glassmorphism.
+
+====================================================
+DEMO ACCESS PANEL
+
+Add a visible section below login card:
+
+DEMO ACCESS CREDENTIALS
+
+Show 3 credential cards:
+
+Founder Access
+Email: founder@foundrai.ai
+
+Investor Access
+Email: investor@foundrai.ai
+
+Admin Access
+Email: admin@foundrai.ai
+
+Add a button:
+Show Passwords
+
+When clicked:
+Reveal passwords.
+
+====================================================
+ROUTE PROTECTION
+
+Protect:
+- /analyze
+- /dashboard
+
+If no authenticated user:
+redirect /auth
+
+====================================================
+HEADER USER PROFILE
+
+Show top-right user avatar after login.
+
+Display:
+- Initial letter
+- Role badge
+
+Dropdown:
+- Profile
+- Logout
+
+Logout:
+Clear localStorage
+Redirect to /
+
+====================================================
+ANIMATIONS
+
+Add:
+- Smooth fade in
+- Hover glow
+- Card lift effect
+- Premium transitions
+
+====================================================
+IMPORTANT
+
+Do NOT break:
+- Analyze page
+- Dashboard page
+- CrewAI integration
+
+Only implement authentication system and route protection.
