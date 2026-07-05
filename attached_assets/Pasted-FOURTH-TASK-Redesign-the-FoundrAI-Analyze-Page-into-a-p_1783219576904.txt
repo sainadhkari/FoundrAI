@@ -1,0 +1,372 @@
+FOURTH TASK:
+Redesign the FoundrAI Analyze Page into a premium AI boardroom experience.
+
+IMPORTANT:
+Keep all existing functionality:
+- form submission
+- CrewAI kickoff API call
+- polling
+- localStorage results
+- redirect to dashboard
+
+Do NOT break backend integration.
+
+Only redesign UI/UX and improve interactions.
+
+====================================================
+GOAL
+
+Current Analyze Page rating:
+6.5/10
+
+Target:
+10/10
+
+Make it feel like:
+- premium AI SaaS
+- futuristic boardroom
+- elite founder platform
+- hackathon-winning
+
+User should feel:
+“I’m about to submit my startup idea to a board of elite AI executives.”
+
+====================================================
+CURRENT PROBLEMS
+
+1. Form feels basic
+2. Right panel feels static/fake
+3. Inputs are generic
+4. No premium workflow
+5. Weak visual storytelling
+6. Too much empty space
+7. No wow factor
+
+Fix everything.
+
+====================================================
+PAGE LAYOUT REDESIGN
+
+Create 3 main sections:
+
+TOP:
+Page heading + subheading + progress indicator
+
+MIDDLE:
+Left = startup form
+Right = AI boardroom panel
+
+BOTTOM:
+Premium CTA section
+
+====================================================
+TOP SECTION
+
+Add premium heading.
+
+Badge:
+AI WAR ROOM SETUP
+
+Heading:
+Analyze Your Startup
+
+Gradient highlight:
+Startup
+
+Subheading:
+Submit your startup details to FoundrAI’s Executive Boardroom. Our AI agents will evaluate market opportunity, competition, financial viability, risk, and growth potential.
+
+====================================================
+ADD STEP INDICATOR
+
+Show:
+Step 1 of 3
+
+Example:
+
+1 Setup
+2 Analysis
+3 Verdict
+
+Current page:
+Setup highlighted.
+
+This improves UX.
+
+====================================================
+LEFT PANEL — FORM REDESIGN
+
+Transform form into premium glass card.
+
+Title:
+Startup Briefing Form
+
+Subtitle:
+Provide detailed startup information for deeper AI analysis.
+
+Add better spacing and section grouping.
+
+====================================================
+SECTION 1 — BASIC INFO
+
+Fields:
+Startup Name
+Startup Idea
+
+====================================================
+SECTION 2 — MARKET
+
+Fields:
+Industry
+Target Customers
+
+====================================================
+SECTION 3 — EXECUTION
+
+Fields:
+Budget
+Timeline
+Team Size
+
+====================================================
+INPUT IMPROVEMENTS
+
+All inputs must feel premium.
+
+Add:
+- glowing focus states
+- hover border effects
+- smooth transitions
+- subtle inner shadow
+
+====================================================
+STARTUP IDEA FIELD
+
+Current textarea is basic.
+
+Upgrade:
+- larger
+- premium styling
+- character counter
+- helper text
+
+Placeholder:
+Describe your startup, problem solved, target market, and business model...
+
+Helper text:
+The more context you provide, the better the AI analysis.
+
+====================================================
+DROPDOWN OPTIONS
+
+Improve dropdowns.
+
+Industry options:
+- SaaS
+- AI / ML
+- EdTech
+- FinTech
+- HealthTech
+- E-commerce
+- Marketplace
+- Consumer App
+- Cybersecurity
+- Enterprise Software
+- Other
+
+Budget:
+- Under $10K
+- $10K–50K
+- $50K–100K
+- $100K–500K
+- $500K+
+
+Timeline:
+- 1–3 Months
+- 3–6 Months
+- 6–12 Months
+- 12+ Months
+
+Team Size:
+- Solo Founder
+- 2–5
+- 5–10
+- 10+
+
+====================================================
+RIGHT PANEL — REDESIGN COMPLETELY
+
+Current AI Boardroom Status panel is weak.
+
+Replace with premium live panel.
+
+Title:
+FoundrAI Executive Boardroom
+
+Subtitle:
+10 AI agents standing by for analysis
+
+====================================================
+AGENT CARDS
+
+Display all 8–10 agents.
+
+Each row:
+- icon
+- agent name
+- status
+
+Statuses before submit:
+READY
+
+Examples:
+Market Intelligence Agent
+Competitor Intelligence Agent
+Financial Risk Agent
+Customer Psychology Agent
+Product Strategy Agent
+Growth Strategy Agent
+Risk Assessment Agent
+Chief Executive AI
+
+All agents show glowing READY state.
+
+====================================================
+ADD LIVE SYSTEM METRICS
+
+Below agents add 3 cards:
+
+Active Agents:
+10
+
+Avg Analysis Time:
+~2 min
+
+Success Rate:
+96.4%
+
+====================================================
+ADD MINI VISUALIZATION
+
+Below metrics:
+animated AI activity graph
+
+OR
+boardroom neural visualization
+
+This should feel alive.
+
+====================================================
+BOTTOM CTA SECTION
+
+Big premium button.
+
+Button text:
+Initiate FoundrAI Analysis
+
+Hover:
+- glow
+- scale
+- shine effect
+
+====================================================
+SUBMIT EXPERIENCE
+
+Important.
+
+Before kickoff:
+Button text:
+Initiate FoundrAI Analysis
+
+After click:
+Disable form.
+
+Show:
+Initializing AI Boardroom...
+
+Then:
+Connecting to CrewAI...
+Deploying Agents...
+Starting Analysis...
+
+Animate right panel agent statuses:
+READY → ACTIVE
+
+This creates amazing experience.
+
+====================================================
+VALIDATION
+
+Add strong validation.
+
+Required:
+- all fields
+- startup idea minimum 50 chars
+
+Errors:
+Premium red alert cards.
+
+====================================================
+MICRO INTERACTIONS
+
+Add:
+- fade in
+- hover animations
+- card glow
+- smooth transitions
+
+====================================================
+BACKGROUND
+
+Improve background.
+
+Use:
+- animated grid
+- subtle glow
+- premium gradients
+
+Keep clean.
+
+====================================================
+RESPONSIVE
+
+Desktop:
+2-column layout
+
+Tablet:
+balanced layout
+
+Mobile:
+stacked layout
+
+====================================================
+IMPORTANT
+
+Do NOT break:
+- CrewAI kickoff
+- polling
+- dashboard redirect
+- auth flow
+
+Only improve:
+- design
+- layout
+- UX
+- interactions
+
+====================================================
+SUCCESS CRITERIA
+
+After redesign:
+This page should feel world-class.
+A judge should immediately say:
+“Wow.”
+
+====================================================
+DELIVERABLE
+
+After implementation provide:
+1. UI improvements
+2. UX improvements
+3. New interactions
+4. Final page rating
