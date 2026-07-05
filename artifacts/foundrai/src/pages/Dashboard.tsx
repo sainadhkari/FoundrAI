@@ -138,6 +138,7 @@ export default function Dashboard() {
           animate="visible"
           className="space-y-12 md:space-y-14"
         >
+          <div ref={reportRef} className="space-y-12 md:space-y-14 bg-[#050508]">
           {/* Section 1: Hero Header */}
           <motion.div variants={itemVariants}>
             <HeroHeader startupName={startupName} verdict={verdict} confidence={scores.confidence} />
@@ -204,6 +205,7 @@ export default function Dashboard() {
           <motion.div variants={itemVariants}>
             <InvestmentDecision decision={investmentDecision} />
           </motion.div>
+          </div>
 
           {/* Section 13: Action Buttons */}
           <motion.div variants={itemVariants} className="pb-10 md:pb-16">
