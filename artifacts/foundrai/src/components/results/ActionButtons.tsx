@@ -27,7 +27,7 @@ export default function ActionButtons({ isDownloading, onDownload }: ActionButto
         disabled={isDownloading}
         size="lg"
         variant="outline"
-        className="w-full sm:w-auto h-14 px-8 text-base border-white/10 hover:bg-white/10 bg-black/20 backdrop-blur-md rounded-full text-white transition-all hover:scale-105 disabled:opacity-80 disabled:hover:scale-100"
+        className="w-full sm:w-auto h-14 px-8 text-base border-white/10 hover:bg-white/10 bg-black/20 backdrop-blur-md rounded-full text-white transition-all hover:scale-105 hover:shadow-[0_0_25px_rgba(255,255,255,0.12)] disabled:opacity-80 disabled:hover:scale-100"
       >
         {isDownloading ? (
           <>
@@ -37,7 +37,7 @@ export default function ActionButtons({ isDownloading, onDownload }: ActionButto
         ) : (
           <>
             <Download className="w-5 h-5 mr-2" />
-            Download Full Report
+            Download Investor Memo PDF
           </>
         )}
       </Button>
@@ -46,7 +46,7 @@ export default function ActionButtons({ isDownloading, onDownload }: ActionButto
         onClick={() => navigate("/dashboard")}
         size="lg"
         variant="outline"
-        className="w-full sm:w-auto h-14 px-8 text-base border-white/10 hover:bg-white/10 bg-black/20 backdrop-blur-md rounded-full text-white transition-all hover:scale-105"
+        className="w-full sm:w-auto h-14 px-8 text-base border-white/10 hover:bg-white/10 bg-black/20 backdrop-blur-md rounded-full text-white transition-all hover:scale-105 hover:shadow-[0_0_25px_rgba(255,255,255,0.12)]"
       >
         <LayoutDashboard className="w-5 h-5 mr-2" />
         Back to Dashboard

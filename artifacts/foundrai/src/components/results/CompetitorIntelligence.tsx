@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Swords } from "lucide-react";
+import { Swords, Crosshair } from "lucide-react";
 import { Competitor } from "@/lib/resultsIntelligence";
 
 const THREAT_COLORS: Record<Competitor["threat"], string> = {
@@ -19,29 +19,48 @@ export default function CompetitorIntelligence({ competitors }: CompetitorIntell
         <Swords className="w-5 h-5 text-secondary" />
         <h2 className="text-2xl font-bold text-white tracking-tight">Competitor Intelligence Matrix</h2>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {competitors.map((c, i) => (
-          <motion.div
-            key={i}
-            whileHover={{ y: -4 }}
-            className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl p-6 flex flex-col gap-4"
-          >
-            <div className="flex items-center justify-between">
-              <h3 className="text-lg font-bold text-white">{c.name}</h3>
-              <span className={`text-[10px] font-semibold uppercase tracking-wider px-2 py-1 rounded-full border ${THREAT_COLORS[c.threat]}`}>
-                {c.threat} Threat
-              </span>
-            </div>
-            <div>
-              <p className="text-[11px] uppercase tracking-widest text-white/40 mb-1">Strength</p>
-              <p className="text-sm text-white/80 leading-relaxed">{c.strength}</p>
-            </div>
-            <div>
-              <p className="text-[11px] uppercase tracking-widest text-white/40 mb-1">Weakness</p>
-              <p className="text-sm text-white/60 leading-relaxed">{c.weakness}</p>
-            </div>
-          </motion.div>
-        ))}
+      <div className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden">
+        <div className="hidden md:grid grid-cols-[1.2fr_1fr_1fr_0.8fr_0.8fr] gap-4 px-6 py-3 border-b border-white/10 bg-white/[0.02]">
+          <p className="text-[10px] font-semibold uppercase tracking-widest text-white/40">Competitor</p>
+          <p className="text-[10px] font-semibold uppercase tracking-widest text-white/40">Strength</p>
+          <p className="text-[10px] font-semibold uppercase tracking-widest text-white/40">Weakness</p>
+          <p className="text-[10px] font-semibold uppercase tracking-widest text-white/40">Position</p>
+          <p className="text-[10px] font-semibold uppercase tracking-widest text-white/40 text-right">Threat</p>
+        </div>
+        <div className="divide-y divide-white/5">
+          {competitors.map((c, i) => (
+            <motion.div
+              key={c.name}
+              initial={{ opacity: 0, y: 8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.07 }}
+              className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr_1fr_0.8fr_0.8fr] gap-2 md:gap-4 px-6 py-4 hover:bg-white/[0.02] transition-colors"
+            >
+              <div className="flex items-center gap-2">
+                <Crosshair className="w-3.5 h-3.5 text-secondary/70 shrink-0" />
+                <h3 className="text-sm font-bold text-white">{c.name}</h3>
+              </div>
+              <p className="text-xs md:text-sm text-white/70 leading-snug">
+                <span className="md:hidden text-white/40 uppercase text-[10px] tracking-wider mr-1">Strength:</span>
+                {c.strength}
+              </p>
+              <p className="text-xs md:text-sm text-white/50 leading-snug">
+                <span className="md:hidden text-white/40 uppercase text-[10px] tracking-wider mr-1">Weakness:</span>
+                {c.weakness}
+              </p>
+              <p className="text-xs md:text-sm text-white/60 font-medium">
+                <span className="md:hidden text-white/40 uppercase text-[10px] tracking-wider mr-1">Position:</span>
+                {c.position}
+              </p>
+              <div className="md:text-right">
+                <span className={`inline-block text-[10px] font-semibold uppercase tracking-wider px-2 py-1 rounded-full border ${THREAT_COLORS[c.threat]}`}>
+                  {c.threat}
+                </span>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </div>
   );

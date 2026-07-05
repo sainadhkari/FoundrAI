@@ -385,63 +385,64 @@ export interface Competitor {
   strength: string;
   weakness: string;
   threat: "High" | "Medium" | "Low";
+  position: string;
 }
 
 const COMPETITOR_MAP: Record<string, Competitor[]> = {
   edtech: [
-    { name: "Coursera", strength: "Strong brand and university partnerships", weakness: "Limited personalization", threat: "High" },
-    { name: "Udemy", strength: "Massive course catalog and low pricing", weakness: "Inconsistent content quality", threat: "Medium" },
-    { name: "UpGrad", strength: "Deep enterprise and cohort relationships", weakness: "Slower iteration on product", threat: "Medium" },
+    { name: "Coursera", strength: "Strong brand and university partnerships", weakness: "Limited personalization", threat: "High", position: "Market Leader" },
+    { name: "Udemy", strength: "Massive course catalog and low pricing", weakness: "Inconsistent content quality", threat: "Medium", position: "Challenger" },
+    { name: "UpGrad", strength: "Deep enterprise and cohort relationships", weakness: "Slower iteration on product", threat: "Medium", position: "Niche Player" },
   ],
   saas: [
-    { name: "Notion", strength: "Beloved product and strong virality", weakness: "Complex for narrow use cases", threat: "Medium" },
-    { name: "Airtable", strength: "Flexible data model, broad use cases", weakness: "Steep learning curve for teams", threat: "Medium" },
-    { name: "Monday", strength: "Strong enterprise sales motion", weakness: "Higher price point at scale", threat: "High" },
+    { name: "Notion", strength: "Beloved product and strong virality", weakness: "Complex for narrow use cases", threat: "Medium", position: "Challenger" },
+    { name: "Airtable", strength: "Flexible data model, broad use cases", weakness: "Steep learning curve for teams", threat: "Medium", position: "Challenger" },
+    { name: "Monday", strength: "Strong enterprise sales motion", weakness: "Higher price point at scale", threat: "High", position: "Market Leader" },
   ],
   "ai / ml": [
-    { name: "OpenAI", strength: "Best-in-class foundation models", weakness: "Not vertically specialized", threat: "High" },
-    { name: "Anthropic", strength: "Strong enterprise trust and safety focus", weakness: "Smaller ecosystem of integrations", threat: "Medium" },
-    { name: "Perplexity", strength: "Fast consumer adoption and UX", weakness: "Limited enterprise depth", threat: "Medium" },
+    { name: "OpenAI", strength: "Best-in-class foundation models", weakness: "Not vertically specialized", threat: "High", position: "Market Leader" },
+    { name: "Anthropic", strength: "Strong enterprise trust and safety focus", weakness: "Smaller ecosystem of integrations", threat: "Medium", position: "Challenger" },
+    { name: "Perplexity", strength: "Fast consumer adoption and UX", weakness: "Limited enterprise depth", threat: "Medium", position: "Niche Player" },
   ],
   fintech: [
-    { name: "Stripe", strength: "Best-in-class developer experience", weakness: "Premium pricing at scale", threat: "High" },
-    { name: "Plaid", strength: "Deep bank connectivity network", weakness: "Coverage gaps in some regions", threat: "Medium" },
-    { name: "Chime", strength: "Strong consumer brand loyalty", weakness: "Narrow product breadth", threat: "Medium" },
+    { name: "Stripe", strength: "Best-in-class developer experience", weakness: "Premium pricing at scale", threat: "High", position: "Market Leader" },
+    { name: "Plaid", strength: "Deep bank connectivity network", weakness: "Coverage gaps in some regions", threat: "Medium", position: "Challenger" },
+    { name: "Chime", strength: "Strong consumer brand loyalty", weakness: "Narrow product breadth", threat: "Medium", position: "Niche Player" },
   ],
   healthtech: [
-    { name: "Practo", strength: "Large provider network and brand trust", weakness: "Limited personalization of care", threat: "Medium" },
-    { name: "Teladoc", strength: "Scaled telehealth infrastructure", weakness: "High customer acquisition cost", threat: "High" },
-    { name: "Apollo 24/7", strength: "Integrated pharmacy and diagnostics", weakness: "Slower digital-first innovation", threat: "Medium" },
+    { name: "Practo", strength: "Large provider network and brand trust", weakness: "Limited personalization of care", threat: "Medium", position: "Challenger" },
+    { name: "Teladoc", strength: "Scaled telehealth infrastructure", weakness: "High customer acquisition cost", threat: "High", position: "Market Leader" },
+    { name: "Apollo 24/7", strength: "Integrated pharmacy and diagnostics", weakness: "Slower digital-first innovation", threat: "Medium", position: "Niche Player" },
   ],
   "e-commerce": [
-    { name: "Shopify", strength: "Dominant merchant ecosystem and apps", weakness: "Generic experience out of the box", threat: "High" },
-    { name: "Amazon", strength: "Unmatched logistics and reach", weakness: "Low margin, brand dilution", threat: "High" },
-    { name: "BigCommerce", strength: "Strong enterprise-grade features", weakness: "Smaller app ecosystem", threat: "Medium" },
+    { name: "Shopify", strength: "Dominant merchant ecosystem and apps", weakness: "Generic experience out of the box", threat: "High", position: "Market Leader" },
+    { name: "Amazon", strength: "Unmatched logistics and reach", weakness: "Low margin, brand dilution", threat: "High", position: "Market Leader" },
+    { name: "BigCommerce", strength: "Strong enterprise-grade features", weakness: "Smaller app ecosystem", threat: "Medium", position: "Challenger" },
   ],
   marketplace: [
-    { name: "Etsy", strength: "Strong niche community and trust", weakness: "High seller competition", threat: "Medium" },
-    { name: "Fiverr", strength: "Broad service categories, brand recall", weakness: "Race-to-the-bottom pricing", threat: "Medium" },
-    { name: "Upwork", strength: "Large buyer-side network effects", weakness: "High platform fees", threat: "High" },
+    { name: "Etsy", strength: "Strong niche community and trust", weakness: "High seller competition", threat: "Medium", position: "Niche Player" },
+    { name: "Fiverr", strength: "Broad service categories, brand recall", weakness: "Race-to-the-bottom pricing", threat: "Medium", position: "Challenger" },
+    { name: "Upwork", strength: "Large buyer-side network effects", weakness: "High platform fees", threat: "High", position: "Market Leader" },
   ],
   "consumer app": [
-    { name: "TikTok", strength: "Unmatched engagement and virality", weakness: "Regulatory scrutiny", threat: "High" },
-    { name: "Instagram", strength: "Massive existing user base", weakness: "Feature bloat, slower innovation", threat: "High" },
-    { name: "BeReal", strength: "Differentiated authentic-content niche", weakness: "Struggling with retention", threat: "Low" },
+    { name: "TikTok", strength: "Unmatched engagement and virality", weakness: "Regulatory scrutiny", threat: "High", position: "Market Leader" },
+    { name: "Instagram", strength: "Massive existing user base", weakness: "Feature bloat, slower innovation", threat: "High", position: "Market Leader" },
+    { name: "BeReal", strength: "Differentiated authentic-content niche", weakness: "Struggling with retention", threat: "Low", position: "Niche Player" },
   ],
   cybersecurity: [
-    { name: "CrowdStrike", strength: "Best-in-class threat intelligence", weakness: "Premium enterprise pricing", threat: "High" },
-    { name: "Okta", strength: "Dominant identity platform position", weakness: "Complex implementation", threat: "Medium" },
-    { name: "SentinelOne", strength: "Strong AI-driven detection", weakness: "Smaller partner ecosystem", threat: "Medium" },
+    { name: "CrowdStrike", strength: "Best-in-class threat intelligence", weakness: "Premium enterprise pricing", threat: "High", position: "Market Leader" },
+    { name: "Okta", strength: "Dominant identity platform position", weakness: "Complex implementation", threat: "Medium", position: "Challenger" },
+    { name: "SentinelOne", strength: "Strong AI-driven detection", weakness: "Smaller partner ecosystem", threat: "Medium", position: "Niche Player" },
   ],
   "enterprise software": [
-    { name: "Salesforce", strength: "Massive enterprise install base", weakness: "High cost and complexity", threat: "High" },
-    { name: "Microsoft", strength: "Deep enterprise bundling advantage", weakness: "Slower to innovate on UX", threat: "High" },
-    { name: "SAP", strength: "Entrenched in large enterprise ops", weakness: "Legacy architecture friction", threat: "Medium" },
+    { name: "Salesforce", strength: "Massive enterprise install base", weakness: "High cost and complexity", threat: "High", position: "Market Leader" },
+    { name: "Microsoft", strength: "Deep enterprise bundling advantage", weakness: "Slower to innovate on UX", threat: "High", position: "Market Leader" },
+    { name: "SAP", strength: "Entrenched in large enterprise ops", weakness: "Legacy architecture friction", threat: "Medium", position: "Challenger" },
   ],
   other: [
-    { name: "Established Incumbent", strength: "Strong brand recognition and trust", weakness: "Slower to innovate", threat: "Medium" },
-    { name: "Fast-Growing Startup", strength: "Agile product iteration", weakness: "Limited resources and reach", threat: "Medium" },
-    { name: "Adjacent Platform", strength: "Large existing user base", weakness: "Not purpose-built for this niche", threat: "Low" },
+    { name: "Established Incumbent", strength: "Strong brand recognition and trust", weakness: "Slower to innovate", threat: "Medium", position: "Market Leader" },
+    { name: "Fast-Growing Startup", strength: "Agile product iteration", weakness: "Limited resources and reach", threat: "Medium", position: "Challenger" },
+    { name: "Adjacent Platform", strength: "Large existing user base", weakness: "Not purpose-built for this niche", threat: "Low", position: "Niche Player" },
   ],
 };
 
@@ -535,32 +536,36 @@ export function getRiskMatrix(scores: DerivedScores): RiskMatrixItem[] {
 export interface RoadmapItem {
   period: string;
   title: string;
+  bullets: string[];
 }
 
 export function getRoadmap(verdict: string, recommendation: string): RoadmapItem[] {
   const v = (verdict || "").toLowerCase();
+  const finalBullet = recommendation
+    ? recommendation.replace(/\.$/, "")
+    : "Reassess viability with updated data";
 
   if (v.includes("proceed")) {
     return [
-      { period: "30 Days", title: "Ship an MVP focused on the single strongest use case and validate it with 10–15 target customers." },
-      { period: "90 Days", title: "Launch a paid pilot with early customers and instrument key retention and usage metrics." },
-      { period: "6 Months", title: "Scale customer acquisition through the highest-performing channel and refine pricing based on real usage." },
-      { period: "12 Months", title: recommendation || "Raise a funding round or reinvest revenue to expand the team and market footprint." },
+      { period: "30 Days", title: "Validate & Build", bullets: ["Validate core use case with 10–15 target customers", "Ship a focused MVP"] },
+      { period: "90 Days", title: "Launch & Learn", bullets: ["Launch a paid pilot with early customers", "Instrument retention and usage metrics"] },
+      { period: "6 Months", title: "Scale Acquisition", bullets: ["Double down on the highest-performing channel", "Refine pricing from real usage data"] },
+      { period: "12 Months", title: "Expand & Fund", bullets: [finalBullet, "Grow team and market footprint"] },
     ];
   }
   if (v.includes("pivot")) {
     return [
-      { period: "30 Days", title: "Re-interview target customers to isolate the sharpest, most urgent pain point worth solving." },
-      { period: "90 Days", title: "Prototype a narrower offering and test willingness to pay before rebuilding the full product." },
-      { period: "6 Months", title: "Re-launch with the refined positioning and measure early retention against the original model." },
-      { period: "12 Months", title: recommendation || "Reassess viability with updated market and financial data before scaling further." },
+      { period: "30 Days", title: "Re-Discover", bullets: ["Re-interview target customers", "Isolate the sharpest, most urgent pain point"] },
+      { period: "90 Days", title: "Re-Prototype", bullets: ["Prototype a narrower offering", "Test willingness to pay before rebuilding"] },
+      { period: "6 Months", title: "Re-Launch", bullets: ["Re-launch with refined positioning", "Measure retention vs. original model"] },
+      { period: "12 Months", title: "Reassess", bullets: [finalBullet, "Revisit go/no-go with fresh market data"] },
     ];
   }
   return [
-    { period: "30 Days", title: "Pause spend and run a rapid discovery sprint to re-validate the core assumptions." },
-    { period: "90 Days", title: "Explore adjacent problems or segments where signal is stronger before committing further." },
-    { period: "6 Months", title: "Reassess with fresh data; consider a full pivot or wind-down if signal remains weak." },
-    { period: "12 Months", title: recommendation || "Redirect resources toward a validated opportunity with clearer market pull." },
+    { period: "30 Days", title: "Pause & Diagnose", bullets: ["Pause spend on current direction", "Run a rapid discovery sprint"] },
+    { period: "90 Days", title: "Explore Adjacent", bullets: ["Explore adjacent problems or segments", "Look for stronger pull signal"] },
+    { period: "6 Months", title: "Re-Evaluate", bullets: ["Reassess with fresh data", "Consider full pivot or wind-down"] },
+    { period: "12 Months", title: "Redirect", bullets: [finalBullet, "Redirect resources to validated opportunity"] },
   ];
 }
 
@@ -599,4 +604,117 @@ export function verdictColor(verdict: string) {
   if (v.includes("proceed")) return TIER_COLORS.strong;
   if (v.includes("pivot")) return TIER_COLORS.moderate;
   return TIER_COLORS.risky;
+}
+
+/* ─────────────────────────────────────────────
+   Executive Snapshot
+───────────────────────────────────────────── */
+
+export type InvestmentGrade = "A" | "B+" | "B" | "C" | "D";
+
+export interface ExecutiveSnapshot {
+  opportunityLevel: "High" | "Moderate" | "Low";
+  riskLevel: "Low" | "Moderate" | "High";
+  investmentGrade: InvestmentGrade;
+  boardConfidencePercent: number;
+}
+
+export function gradeFromAverage(avg: number): InvestmentGrade {
+  if (avg > 8) return "A";
+  if (avg >= 7) return "B+";
+  if (avg >= 6) return "B";
+  if (avg >= 5) return "C";
+  return "D";
+}
+
+export const GRADE_COLORS: Record<InvestmentGrade, { text: string; bg: string; border: string; glow: string }> = {
+  A: { text: "text-emerald-400", bg: "bg-emerald-500/10", border: "border-emerald-500/25", glow: "rgba(16,185,129,0.3)" },
+  "B+": { text: "text-emerald-300", bg: "bg-emerald-500/10", border: "border-emerald-500/25", glow: "rgba(16,185,129,0.25)" },
+  B: { text: "text-amber-400", bg: "bg-amber-500/10", border: "border-amber-500/25", glow: "rgba(245,158,11,0.25)" },
+  C: { text: "text-orange-400", bg: "bg-orange-500/10", border: "border-orange-500/25", glow: "rgba(251,146,60,0.25)" },
+  D: { text: "text-rose-400", bg: "bg-rose-500/10", border: "border-rose-500/25", glow: "rgba(244,63,94,0.25)" },
+};
+
+export function getExecutiveSnapshot(scores: DerivedScores): ExecutiveSnapshot {
+  const avg = round1((scores.market + scores.competition + scores.financial + scores.growth + (10 - scores.risk)) / 5);
+  const opportunityLevel = scores.market >= 7.5 ? "High" : scores.market >= 5 ? "Moderate" : "Low";
+  const riskLevel = scores.risk >= 6.5 ? "High" : scores.risk >= 3.5 ? "Moderate" : "Low";
+  const investmentGrade = gradeFromAverage(avg);
+  const boardConfidencePercent = clamp(Math.round(scores.confidence * 10), 0, 100);
+  return { opportunityLevel, riskLevel, investmentGrade, boardConfidencePercent };
+}
+
+/* ─────────────────────────────────────────────
+   Radar chart data
+───────────────────────────────────────────── */
+
+export interface RadarPoint {
+  axis: string;
+  value: number;
+  fullMark: number;
+}
+
+export function getRadarData(scores: DerivedScores): RadarPoint[] {
+  return [
+    { axis: "Market", value: scores.market, fullMark: 10 },
+    { axis: "Competition", value: scores.competition, fullMark: 10 },
+    { axis: "Financial", value: scores.financial, fullMark: 10 },
+    { axis: "Risk", value: round1(10 - scores.risk), fullMark: 10 },
+    { axis: "Growth", value: scores.growth, fullMark: 10 },
+  ];
+}
+
+/* ─────────────────────────────────────────────
+   Startup DNA
+───────────────────────────────────────────── */
+
+export interface StartupDNA {
+  category: string;
+  stage: string;
+  riskProfile: string;
+  growthPotential: string;
+  fundability: string;
+  businessModel: string;
+}
+
+const BUSINESS_MODEL_MAP: Record<string, string> = {
+  edtech: "B2C / B2B Education",
+  saas: "B2B SaaS",
+  "ai / ml": "AI Platform / API",
+  fintech: "B2C Fintech",
+  healthtech: "B2B2C Healthtech",
+  "e-commerce": "D2C Commerce",
+  marketplace: "Two-Sided Marketplace",
+  "consumer app": "B2C Consumer",
+  cybersecurity: "B2B Security",
+  "enterprise software": "B2B Enterprise",
+  other: "Hybrid Model",
+};
+
+export function getStartupDNA(scores: DerivedScores, industry: string, timeline?: string): StartupDNA {
+  const ind = industry || "Emerging Tech";
+  const category = `${ind.charAt(0).toUpperCase()}${ind.slice(1)}`;
+
+  const t = (timeline || "").toLowerCase();
+  const stage =
+    t.includes("1-3") || t.includes("1–3")
+      ? "Idea Stage"
+      : scores.growth >= 7.5
+        ? "Growth Stage"
+        : scores.market >= 6.5 && scores.financial >= 6
+          ? "Early Stage"
+          : "Pre-Seed";
+
+  const riskProfile = scores.risk >= 6.5 ? "High Risk" : scores.risk >= 3.5 ? "Medium Risk" : "Low Risk";
+  const growthPotential = scores.growth >= 7.5 ? "High Growth" : scores.growth >= 5 ? "Moderate Growth" : "Slow Growth";
+  const fundability =
+    scores.financial >= 7.5 && scores.market >= 7
+      ? "Strong"
+      : scores.financial >= 5.5
+        ? "Fundable"
+        : "Needs Work";
+
+  const businessModel = BUSINESS_MODEL_MAP[(industry || "other").toLowerCase().trim()] ?? BUSINESS_MODEL_MAP.other;
+
+  return { category, stage, riskProfile, growthPotential, fundability, businessModel };
 }

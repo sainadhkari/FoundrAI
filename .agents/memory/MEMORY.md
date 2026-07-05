@@ -1,1 +1,2 @@
 - [Python service in pnpm monorepo](python-service-in-monorepo.md) — no Python/FastAPI artifact type exists; add it as an extra `[[services]]` block on an existing api artifact's artifact.toml instead.
+- [Verifying auth-gated pages with screenshot tool](results-dashboard-screenshot-verification.md) — seed localStorage via a temporary DEV-only query-param bootstrap in main.tsx, then revert it.

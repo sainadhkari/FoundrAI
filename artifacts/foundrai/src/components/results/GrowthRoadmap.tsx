@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Map } from "lucide-react";
+import { Map, ArrowRight } from "lucide-react";
 import { RoadmapItem } from "@/lib/resultsIntelligence";
 
 interface GrowthRoadmapProps {
@@ -18,16 +18,25 @@ export default function GrowthRoadmap({ items }: GrowthRoadmapProps) {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {items.map((item, i) => (
             <motion.div
-              key={i}
+              key={item.period}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="relative bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl p-6"
+              whileHover={{ y: -3 }}
+              className="relative bg-black/40 backdrop-blur-xl border border-white/10 hover:border-primary/25 rounded-2xl p-6 transition-colors"
             >
               <div className="hidden md:flex absolute -top-9 left-6 w-4 h-4 rounded-full bg-gradient-to-tr from-primary to-secondary shadow-[0_0_15px_rgba(0,255,255,0.5)]" />
-              <p className="text-xs font-bold uppercase tracking-widest text-primary mb-3">{item.period}</p>
-              <p className="text-sm text-white/80 leading-relaxed">{item.title}</p>
+              <p className="text-xs font-bold uppercase tracking-widest text-primary mb-1">{item.period}</p>
+              <p className="text-sm font-bold text-white mb-3">{item.title}</p>
+              <ul className="space-y-1.5">
+                {item.bullets.map((bullet, bi) => (
+                  <li key={bi} className="flex items-start gap-1.5 text-xs text-white/70 leading-relaxed">
+                    <ArrowRight className="w-3 h-3 text-secondary/70 mt-0.5 shrink-0" />
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
             </motion.div>
           ))}
         </div>

@@ -4,8 +4,11 @@ import { Link, useNavigate } from "react-router-dom";
 import UserAvatar from "@/components/UserAvatar";
 import { exportLongElementToPdf } from "@/lib/exportReport";
 import HeroHeader from "@/components/results/HeroHeader";
+import ExecutiveSnapshot from "@/components/results/ExecutiveSnapshot";
 import ExecutiveScoreCards from "@/components/results/ExecutiveScoreCards";
+import ScoreRadarChart from "@/components/results/ScoreRadarChart";
 import ScoreBreakdown from "@/components/results/ScoreBreakdown";
+import StartupDNA from "@/components/results/StartupDNA";
 import AgentInsights from "@/components/results/AgentInsights";
 import CompetitorIntelligence from "@/components/results/CompetitorIntelligence";
 import SwotMatrix from "@/components/results/SwotMatrix";
@@ -23,6 +26,7 @@ import {
   getRiskMatrix,
   getRoadmap,
   getInvestmentDecision,
+  getStartupDNA,
 } from "@/lib/resultsIntelligence";
 
 export default function Dashboard() {
@@ -76,6 +80,10 @@ export default function Dashboard() {
   const investmentDecision = useMemo(
     () => getInvestmentDecision(verdict, scores.confidence),
     [verdict, scores.confidence],
+  );
+  const startupDNA = useMemo(
+    () => getStartupDNA(scores, industry, verdict),
+    [scores, industry, verdict],
   );
 
   const containerVariants = {
@@ -135,57 +143,69 @@ export default function Dashboard() {
             <HeroHeader startupName={startupName} verdict={verdict} confidence={scores.confidence} />
           </motion.div>
 
-          {/* Section 2: Executive Score Cards */}
+          {/* Section 2: Executive Snapshot */}
           <motion.div variants={itemVariants}>
-            <ExecutiveScoreCards scores={scores} />
+            <ExecutiveSnapshot scores={scores} />
           </motion.div>
 
-          {/* Section 3: Score Breakdown */}
+          {/* Section 3: Score Cards + Radar */}
+          <motion.div variants={itemVariants} className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-6 items-stretch">
+            <ExecutiveScoreCards scores={scores} />
+            <ScoreRadarChart scores={scores} />
+          </motion.div>
+
+          {/* Section 4: Score Breakdown */}
           <motion.div variants={itemVariants}>
             <ScoreBreakdown scores={scores} startupName={startupName} industry={industry} />
           </motion.div>
 
-          {/* Section 4: AI Agent Insights */}
+          {/* Section 5: Startup DNA */}
+          <motion.div variants={itemVariants}>
+            <StartupDNA dna={startupDNA} />
+          </motion.div>
+
+          {/* Section 6: AI Agent Insights */}
           <motion.div variants={itemVariants}>
             <AgentInsights agents={agents} />
           </motion.div>
 
-          {/* Section 5: Competitor Intelligence */}
+          {/* Section 7: Competitor Intelligence */}
           <motion.div variants={itemVariants}>
             <CompetitorIntelligence competitors={competitors} />
           </motion.div>
 
-          {/* Section 6: SWOT Analysis */}
+          {/* Section 8: SWOT Analysis */}
           <motion.div variants={itemVariants}>
             <SwotMatrix swot={swot} />
           </motion.div>
 
-          {/* Section 7: Risk Matrix */}
+          {/* Section 9: Risk Matrix */}
           <motion.div variants={itemVariants}>
             <RiskMatrix items={riskMatrix} />
           </motion.div>
 
-          {/* Section 8: Growth Roadmap */}
+          {/* Section 10: Growth Roadmap */}
           <motion.div variants={itemVariants}>
             <GrowthRoadmap items={roadmap} />
           </motion.div>
 
-          {/* Section 9: Final CEO Verdict */}
+          {/* Section 11: Final CEO Verdict */}
           <motion.div variants={itemVariants}>
             <FinalVerdict
               verdict={verdict}
               confidence={scores.confidence}
               executiveSummary={executiveSummary}
               recommendation={recommendation}
+              scores={scores}
             />
           </motion.div>
 
-          {/* Section 10: Investment Decision */}
+          {/* Section 12: Investment Decision */}
           <motion.div variants={itemVariants}>
             <InvestmentDecision decision={investmentDecision} />
           </motion.div>
 
-          {/* Section 11: Action Buttons */}
+          {/* Section 13: Action Buttons */}
           <motion.div variants={itemVariants}>
             <ActionButtons isDownloading={isDownloading} onDownload={handleDownload} />
           </motion.div>

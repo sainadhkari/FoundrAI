@@ -18,7 +18,7 @@ interface ExecutiveScoreCardsProps {
 
 export default function ExecutiveScoreCards({ scores }: ExecutiveScoreCardsProps) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-5 h-full content-start">
       {ORDER.map((key) => {
         const value = scores[key];
         const tier = scoreTier(key, value);

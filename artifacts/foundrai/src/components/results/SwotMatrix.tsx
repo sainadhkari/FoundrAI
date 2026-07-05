@@ -1,31 +1,44 @@
 import { motion } from "framer-motion";
-import { CheckCircle2, Circle, Grid2x2 } from "lucide-react";
+import { CheckCircle2, AlertCircle, Lightbulb, Flame, Grid2x2 } from "lucide-react";
 import { SwotData } from "@/lib/resultsIntelligence";
 
 interface QuadrantProps {
   title: string;
   items: string[];
-  colors: { text: string; bg: string; border: string };
-  positive: boolean;
+  colors: { text: string; bg: string; border: string; glow: string };
+  icon: typeof CheckCircle2;
+  index: number;
 }
 
-function Quadrant({ title, items, colors, positive }: QuadrantProps) {
+function Quadrant({ title, items, colors, icon: Icon, index }: QuadrantProps) {
   return (
-    <div className={`bg-black/40 backdrop-blur-xl border ${colors.border} rounded-2xl p-6`}>
-      <h3 className={`text-sm font-bold uppercase tracking-wider mb-4 ${colors.text}`}>{title}</h3>
-      <ul className="space-y-2">
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.08 }}
+      whileHover={{ y: -3 }}
+      className={`relative overflow-hidden bg-black/40 backdrop-blur-xl border ${colors.border} rounded-2xl p-6`}
+    >
+      <div
+        className="absolute -top-8 -right-8 w-28 h-28 rounded-full blur-2xl opacity-40"
+        style={{ backgroundColor: colors.glow }}
+      />
+      <div className="relative z-10 flex items-center gap-2 mb-4">
+        <div className={`w-8 h-8 rounded-lg ${colors.bg} border ${colors.border} flex items-center justify-center`}>
+          <Icon className={`w-4 h-4 ${colors.text}`} />
+        </div>
+        <h3 className={`text-sm font-bold uppercase tracking-wider ${colors.text}`}>{title}</h3>
+      </div>
+      <ul className="relative z-10 space-y-2">
         {items.map((item, i) => (
           <li key={i} className="flex items-start gap-2 text-sm text-white/80">
-            {positive ? (
-              <CheckCircle2 className={`w-4 h-4 mt-0.5 shrink-0 ${colors.text}`} />
-            ) : (
-              <Circle className={`w-2.5 h-2.5 mt-1.5 shrink-0 fill-current ${colors.text}`} />
-            )}
+            <span className={`mt-1.5 w-1.5 h-1.5 rounded-full shrink-0 ${colors.bg} border ${colors.border}`} />
             <span>{item}</span>
           </li>
         ))}
       </ul>
-    </div>
+    </motion.div>
   );
 }
 
@@ -44,26 +57,30 @@ export default function SwotMatrix({ swot }: SwotMatrixProps) {
         <Quadrant
           title="Strengths"
           items={swot.strengths}
-          colors={{ text: "text-emerald-400", bg: "bg-emerald-500/10", border: "border-emerald-500/25" }}
-          positive
+          icon={CheckCircle2}
+          index={0}
+          colors={{ text: "text-emerald-400", bg: "bg-emerald-500/10", border: "border-emerald-500/25", glow: "rgba(16,185,129,0.25)" }}
         />
         <Quadrant
           title="Weaknesses"
           items={swot.weaknesses}
-          colors={{ text: "text-rose-400", bg: "bg-rose-500/10", border: "border-rose-500/25" }}
-          positive={false}
+          icon={AlertCircle}
+          index={1}
+          colors={{ text: "text-rose-400", bg: "bg-rose-500/10", border: "border-rose-500/25", glow: "rgba(244,63,94,0.25)" }}
         />
         <Quadrant
           title="Opportunities"
           items={swot.opportunities}
-          colors={{ text: "text-primary", bg: "bg-primary/10", border: "border-primary/25" }}
-          positive
+          icon={Lightbulb}
+          index={2}
+          colors={{ text: "text-blue-400", bg: "bg-blue-500/10", border: "border-blue-500/25", glow: "rgba(59,130,246,0.25)" }}
         />
         <Quadrant
           title="Threats"
           items={swot.threats}
-          colors={{ text: "text-amber-400", bg: "bg-amber-500/10", border: "border-amber-500/25" }}
-          positive={false}
+          icon={Flame}
+          index={3}
+          colors={{ text: "text-amber-400", bg: "bg-amber-500/10", border: "border-amber-500/25", glow: "rgba(245,158,11,0.25)" }}
         />
       </div>
     </div>
