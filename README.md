@@ -356,10 +356,8 @@ uvicorn main:app --reload
 
 # 👨‍💻 Team
 
-Built for Hackathon 🚀
-
-Team FoundrAI
-
+Sainadh Kari
+Saicharan Vanam
 ---
 
 # ⭐ Vision
