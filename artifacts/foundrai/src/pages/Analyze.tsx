@@ -40,11 +40,7 @@ import {
    Static config
 ───────────────────────────────────────────────────────── */
 
-const CREW_BASE = "https://foundrai-v1-20176eef-a04a-4d7f-9816-203e5ce-5c27ac9a.crewai.com";
-const CREW_HEADERS = {
-  "Content-Type": "application/json",
-  "Authorization": "Bearer 26d3cda973f2",
-};
+const CREW_PROXY_BASE = "/api/crewai";
 
 const STEPS = [
   { id: 1, label: "Setup" },
@@ -190,9 +186,9 @@ export default function Analyze() {
     setAgentsActive(true);
 
     try {
-      const kickoffRes = await fetch(`${CREW_BASE}/kickoff`, {
+      const kickoffRes = await fetch(`${CREW_PROXY_BASE}/kickoff`, {
         method: "POST",
-        headers: CREW_HEADERS,
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           inputs: {
             startup_name: formData.name,
@@ -210,9 +206,7 @@ export default function Analyze() {
 
       const intervalId = setInterval(async () => {
         try {
-          const pollRes = await fetch(`${CREW_BASE}/status/${kickoff_id}`, {
-            headers: CREW_HEADERS,
-          });
+          const pollRes = await fetch(`${CREW_PROXY_BASE}/status/${kickoff_id}`);
           if (!pollRes.ok) throw new Error("Polling failed");
           const pollData = await pollRes.json();
           const done =
