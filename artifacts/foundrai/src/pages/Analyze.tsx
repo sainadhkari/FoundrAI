@@ -219,7 +219,14 @@ export default function Analyze() {
             clearInterval(intervalId);
             const raw = pollData.result ?? pollData.result_json ?? pollData;
             const result = typeof raw === "string" ? JSON.parse(raw) : raw;
-            localStorage.setItem("foundrai_results", JSON.stringify(result));
+            const enrichedResult = {
+              ...result,
+              startup_name: result.startup_name ?? formData.name,
+              industry: result.industry ?? formData.industry,
+              budget: result.budget ?? formData.budget,
+              timeline: result.timeline ?? formData.timeline,
+            };
+            localStorage.setItem("foundrai_results", JSON.stringify(enrichedResult));
             setIsSubmitting(false);
             setIsSuccess(true);
             setTimeout(() => {

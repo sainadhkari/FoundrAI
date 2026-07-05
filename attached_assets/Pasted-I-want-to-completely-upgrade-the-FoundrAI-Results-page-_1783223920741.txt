@@ -1,0 +1,413 @@
+I want to completely upgrade the FoundrAI Results page.
+
+Current results page is too generic.
+It looks visually decent but does not feel like a real AI boardroom or investor-grade analysis platform.
+
+I want the Results page to feel like:
+
+Sequoia investment memo
+Y Combinator startup evaluation dashboard
+McKinsey strategy boardroom report
+Premium AI executive analysis tool
+
+Keep the existing FoundrAI design system:
+
+Dark theme
+Cyan + blue + purple gradients
+Premium glass cards
+Futuristic AI boardroom aesthetic
+Smooth animations
+
+DO NOT break current routing or existing API integration.
+
+Current API already returns:
+
+startup_name
+market_score
+competition_score
+financial_score
+risk_score
+growth_score
+verdict
+confidence
+recommendation
+executive_summary
+
+Use these existing fields where possible and intelligently derive extra sections from them.
+
+GOALS
+
+Transform results page from:
+simple dashboard + verdict
+
+Into:
+deep investor-grade startup intelligence report
+
+PAGE STRUCTURE
+
+Rebuild results page into these sections.
+
+SECTION 1 — HERO HEADER
+
+At top of page show premium summary header.
+
+Example layout:
+
+PROJECT NOVA / {startup_name}
+
+Startup Analysis Results
+
+Analysis complete by FoundrAI Executive Boardroom
+
+Status badge:
+ANALYSIS COMPLETE
+
+Show:
+
+startup name
+verdict
+confidence score
+
+Example:
+
+Startup: EduAI
+Verdict: PROCEED
+Confidence: 8/10
+
+Add glowing premium card design.
+
+SECTION 2 — EXECUTIVE SCORE CARDS
+
+Keep score cards but improve them.
+
+Show:
+
+Market Score
+Competition Score
+Financial Score
+Risk Score
+Growth Score
+
+Each card should have:
+
+icon
+score
+short label
+color coding
+
+Color system:
+Green = strong
+Yellow = moderate
+Red = risky
+Blue = neutral
+
+Example:
+Market 8/10
+Competition 6/10
+Financial 5/10
+Risk 7/10
+Growth 9/10
+
+Add hover animations.
+
+SECTION 3 — SCORE BREAKDOWN (NEW)
+
+This is very important.
+
+Under score cards add detailed breakdown cards.
+
+Each score must explain WHY that score was given.
+
+Create 5 cards:
+
+Market Opportunity Breakdown
+Competition Breakdown
+Financial Breakdown
+Risk Breakdown
+Growth Breakdown
+
+Each card should include:
+
+score
+3 strengths
+2 concerns
+
+Example:
+
+Market Opportunity — 8/10
+
+Strengths:
+✓ Large addressable market
+✓ Growing demand for AI solutions
+✓ Strong customer pain point
+
+Concerns:
+• Slow enterprise sales cycles
+• Adoption barriers in traditional sectors
+
+Use generated intelligent reasoning based on scores + executive summary.
+
+DO NOT hardcode generic text.
+
+Make reasoning dynamic.
+
+SECTION 4 — AI AGENT INSIGHTS (UPGRADE)
+
+Current agent insights are weak.
+
+Upgrade all 5 AI agents.
+
+Show cards for:
+
+Market Agent
+Competitor Agent
+Finance Agent
+Risk Agent
+CEO Agent
+
+Each card should contain:
+
+agent icon
+agent title
+2–4 sentence insight
+status badge
+
+Example:
+
+Market Agent:
+The market shows strong growth potential driven by rising demand for AI-native solutions. Early adoption indicators are favorable, particularly among digital-first organizations.
+
+Competitor Agent:
+Competition is moderate with several established players. However, differentiation opportunities exist through niche specialization and better execution.
+
+These insights must feel smart and detailed.
+
+SECTION 5 — COMPETITOR INTELLIGENCE (NEW)
+
+Add new premium section.
+
+Title:
+Competitor Intelligence Matrix
+
+Show top 3 competitors based on startup industry.
+
+Example if EdTech:
+
+Coursera
+Udemy
+UpGrad
+
+Example if SaaS:
+
+Notion
+Airtable
+Monday
+
+Example if HealthTech:
+
+Practo
+Teladoc
+Apollo 24/7
+
+Display as cards or table:
+
+Competitor
+Strength
+Weakness
+Threat Level
+
+Example:
+
+Coursera
+Strong brand and university partnerships
+Limited personalization
+High Threat
+
+Need intelligent competitor selection based on industry.
+
+SECTION 6 — SWOT ANALYSIS (NEW)
+
+Add premium SWOT matrix.
+
+4 quadrants:
+
+Strengths
+Weaknesses
+Opportunities
+Threats
+
+Each quadrant contains 3–5 bullet points.
+
+Example:
+
+Strengths:
+✓ Strong problem-solution fit
+✓ Scalable AI infrastructure
+
+Weaknesses:
+• Limited runway
+• Small team
+
+Opportunities:
+✓ Growing AI adoption
+✓ Underserved niche market
+
+Threats:
+• Strong incumbents
+• Market saturation
+
+Generate dynamically from analysis scores.
+
+SECTION 7 — RISK MATRIX (NEW)
+
+Add visual risk assessment.
+
+Show 4 risk bars:
+
+Technical Risk
+Market Risk
+Financial Risk
+Execution Risk
+
+Display:
+Low / Medium / High
+
+Use progress bars with colors.
+
+Example:
+Technical Risk → Medium
+Market Risk → Low
+Financial Risk → High
+Execution Risk → Medium
+
+Use risk_score to derive this.
+
+SECTION 8 — GROWTH ROADMAP (NEW)
+
+Add startup roadmap timeline.
+
+Show:
+30 Days
+90 Days
+6 Months
+12 Months
+
+Example:
+
+30 Days:
+Build MVP and validate early assumptions
+
+90 Days:
+Launch pilot with first customers
+
+6 Months:
+Scale customer acquisition and retention
+
+12 Months:
+Raise funding and expand operations
+
+Generate dynamically based on verdict + recommendation.
+
+SECTION 9 — FINAL CEO VERDICT (UPGRADE)
+
+Current verdict section is decent but needs stronger impact.
+
+Make this premium centerpiece.
+
+Large glowing card.
+
+Show:
+
+verdict
+confidence
+executive summary
+recommendation
+
+Add verdict color:
+PROCEED = Green
+PIVOT = Yellow
+REJECT = Red
+
+Format:
+
+FINAL CEO VERDICT
+PROCEED
+Confidence: 8/10
+
+Reasoning:
+{executive_summary}
+
+Strategic Recommendation:
+{recommendation}
+
+SECTION 10 — INVESTMENT DECISION (NEW)
+
+Add final investor-style decision card.
+
+Show one:
+
+INVEST
+WATCH
+PASS
+
+Mapping:
+Proceed + confidence >=7 → INVEST
+Pivot → WATCH
+Reject → PASS
+
+Example:
+Investor Decision: WATCH
+
+Add reasoning sentence.
+
+SECTION 11 — ACTION BUTTONS
+
+Bottom buttons:
+
+Analyze Another Startup
+Download Full Report
+Back to Dashboard
+
+Keep existing routing.
+
+DESIGN REQUIREMENTS
+
+Must feel premium and polished.
+
+Add:
+
+smooth fade-in animations
+hover effects
+glowing cards
+subtle gradients
+clean spacing
+better typography
+
+Page should feel expensive.
+
+RESPONSIVE
+
+Must work perfectly on:
+
+desktop
+tablet
+mobile
+
+No broken layout.
+No overflow.
+No weird spacing.
+
+IMPORTANT
+
+Do NOT remove existing working API integration.
+
+Keep current data loading from localStorage:
+foundrai_results
+
+Only upgrade UI, layout, intelligence, and derived analysis sections.
+
+Make all sections dynamic from analysis data.
+
+No placeholder content.
+
+Implement fully.
