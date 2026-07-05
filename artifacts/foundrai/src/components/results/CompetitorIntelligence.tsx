@@ -15,12 +15,12 @@ interface CompetitorIntelligenceProps {
 export default function CompetitorIntelligence({ competitors }: CompetitorIntelligenceProps) {
   return (
     <div>
-      <div className="flex items-center gap-3 mb-6">
+      <div className="flex items-center gap-3 mb-5">
         <Swords className="w-5 h-5 text-secondary" />
-        <h2 className="text-2xl font-bold text-white tracking-tight">Competitor Intelligence Matrix</h2>
+        <h2 className="text-xl font-bold text-white tracking-tight">Competitor Intelligence Matrix</h2>
       </div>
-      <div className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden">
-        <div className="hidden md:grid grid-cols-[1.2fr_1fr_1fr_0.8fr_0.8fr] gap-4 px-6 py-3 border-b border-white/10 bg-white/[0.02]">
+      <div className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl overflow-x-auto">
+        <div className="hidden md:grid grid-cols-[1.2fr_1fr_1fr_0.8fr_0.8fr] gap-4 px-6 py-2.5 border-b border-white/10 bg-white/[0.02] min-w-[640px]">
           <p className="text-[10px] font-semibold uppercase tracking-widest text-white/40">Competitor</p>
           <p className="text-[10px] font-semibold uppercase tracking-widest text-white/40">Strength</p>
           <p className="text-[10px] font-semibold uppercase tracking-widest text-white/40">Weakness</p>
@@ -35,7 +35,7 @@ export default function CompetitorIntelligence({ competitors }: CompetitorIntell
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.07 }}
-              className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr_1fr_0.8fr_0.8fr] gap-2 md:gap-4 px-6 py-4 hover:bg-white/[0.02] transition-colors"
+              className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr_1fr_0.8fr_0.8fr] gap-1.5 md:gap-4 px-6 py-3 hover:bg-white/[0.02] transition-colors min-w-[640px] md:min-w-0"
             >
               <div className="flex items-center gap-2">
                 <Crosshair className="w-3.5 h-3.5 text-secondary/70 shrink-0" />

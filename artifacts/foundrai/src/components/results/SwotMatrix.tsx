@@ -18,21 +18,21 @@ function Quadrant({ title, items, colors, icon: Icon, index }: QuadrantProps) {
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.08 }}
       whileHover={{ y: -3 }}
-      className={`relative overflow-hidden bg-black/40 backdrop-blur-xl border ${colors.border} rounded-2xl p-6`}
+      className={`relative overflow-hidden bg-black/40 backdrop-blur-xl border ${colors.border} rounded-2xl p-4 h-full`}
     >
       <div
-        className="absolute -top-8 -right-8 w-28 h-28 rounded-full blur-2xl opacity-40"
+        className="absolute -top-8 -right-8 w-24 h-24 rounded-full blur-2xl opacity-40"
         style={{ backgroundColor: colors.glow }}
       />
-      <div className="relative z-10 flex items-center gap-2 mb-4">
-        <div className={`w-8 h-8 rounded-lg ${colors.bg} border ${colors.border} flex items-center justify-center`}>
-          <Icon className={`w-4 h-4 ${colors.text}`} />
+      <div className="relative z-10 flex items-center gap-2 mb-2.5">
+        <div className={`w-7 h-7 rounded-lg ${colors.bg} border ${colors.border} flex items-center justify-center shrink-0`}>
+          <Icon className={`w-3.5 h-3.5 ${colors.text}`} />
         </div>
-        <h3 className={`text-sm font-bold uppercase tracking-wider ${colors.text}`}>{title}</h3>
+        <h3 className={`text-xs font-bold uppercase tracking-wider ${colors.text}`}>{title}</h3>
       </div>
-      <ul className="relative z-10 space-y-2">
+      <ul className="relative z-10 space-y-1.5">
         {items.map((item, i) => (
-          <li key={i} className="flex items-start gap-2 text-sm text-white/80">
+          <li key={i} className="flex items-start gap-2 text-sm text-white/80 leading-snug">
             <span className={`mt-1.5 w-1.5 h-1.5 rounded-full shrink-0 ${colors.bg} border ${colors.border}`} />
             <span>{item}</span>
           </li>
@@ -49,11 +49,11 @@ interface SwotMatrixProps {
 export default function SwotMatrix({ swot }: SwotMatrixProps) {
   return (
     <div>
-      <div className="flex items-center gap-3 mb-6">
+      <div className="flex items-center gap-3 mb-5">
         <Grid2x2 className="w-5 h-5 text-primary" />
-        <h2 className="text-2xl font-bold text-white tracking-tight">SWOT Analysis</h2>
+        <h2 className="text-xl font-bold text-white tracking-tight">SWOT Analysis</h2>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-stretch">
         <Quadrant
           title="Strengths"
           items={swot.strengths}

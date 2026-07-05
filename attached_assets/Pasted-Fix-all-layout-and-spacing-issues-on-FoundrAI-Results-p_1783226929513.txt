@@ -1,0 +1,187 @@
+Fix all layout and spacing issues on FoundrAI Results page.
+
+The page is visually strong but still has UI/UX issues that make it feel unpolished.
+
+Do NOT change theme or design system.
+Keep:
+
+dark futuristic theme
+glow cards
+gradients
+premium style
+
+Only fix layout, spacing, responsiveness, and visual polish.
+
+ISSUE 1 — GROWTH ROADMAP BROKEN
+
+Current problems:
+
+timeline dots overlap headings
+heading text mixed with card borders
+inconsistent card heights
+roadmap text too long
+12 months card much taller than other cards
+
+Fix completely.
+
+Requirements:
+
+Make roadmap section clean and premium
+Use 4 equal-width cards in desktop
+Use stacked cards in mobile
+All cards must have equal height
+Timeline dots should sit ABOVE cards with proper spacing
+No overlap with headings
+Reduce content inside each roadmap card
+
+Each roadmap card should contain:
+
+timeline title
+max 3 bullet points
+
+Example:
+
+30 Days
+• Validate demand
+• Build MVP
+• Customer discovery
+
+90 Days
+• Launch pilot
+• Get early users
+• Collect feedback
+
+Do not allow long paragraphs.
+
+This section should look clean and elegant.
+
+ISSUE 2 — REMOVE HUGE EMPTY SPACE AT BOTTOM
+
+Current problem:
+There is massive empty space below action buttons.
+
+Likely caused by:
+
+excessive bottom padding
+min-height issue
+unnecessary spacer div
+flex layout issue
+
+Fix:
+
+Remove all unnecessary bottom spacing
+Results page should end naturally after buttons/footer
+Footer should sit right below buttons with proper spacing
+
+Target:
+Only 40–80px bottom spacing after buttons.
+
+No huge blank section.
+
+ISSUE 3 — REDUCE OVERALL PAGE HEIGHT
+
+Results page still requires too much scrolling.
+
+Need reduce total page height by 20–25%.
+
+Optimize spacing in:
+
+AI insights
+SWOT
+Risk Matrix
+Growth Roadmap
+Verdict section
+
+Fix:
+
+Reduce vertical padding
+Reduce card gaps
+Reduce section margins
+Compact layouts
+
+Goal:
+More information visible with less scrolling.
+
+ISSUE 4 — IMPROVE AI INSIGHTS SECTION
+
+Current issues:
+
+cards too tall
+too much empty vertical spacing
+
+Fix:
+
+Reduce card height
+Reduce padding
+Make cards more compact
+Improve spacing between cards
+
+Keep expand/collapse.
+
+Collapsed state should be compact.
+
+ISSUE 5 — IMPROVE SWOT SECTION
+
+Current issue:
+Cards slightly oversized.
+
+Fix:
+
+reduce padding
+better spacing
+equal height cards
+
+Make SWOT more compact.
+
+ISSUE 6 — IMPROVE CEO VERDICT SECTION
+
+Current verdict card is good but too tall.
+
+Fix:
+
+Reduce vertical padding by 20%
+Compress reasoning section
+Compress recommendation section
+
+Still premium.
+Just less tall.
+
+ISSUE 7 — BETTER MOBILE RESPONSIVENESS
+
+Results page must look perfect on mobile.
+
+Requirements:
+
+no overlapping
+no broken cards
+no overflow
+proper spacing
+readable text
+
+Specific:
+
+roadmap stack vertically on mobile
+SWOT becomes 1 column on mobile
+competitor table scrolls nicely
+buttons stack on mobile
+ISSUE 8 — FINAL POLISH
+
+Apply overall UI polish:
+
+consistent spacing
+consistent margins
+consistent card heights
+better section balance
+
+Goal:
+Make page feel polished and production-ready.
+
+Focus heavily on:
+
+spacing
+alignment
+responsiveness
+compact premium layout
+
+Do not modify API logic.
+Only improve UI layout and polish.

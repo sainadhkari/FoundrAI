@@ -28,7 +28,7 @@ export default function FinalVerdict({ verdict, confidence, executiveSummary, re
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="relative overflow-hidden bg-black border border-white/10 rounded-3xl p-8 md:p-14 shadow-[0_0_80px_rgba(0,0,0,0.5)]"
+      className="relative overflow-hidden bg-black border border-white/10 rounded-3xl p-6 md:p-11 shadow-[0_0_80px_rgba(0,0,0,0.5)]"
     >
       <div
         className="absolute inset-0 pointer-events-none opacity-25"
@@ -42,38 +42,38 @@ export default function FinalVerdict({ verdict, confidence, executiveSummary, re
       />
 
       <div className="relative z-10 flex flex-col items-center text-center">
-        <div className={`w-16 h-16 rounded-2xl ${colors.bg} flex items-center justify-center border ${colors.border} mb-6`}>
-          <Crown className={`w-8 h-8 ${colors.text}`} />
+        <div className={`w-14 h-14 rounded-2xl ${colors.bg} flex items-center justify-center border ${colors.border} mb-4`}>
+          <Crown className={`w-7 h-7 ${colors.text}`} />
         </div>
-        <h2 className="text-xs font-bold text-white/50 uppercase tracking-[0.35em] mb-4">Final CEO Verdict</h2>
+        <h2 className="text-xs font-bold text-white/50 uppercase tracking-[0.35em] mb-3">Final CEO Verdict</h2>
         <div
-          className={`text-5xl md:text-8xl font-black mb-6 bg-gradient-to-r ${colors.gradient} text-transparent bg-clip-text drop-shadow-[0_0_30px_rgba(255,255,255,0.1)] tracking-tight`}
+          className={`text-4xl md:text-7xl font-black mb-5 bg-gradient-to-r ${colors.gradient} text-transparent bg-clip-text drop-shadow-[0_0_30px_rgba(255,255,255,0.1)] tracking-tight`}
         >
           {(verdict || "PROCEED").toUpperCase()}
         </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-4 mb-10">
-          <div className="flex items-center gap-3 bg-black/50 border border-white/10 rounded-2xl px-5 py-3">
+        <div className="flex flex-wrap items-center justify-center gap-3 mb-7">
+          <div className="flex items-center gap-3 bg-black/50 border border-white/10 rounded-2xl px-4 py-2.5">
             <p className="text-[10px] uppercase tracking-widest text-white/40">Confidence</p>
-            <p className="text-lg font-black text-white font-mono">{confidence}/10</p>
+            <p className="text-base font-black text-white font-mono">{confidence}/10</p>
           </div>
-          <div className={`flex items-center gap-3 border rounded-2xl px-5 py-3 ${gradeColors.bg} ${gradeColors.border}`}>
+          <div className={`flex items-center gap-3 border rounded-2xl px-4 py-2.5 ${gradeColors.bg} ${gradeColors.border}`}>
             <p className="text-[10px] uppercase tracking-widest text-white/40">Investment Grade</p>
-            <p className={`text-lg font-black font-mono ${gradeColors.text}`}>{grade}</p>
+            <p className={`text-base font-black font-mono ${gradeColors.text}`}>{grade}</p>
           </div>
-          <div className={`flex items-center gap-3 border rounded-2xl px-5 py-3 ${colors.bg} ${colors.border}`}>
+          <div className={`flex items-center gap-3 border rounded-2xl px-4 py-2.5 ${colors.bg} ${colors.border}`}>
             <p className="text-[10px] uppercase tracking-widest text-white/40">Board Recommendation</p>
-            <p className={`text-lg font-black uppercase ${colors.text}`}>{(verdict || "PROCEED").toUpperCase()}</p>
+            <p className={`text-base font-black uppercase ${colors.text}`}>{(verdict || "PROCEED").toUpperCase()}</p>
           </div>
         </div>
 
-        <div className="max-w-3xl w-full space-y-6 bg-black/40 backdrop-blur-md border border-white/5 p-6 md:p-8 rounded-2xl text-left">
+        <div className="max-w-3xl w-full space-y-4 bg-black/40 backdrop-blur-md border border-white/5 p-5 md:p-6 rounded-2xl text-left">
           <div>
-            <h4 className="text-xs font-semibold text-white/50 uppercase tracking-widest mb-3">Reasoning</h4>
-            <ul className="space-y-2">
+            <h4 className="text-xs font-semibold text-white/50 uppercase tracking-widest mb-2">Reasoning</h4>
+            <ul className="space-y-1.5">
               {reasoningPoints.map((point, i) => (
-                <li key={i} className="flex items-start gap-2 text-base text-white/90 leading-relaxed">
-                  <CheckCircle2 className="w-4 h-4 text-primary mt-1 shrink-0" />
+                <li key={i} className="flex items-start gap-2 text-sm text-white/90 leading-relaxed">
+                  <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 shrink-0" />
                   <span>{point}</span>
                 </li>
               ))}
@@ -81,11 +81,11 @@ export default function FinalVerdict({ verdict, confidence, executiveSummary, re
           </div>
           <div className="h-px w-full bg-white/5" />
           <div>
-            <h4 className="text-xs font-semibold text-white/50 uppercase tracking-widest mb-2">
+            <h4 className="text-xs font-semibold text-white/50 uppercase tracking-widest mb-1.5">
               Strategic Recommendation
             </h4>
-            <p className={`flex items-start gap-2 text-lg leading-relaxed font-medium ${colors.text}`}>
-              <ArrowRight className="w-5 h-5 mt-1 shrink-0" />
+            <p className={`flex items-start gap-2 text-base leading-relaxed font-medium ${colors.text}`}>
+              <ArrowRight className="w-4 h-4 mt-1 shrink-0" />
               <span>{recommendation}</span>
             </p>
           </div>

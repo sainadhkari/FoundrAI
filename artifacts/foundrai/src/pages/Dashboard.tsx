@@ -102,7 +102,7 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="min-h-[100dvh] w-full bg-[#050508] text-foreground selection:bg-primary/30 overflow-x-hidden relative pb-24">
+    <div className="min-h-[100dvh] w-full bg-[#050508] text-foreground selection:bg-primary/30 overflow-x-hidden relative">
       {/* Background Elements */}
       <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f3e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f3e_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_20%,#000_100%,transparent_110%)]" />
@@ -131,12 +131,12 @@ export default function Dashboard() {
         </div>
       </header>
 
-      <main className="relative z-10 container max-w-6xl mx-auto px-6 py-12">
+      <main className="relative z-10 container max-w-6xl mx-auto px-6 py-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="space-y-20"
+          className="space-y-12 md:space-y-14"
         >
           {/* Section 1: Hero Header */}
           <motion.div variants={itemVariants}>
@@ -206,7 +206,7 @@ export default function Dashboard() {
           </motion.div>
 
           {/* Section 13: Action Buttons */}
-          <motion.div variants={itemVariants}>
+          <motion.div variants={itemVariants} className="pb-10 md:pb-16">
             <ActionButtons isDownloading={isDownloading} onDownload={handleDownload} />
           </motion.div>
         </motion.div>

@@ -18,11 +18,11 @@ export default function StartupDNA({ dna }: StartupDNAProps) {
 
   return (
     <div>
-      <div className="flex items-center gap-3 mb-6">
+      <div className="flex items-center gap-3 mb-5">
         <Dna className="w-5 h-5 text-secondary" />
-        <h2 className="text-2xl font-bold text-white tracking-tight">Startup DNA</h2>
+        <h2 className="text-xl font-bold text-white tracking-tight">Startup DNA</h2>
       </div>
-      <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
         {cards.map((card, i) => {
           const Icon = card.icon;
           return (
@@ -33,15 +33,15 @@ export default function StartupDNA({ dna }: StartupDNAProps) {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.06 }}
               whileHover={{ y: -3 }}
-              className="bg-black/40 backdrop-blur-xl border border-white/10 hover:border-secondary/25 rounded-2xl p-5 transition-colors"
+              className="bg-black/40 backdrop-blur-xl border border-white/10 hover:border-secondary/25 rounded-2xl p-4 transition-colors"
             >
-              <div className="flex items-center gap-2 mb-2">
-                <div className="w-8 h-8 rounded-lg bg-secondary/10 border border-secondary/20 flex items-center justify-center shrink-0">
-                  <Icon className="w-4 h-4 text-secondary" />
+              <div className="flex items-center gap-2 mb-1.5">
+                <div className="w-7 h-7 rounded-lg bg-secondary/10 border border-secondary/20 flex items-center justify-center shrink-0">
+                  <Icon className="w-3.5 h-3.5 text-secondary" />
                 </div>
                 <p className="text-[10px] font-semibold uppercase tracking-widest text-white/40">{card.label}</p>
               </div>
-              <p className="text-lg font-bold text-white">{card.value}</p>
+              <p className="text-base font-bold text-white">{card.value}</p>
             </motion.div>
           );
         })}

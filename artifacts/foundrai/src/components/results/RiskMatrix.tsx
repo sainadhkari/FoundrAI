@@ -15,12 +15,12 @@ interface RiskMatrixProps {
 export default function RiskMatrix({ items }: RiskMatrixProps) {
   return (
     <div>
-      <div className="flex items-center gap-3 mb-6">
+      <div className="flex items-center gap-3 mb-5">
         <Gauge className="w-5 h-5 text-rose-400" />
-        <h2 className="text-2xl font-bold text-white tracking-tight">Risk Matrix</h2>
+        <h2 className="text-xl font-bold text-white tracking-tight">Risk Matrix</h2>
       </div>
-      <div className="bg-[#0a0a0f]/80 backdrop-blur-2xl border border-white/10 rounded-3xl p-6 md:p-8 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.8)]">
-        <div className="space-y-6">
+      <div className="bg-[#0a0a0f]/80 backdrop-blur-2xl border border-white/10 rounded-3xl p-5 md:p-6 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.8)]">
+        <div className="space-y-4">
           {items.map((item, i) => {
             const colors = LEVEL_COLORS[item.level];
             return (

@@ -25,7 +25,7 @@ export default function InvestmentDecision({ decision }: InvestmentDecisionProps
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       whileHover={{ scale: 1.01 }}
-      className={`relative overflow-hidden bg-black/40 backdrop-blur-xl border ${meta.colors.border} rounded-3xl p-8 md:p-10 flex flex-col md:flex-row items-center gap-6 md:gap-10`}
+      className={`relative overflow-hidden bg-black/40 backdrop-blur-xl border ${meta.colors.border} rounded-3xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-5 md:gap-8`}
     >
       <div
         className="absolute -top-16 -left-16 w-64 h-64 rounded-full blur-[100px] opacity-30 pointer-events-none"

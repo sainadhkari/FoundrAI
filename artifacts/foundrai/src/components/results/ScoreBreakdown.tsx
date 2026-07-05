@@ -20,10 +20,10 @@ interface ScoreBreakdownProps {
 export default function ScoreBreakdown({ scores, startupName, industry }: ScoreBreakdownProps) {
   return (
     <div>
-      <div className="flex items-center gap-3 mb-6">
-        <h2 className="text-2xl font-bold text-white tracking-tight">Score Breakdown</h2>
+      <div className="flex items-center gap-3 mb-5">
+        <h2 className="text-xl font-bold text-white tracking-tight">Score Breakdown</h2>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
         {ORDER.map((key) => {
           const value = scores[key];
           const tier = scoreTier(key, value);
@@ -35,29 +35,29 @@ export default function ScoreBreakdown({ scores, startupName, industry }: ScoreB
             <motion.div
               key={key}
               whileHover={{ y: -3 }}
-              className={`bg-black/40 backdrop-blur-xl border ${colors.border} rounded-2xl p-6 flex flex-col gap-4`}
+              className={`bg-black/40 backdrop-blur-xl border ${colors.border} rounded-2xl p-4 flex flex-col gap-3`}
             >
               <div className="flex items-center justify-between">
-                <h3 className="text-base font-bold text-white">{meta.noun}</h3>
-                <span className={`text-lg font-black font-mono ${colors.text}`}>{value}/10</span>
+                <h3 className="text-sm font-bold text-white">{meta.noun}</h3>
+                <span className={`text-base font-black font-mono ${colors.text}`}>{value}/10</span>
               </div>
               <div>
-                <p className="text-[11px] uppercase tracking-widest text-white/40 mb-2">Strengths</p>
-                <ul className="space-y-1.5">
+                <p className="text-[10px] uppercase tracking-widest text-white/40 mb-1.5">Strengths</p>
+                <ul className="space-y-1">
                   {strengths.map((s, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm text-white/80">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" />
+                    <li key={i} className="flex items-start gap-2 text-xs text-white/80 leading-snug">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 mt-0.5 shrink-0" />
                       <span>{s}</span>
                     </li>
                   ))}
                 </ul>
               </div>
               <div>
-                <p className="text-[11px] uppercase tracking-widest text-white/40 mb-2">Concerns</p>
-                <ul className="space-y-1.5">
+                <p className="text-[10px] uppercase tracking-widest text-white/40 mb-1.5">Concerns</p>
+                <ul className="space-y-1">
                   {concerns.map((c, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm text-white/60">
-                      <Circle className="w-2.5 h-2.5 text-rose-400/70 mt-1.5 shrink-0 fill-current" />
+                    <li key={i} className="flex items-start gap-2 text-xs text-white/60 leading-snug">
+                      <Circle className="w-2 h-2 text-rose-400/70 mt-1.5 shrink-0 fill-current" />
                       <span>{c}</span>
                     </li>
                   ))}
