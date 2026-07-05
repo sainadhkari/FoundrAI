@@ -1,63 +1,65 @@
 # FoundrAI — AI Executive Boardroom for Startup Validation 🚀
 
 <p align="center">
-  <b>Build Smarter. Decide Faster. Win Bigger.</b>
+  <h3 align="center">Build Smarter. Decide Faster. Win Bigger.</h3>
 </p>
 
 <p align="center">
-FoundrAI helps founders validate startup ideas using AI-powered executive boardroom analysis.
+FoundrAI is an AI-powered executive boardroom that helps founders validate startup ideas before investing time, money, and execution effort.
 </p>
 
 ---
 
-## 🌐 Live Demo
+# 🌐 Live Demo
 
-**Deployed App:**  
+### Deployed App
 https://foundr-ai--vanamsaicharan2.replit.app/
 
-**GitHub Repository:**  
+### GitHub Repository
 https://github.com/sainadhkari/FoundrAI
 
 ---
 
 # 📌 Problem Statement
 
-90% of startups fail because founders build before validating.
+90% of startups fail because founders build before properly validating.
 
-Common reasons:
+Major reasons include:
 - Poor market demand
 - Weak product-market fit
 - Strong competition
 - Financial miscalculation
 - Bad execution strategy
 
-FoundrAI solves this by simulating a full **AI Executive Boardroom** with specialized AI agents that pressure-test startup ideas before founders invest capital, time, and effort.
+FoundrAI solves this problem using an AI-powered Executive Boardroom made of specialized AI agents that pressure-test startup ideas before founders commit serious resources.
 
 ---
 
 # 🎯 Who Uses FoundrAI?
 
-- Startup Founders  
-- Investors  
-- Product Managers  
-- Venture Studios  
-- Incubators  
-- Accelerators  
+- Startup Founders
+- Investors
+- Product Managers
+- Venture Studios
+- Incubators
+- Accelerators
 
 ---
 
 # ✨ Key Features
 
+✅ Authentication System  
 ✅ AI Executive Boardroom  
-✅ Multi-Agent Startup Analysis  
-✅ Market Intelligence Analysis  
+✅ Startup Validation Engine  
+✅ Multi-Agent Analysis  
+✅ Market Opportunity Analysis  
 ✅ Competitor Intelligence Matrix  
 ✅ Financial Risk Modeling  
 ✅ SWOT Analysis  
+✅ Risk Matrix  
 ✅ Growth Roadmap  
-✅ CEO Final Verdict  
-✅ Investor-Grade PDF Report  
-✅ Authentication System  
+✅ Final CEO Verdict  
+✅ Investor PDF Report Download  
 
 ---
 
@@ -69,18 +71,18 @@ FoundrAI uses **8 specialized AI agents**.
 
 ## 1. Market Intelligence Agent
 Analyzes:
+- Market opportunity
 - TAM
-- Market demand
+- Industry demand
 - Growth potential
-- Industry trends
 
 ---
 
 ## 2. Competitor Intelligence Agent
 Analyzes:
 - Competitors
-- Positioning
 - Market saturation
+- Positioning
 - Competitive threats
 
 ---
@@ -88,17 +90,17 @@ Analyzes:
 ## 3. Financial Risk Agent
 Analyzes:
 - Budget
-- Runway
 - Burn rate
+- Runway
 - Profitability
 
 ---
 
 ## 4. Customer Psychology Agent
 Analyzes:
-- Customer pain points
+- Pain points
+- User demand
 - Buying behavior
-- Demand signals
 
 ---
 
@@ -106,33 +108,34 @@ Analyzes:
 Analyzes:
 - Product-market fit
 - Product roadmap
-- Feature differentiation
+- Differentiation
 
 ---
 
 ## 6. Growth Strategy Agent
 Analyzes:
+- GTM strategy
 - Acquisition channels
 - Scaling potential
-- GTM strategy
 
 ---
 
 ## 7. Risk Assessment Agent
 Analyzes:
 - Technical risks
-- Market risks
 - Financial risks
+- Market risks
 - Execution risks
 
 ---
 
 ## 8. Chief Executive AI
-Combines all agent outputs into final verdict:
-- Proceed
-- Pivot
-- Reject
-- Watch
+Synthesizes all reports and gives final verdict:
+
+- Proceed ✅
+- Pivot ⚠️
+- Watch 👀
+- Reject ❌
 
 ---
 
@@ -157,33 +160,34 @@ Final Strategic Decision
 FoundrAI uses lightweight RAG to improve reasoning quality.
 
 ### Knowledge Sources
-- Market intelligence data
-- Industry trend reports
+- Market intelligence reports
 - Competitor research
-- Startup ecosystem insights
-- Business datasets
+- Industry trend reports
+- Startup ecosystem data
+- External business intelligence
 
-RAG improves:
-- Accuracy
-- Real-world grounding
-- Better recommendations
+Benefits:
+- Better grounding
 - Reduced hallucinations
+- More accurate recommendations
+- Higher quality reasoning
 
 ---
 
 # 🤖 Why Multi-Agent Instead of Single Prompt?
 
-Startup analysis is multi-dimensional.
+Startup validation is complex.
 
-A single LLM prompt struggles to deeply reason across:
+A single prompt cannot deeply reason across:
 - Market
+- Competition
 - Finance
-- Product
-- Customer behavior
+- Customer psychology
+- Product strategy
 - Growth
 - Risk
 
-Multi-agent architecture enables specialist reasoning for each domain and produces stronger strategic decisions.
+Multi-agent architecture enables domain-specialist reasoning, producing more accurate and strategic outputs.
 
 ---
 
@@ -213,22 +217,27 @@ Multi-agent architecture enables specialist reasoning for each domain and produc
 # 📷 Screenshots
 
 ## Landing Page
-(Add screenshot here)
+![Landing Page](ss/landing-page.png)
 
 ---
 
 ## Authentication Page
-(Add screenshot here)
+![Authentication Page](ss/auth-page.png)
 
 ---
 
 ## Startup Analysis Page
-(Add screenshot here)
+![Analyze Page](ss/analyze-page.png)
 
 ---
 
-## Dashboard
-(Add screenshot here)
+## Dashboard Overview
+![Dashboard Overview](ss/dashboard-overview.png)
+
+---
+
+## Dashboard Analysis
+![Dashboard Analysis](ss/dashboard-analysis.png)
 
 ---
 
@@ -239,35 +248,26 @@ Use demo credentials to access FoundrAI.
 ---
 
 ## Founder Access
-Email:
-founder@foundrai.ai
-
-Password:
-founder123
+Email: founder@foundrai.ai  
+Password: founder123  
 
 ---
 
 ## Investor Access
-Email:
-investor@foundrai.ai
-
-Password:
-investor123
+Email: investor@foundrai.ai  
+Password: investor123  
 
 ---
 
 ## Admin Access
-Email:
-admin@foundrai.ai
-
-Password:
-admin123
+Email: admin@foundrai.ai  
+Password: admin123  
 
 ---
 
 # 🧪 Example Startup Input
 
-Use this for testing.
+Use this sample startup idea for testing.
 
 ---
 
@@ -281,7 +281,7 @@ AI-powered personalized learning platform for colleges using adaptive learning a
 EdTech
 
 ## Target Customers
-Universities, colleges, educational institutions
+Universities, colleges, and educational institutions
 
 ## Budget
 $100K–$250K
@@ -304,19 +304,11 @@ FoundrAI generates:
 - Risk Score
 - Growth Score
 - SWOT Analysis
+- Startup DNA
 - Competitor Intelligence Matrix
 - Risk Matrix
 - Growth Roadmap
 - Final CEO Verdict
-
----
-
-# 🎯 Verdict Types
-
-- Proceed ✅
-- Pivot ⚠️
-- Watch 👀
-- Reject ❌
 
 ---
 
@@ -328,20 +320,20 @@ Clone repository:
 git clone https://github.com/sainadhkari/FoundrAI.git
 ```
 
-Go inside project:
+Enter project:
 
 ```bash
 cd FoundrAI
 ```
 
-Install frontend:
+Install frontend dependencies:
 
 ```bash
 npm install
 npm run dev
 ```
 
-Install backend:
+Install backend dependencies:
 
 ```bash
 pip install -r requirements.txt
@@ -355,8 +347,8 @@ uvicorn main:app --reload
 - Full RAG with vector database
 - Startup comparison engine
 - Investor dashboard
-- Industry-specific models
-- Historical startup analytics
+- Industry-specific AI models
+- Historical analytics
 - Advanced forecasting
 
 ---
@@ -369,7 +361,7 @@ Team FoundrAI
 
 ---
 
-# ⭐ Final Vision
+# ⭐ Vision
 
 FoundrAI aims to become the AI-powered operating system for startup validation.
 
