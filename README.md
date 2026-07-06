@@ -55,7 +55,7 @@ The workflow executes sequentially.
 
 Each specialist agent performs independent reasoning before the Chief Executive AI synthesizes all findings into a single executive boardroom decision.
 
-![CrewAI Workflow](SS/crewai-workflow.png)
+![CrewAI Workflow](SS/crewai-workflow1.png)
 
 ---
 
