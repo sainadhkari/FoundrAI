@@ -1,340 +1,399 @@
 # FoundrAI — AI Executive Boardroom for Startup Validation 🚀
 
 <p align="center">
-  <h3 align="center">Build Smarter. Decide Faster. Win Bigger.</h3>
-</p>
+<h2 align="center">Build Smarter. Decide Faster. Win Bigger.</h2>
 
-<p align="center">
-FoundrAI is an AI-powered executive boardroom that helps founders validate startup ideas before investing time, money, and execution effort.
+AI-powered executive boardroom that validates startup ideas before founders invest time, money and execution effort.
 </p>
 
 ---
 
 # 🌐 Live Demo
 
-### Deployed App
+### 🚀 Live Application
 https://foundr-ai--vanamsaicharan2.replit.app/
 
-### GitHub Repository
+### 📂 GitHub Repository
 https://github.com/sainadhkari/FoundrAI
 
 ---
 
 # 📌 Problem Statement
 
-90% of startups fail because founders build before properly validating.
+More than 90% of startups fail because founders build products before validating market demand, competition, financial viability, execution complexity, and customer demand.
 
-Major reasons include:
-- Poor market demand
-- Weak product-market fit
-- Strong competition
-- Financial miscalculation
-- Bad execution strategy
-
-FoundrAI solves this problem using an AI-powered Executive Boardroom made of specialized AI agents that pressure-test startup ideas before founders commit serious resources.
+FoundrAI solves this problem by simulating an **AI Executive Boardroom** where multiple specialized AI agents independently evaluate a startup idea and produce an investor-grade strategic report before a founder commits resources.
 
 ---
 
-# 🎯 Who Uses FoundrAI?
+# 🎯 Target Users
 
 - Startup Founders
-- Investors
-- Product Managers
-- Venture Studios
+- Angel Investors
+- Venture Capital Firms
 - Incubators
 - Accelerators
+- Product Managers
+- Innovation Teams
 
 ---
 
-# ✨ Key Features
+# 🧠 CrewAI Multi-Agent Workflow
 
-✅ Authentication System  
-✅ AI Executive Boardroom  
-✅ Startup Validation Engine  
-✅ Multi-Agent Analysis  
-✅ Market Opportunity Analysis  
-✅ Competitor Intelligence Matrix  
-✅ Financial Risk Modeling  
-✅ SWOT Analysis  
-✅ Risk Matrix  
-✅ Growth Roadmap  
-✅ Final CEO Verdict  
-✅ Investor PDF Report Download  
+FoundrAI is powered by **CrewAI Studio** where every AI agent specializes in one business domain.
 
----
+The workflow executes sequentially.
 
-# 🧠 AI Agents
+1. Market Intelligence Analyst
+2. Competitor Intelligence Analyst
+3. Financial Risk Analyst
+4. Customer Psychology Analyst
+5. Product Strategy Analyst
+6. Growth Strategy Analyst
+7. Chief Executive AI
+8. Executive Decision Report
 
-FoundrAI uses **8 specialized AI agents**.
+Each specialist agent performs independent reasoning before the Chief Executive AI synthesizes all findings into a single executive boardroom decision.
+
+![CrewAI Workflow](SS/crewai-workflow.png)
 
 ---
 
-## 1. Market Intelligence Agent
+# 🏗 System Architecture
+
+```text
+                    User
+                      │
+                      ▼
+         React + TypeScript Frontend
+                      │
+                      ▼
+             FastAPI Backend API
+                      │
+                      ▼
+              CrewAI Orchestrator
+                      │
+      ┌──────────┬──────────┬──────────┐
+      ▼          ▼          ▼          ▼
+ Market AI   Competitor   Finance   Customer
+                      │
+                      ▼
+              Product Strategy
+                      │
+                      ▼
+              Growth Strategy
+                      │
+                      ▼
+             Risk Assessment
+                      │
+                      ▼
+             Chief Executive AI
+                      │
+                      ▼
+         Executive Decision Report
+                      │
+                      ▼
+     Interactive Dashboard + PDF Report
+```
+
+---
+
+# ✨ Features
+
+- Secure Authentication System
+- AI Executive Boardroom
+- Multi-Agent Startup Validation
+- Market Opportunity Analysis
+- Competitor Intelligence
+- Financial Risk Modeling
+- Customer Psychology Analysis
+- Product Strategy Evaluation
+- Growth Strategy Planning
+- SWOT Analysis
+- Startup DNA Classification
+- Risk Matrix
+- Growth Roadmap
+- Interactive Dashboard
+- CEO Final Verdict
+- Investor PDF Report
+
+---
+
+# 🤖 AI Agents
+
+## 1️⃣ Market Intelligence Agent
 Analyzes:
-- Market opportunity
 - TAM
-- Industry demand
-- Growth potential
+- Market demand
+- Industry trends
+- Growth opportunity
 
 ---
 
-## 2. Competitor Intelligence Agent
+## 2️⃣ Competitor Intelligence Agent
 Analyzes:
-- Competitors
+- Competitor landscape
 - Market saturation
 - Positioning
 - Competitive threats
 
 ---
 
-## 3. Financial Risk Agent
+## 3️⃣ Financial Risk Agent
 Analyzes:
 - Budget
 - Burn rate
 - Runway
-- Profitability
+- Financial sustainability
 
 ---
 
-## 4. Customer Psychology Agent
+## 4️⃣ Customer Psychology Agent
 Analyzes:
-- Pain points
-- User demand
+- Customer pain points
 - Buying behavior
+- User demand
+- Adoption likelihood
 
 ---
 
-## 5. Product Strategy Agent
+## 5️⃣ Product Strategy Agent
 Analyzes:
 - Product-market fit
-- Product roadmap
+- Feature prioritization
 - Differentiation
+- Product roadmap
 
 ---
 
-## 6. Growth Strategy Agent
+## 6️⃣ Growth Strategy Agent
 Analyzes:
-- GTM strategy
-- Acquisition channels
-- Scaling potential
+- Go-to-market strategy
+- User acquisition
+- Scaling opportunities
 
 ---
 
-## 7. Risk Assessment Agent
+## 7️⃣ Risk Assessment Agent
 Analyzes:
-- Technical risks
-- Financial risks
-- Market risks
-- Execution risks
+- Technical risk
+- Financial risk
+- Market risk
+- Execution complexity
 
 ---
 
-## 8. Chief Executive AI
-Synthesizes all reports and gives final verdict:
+## 8️⃣ Chief Executive AI
+Synthesizes every specialist report and generates the final boardroom verdict.
 
-- Proceed ✅
-- Pivot ⚠️
-- Watch 👀
-- Reject ❌
+Possible Verdicts
 
----
-
-# 🏗 Architecture
-
-```bash
-Frontend (React + Tailwind)
-      ↓
-Backend (FastAPI)
-      ↓
-CrewAI Multi-Agent System
-      ↓
-OpenAI API
-      ↓
-Final Strategic Decision
-```
+- ✅ Proceed
+- ⚠️ Pivot
+- 👀 Watch
+- ❌ Reject
 
 ---
 
-# 🔍 RAG (Retrieval-Augmented Generation)
+# 🔍 Retrieval-Augmented Generation (RAG)
 
-FoundrAI uses lightweight RAG to improve reasoning quality.
+FoundrAI incorporates a lightweight Retrieval-Augmented Generation approach to improve decision quality.
 
-### Knowledge Sources
-- Market intelligence reports
+Knowledge sources include:
+
+- Market intelligence
+- Industry reports
 - Competitor research
-- Industry trend reports
-- Startup ecosystem data
-- External business intelligence
+- Business intelligence
+- Startup ecosystem information
 
-Benefits:
+Benefits
+
 - Better grounding
-- Reduced hallucinations
-- More accurate recommendations
-- Higher quality reasoning
+- Reduced hallucination
+- More reliable recommendations
+- Higher reasoning quality
 
 ---
 
-# 🤖 Why Multi-Agent Instead of Single Prompt?
+# 🤔 Why Multi-Agent Instead of One Prompt?
 
-Startup validation is complex.
+Startup validation spans multiple domains.
 
-A single prompt cannot deeply reason across:
-- Market
-- Competition
-- Finance
-- Customer psychology
-- Product strategy
-- Growth
-- Risk
+Instead of asking one LLM to reason about everything simultaneously, FoundrAI assigns each domain to a specialist AI.
 
-Multi-agent architecture enables domain-specialist reasoning, producing more accurate and strategic outputs.
+Advantages:
+
+- Better domain expertise
+- Parallel reasoning
+- Modular architecture
+- Easier scalability
+- Higher quality recommendations
 
 ---
 
 # 🛠 Tech Stack
 
-## Frontend
+### Frontend
 - React
 - TypeScript
 - Tailwind CSS
 - Vite
 
-## Backend
+### Backend
 - FastAPI
 - Python
 
-## AI Framework
+### AI Framework
 - CrewAI
 
-## LLM
+### LLM
 - OpenAI API
 
-## Deployment
+### Deployment
 - Replit
 
 ---
 
-# 📷 Screenshots
+# 📷 Application Screenshots
 
 ## Landing Page
-![Landing Page](SS/landing-page.png)
+
+![Landing](SS/landing-page.png)
 
 ---
 
-## Authentication Page
-![Authentication Page](SS/auth-page.png)
+## Authentication
+
+![Authentication](SS/auth-page.png)
 
 ---
 
-## Startup Analysis Page
-![Analyze Page](SS/analyze-page.png)
+## Startup Analysis Form
+
+![Analyze](SS/analyze-page.png)
 
 ---
 
 ## Dashboard Overview
-![Dashboard Overview](SS/dashboard-overview.png)
+
+![Dashboard](SS/dashboard-overview.png)
 
 ---
 
-## Dashboard Analysis
-![Dashboard Analysis](SS/dashboard-analysis.png)
+## Detailed Strategic Report
 
+![Report](SS/dashboard-analysis.png)
 
 ---
 
 # 🔐 Demo Credentials
 
-Use demo credentials to access FoundrAI.
+## Founder
+
+Email:
+founder@foundrai.ai
+
+Password:
+founder123
 
 ---
 
-## Founder Access
-Email: founder@foundrai.ai  
-Password: founder123  
+## Investor
+
+Email:
+investor@foundrai.ai
+
+Password:
+investor123
 
 ---
 
-## Investor Access
-Email: investor@foundrai.ai  
-Password: investor123  
+## Admin
+
+Email:
+admin@foundrai.ai
+
+Password:
+admin123
 
 ---
 
-## Admin Access
-Email: admin@foundrai.ai  
-Password: admin123  
+# 🧪 Example Startup
 
----
+Startup Name
 
-# 🧪 Example Startup Input
-
-Use this sample startup idea for testing.
-
----
-
-## Startup Name
 EduAI
 
-## Startup Idea
-AI-powered personalized learning platform for colleges using adaptive learning and predictive analytics.
+Startup Idea
 
-## Industry
+AI-powered personalized learning platform that helps colleges improve student performance using adaptive learning and predictive analytics.
+
+Industry
+
 EdTech
 
-## Target Customers
-Universities, colleges, and educational institutions
+Target Customers
 
-## Budget
+Universities, Colleges, Educational Institutions
+
+Budget
+
 $100K–$250K
 
-## Timeline
-6–12 months
+Timeline
 
-## Team Size
-5–10
+6–12 Months
+
+Team Size
+
+5–10 Members
 
 ---
 
 # 📊 Output Includes
 
-FoundrAI generates:
+FoundrAI generates
 
+- Executive Scorecard
 - Market Score
 - Competition Score
 - Financial Score
 - Risk Score
 - Growth Score
-- SWOT Analysis
 - Startup DNA
-- Competitor Intelligence Matrix
+- SWOT Analysis
+- Competitor Matrix
 - Risk Matrix
 - Growth Roadmap
-- Final CEO Verdict
+- AI Agent Insights
+- CEO Verdict
+- Investor Recommendation
+- Downloadable PDF Report
 
 ---
 
 # 🚀 Local Setup
 
-Clone repository:
+Clone repository
 
 ```bash
 git clone https://github.com/sainadhkari/FoundrAI.git
 ```
 
-Enter project:
-
-```bash
-cd FoundrAI
-```
-
-Install frontend dependencies:
+Install dependencies
 
 ```bash
 npm install
+```
+
+Run frontend
+
+```bash
 npm run dev
 ```
 
-Install backend dependencies:
+Run backend
 
 ```bash
 pip install -r requirements.txt
@@ -343,25 +402,47 @@ uvicorn main:app --reload
 
 ---
 
-# 📈 Future Improvements
+# 📈 Future Roadmap
 
-- Full RAG with vector database
-- Startup comparison engine
-- Investor dashboard
-- Industry-specific AI models
-- Historical analytics
-- Advanced forecasting
+- Vector Database Integration
+- Advanced RAG Pipeline
+- Startup Comparison Dashboard
+- Industry-Specific AI Models
+- Investor Workspace
+- Historical Startup Analytics
+- Collaborative Team Analysis
 
 ---
 
 # 👨‍💻 Team
 
-Sainadh Kari
-Saicharan Vanam
+**Sainadh Kari**
+
+- AI Engineering
+- Backend Development
+- CrewAI Integration
+
+**Saicharan Vanam**
+
+- Frontend Development
+- UI/UX Design
+- Dashboard Experience
+
+---
+
+# 🙏 Acknowledgements
+
+- CrewAI
+- OpenAI
+- React
+- FastAPI
+- Tailwind CSS
+- Replit
+
 ---
 
 # ⭐ Vision
 
-FoundrAI aims to become the AI-powered operating system for startup validation.
+Our vision is to make startup validation as accessible as writing a business idea.
 
-Instead of founders guessing what to build, FoundrAI helps them build with confidence.
+Instead of founders relying on intuition alone, FoundrAI enables evidence-based decision-making through a collaborative AI executive boardroom.
