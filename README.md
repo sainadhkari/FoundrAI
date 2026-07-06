@@ -275,12 +275,6 @@ Advantages:
 
 ---
 
-## Dashboard Overview
-
-![Dashboard](SS/dashboard-overview.png)
-
----
-
 ## Detailed Strategic Report
 
 ![Report](SS/dashboard-analysis.png)
